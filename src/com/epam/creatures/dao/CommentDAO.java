@@ -101,13 +101,8 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
     }
 
     @Override
-    public boolean delete(Comment entity) throws DAOException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public boolean create(Comment entity) throws DAOException {
-        LOGGER.debug("Creating comment. "+entity);
+        LOGGER.debug("Inserting comment. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(INSERT_COMMENT)){
@@ -119,7 +114,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while creating comment.",e);
+            throw new DAOException("Exception while inserting comment.",e);
         }
         return false;
     }

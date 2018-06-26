@@ -103,13 +103,8 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
     }
 
     @Override
-    public boolean delete(Admin entity) throws DAOException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public boolean create(Admin entity) throws DAOException {
-        LOGGER.debug("Creating new admin." +entity);
+        LOGGER.debug("Inserting admin." +entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(INSERT_ADMIN)){
@@ -120,7 +115,7 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 return preparedStatement.executeUpdate()>0;
             }
         }catch (SQLException e){
-            throw new DAOException("Exception while creating new admin.",e);
+            throw new DAOException("Exception while inserting admin.",e);
         }
         return false;
     }

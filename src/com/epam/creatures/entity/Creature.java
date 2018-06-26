@@ -8,7 +8,7 @@ public class Creature implements Entity {
         MALE,FEMALE,NONE
     }
 
-    private long creatureId;
+    private Integer creatureId;
     private String creatureName;
     private int limbQuantity;
     private int headQuantity;
@@ -18,7 +18,7 @@ public class Creature implements Entity {
     private Double creatureRating;
     private Integer creatorId;
 
-    public Creature(long creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
+    public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
                     Gender creatureGender, String description, Double creatureRating, Integer creatorId) {
 
         this.creatureId = creatureId;
@@ -32,7 +32,7 @@ public class Creature implements Entity {
         this.creatorId = creatorId;
     }
 
-    public Creature(long creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity, Gender creatureGender, Integer creatorId){
+    public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity, Gender creatureGender, Integer creatorId){
         this.creatureId = creatureId;
         this.creatureName = creatureName;
         this.limbQuantity = limbQuantity;
@@ -42,11 +42,11 @@ public class Creature implements Entity {
         this.creatorId = creatorId;
     }
 
-    public long getCreatureId() {
+    public Integer getCreatureId() {
         return creatureId;
     }
 
-    public void setCreatureId(long creatureId) {
+    public void setCreatureId(Integer creatureId) {
         this.creatureId = creatureId;
     }
 
@@ -119,10 +119,10 @@ public class Creature implements Entity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Creature creature = (Creature) o;
-        return creatureId == creature.creatureId &&
-                limbQuantity == creature.limbQuantity &&
+        return limbQuantity == creature.limbQuantity &&
                 headQuantity == creature.headQuantity &&
                 eyeQuantity == creature.eyeQuantity &&
+                Objects.equals(creatureId, creature.creatureId) &&
                 Objects.equals(creatureName, creature.creatureName) &&
                 creatureGender == creature.creatureGender &&
                 Objects.equals(description, creature.description) &&
@@ -147,7 +147,7 @@ public class Creature implements Entity {
                 ", creatureGender=" + creatureGender +
                 ", description='" + description + '\'' +
                 ", creatureRating=" + creatureRating +
-                ", creatorId='" + creatorId + '\'' +
+                ", creatorId=" + creatorId +
                 '}';
     }
 }

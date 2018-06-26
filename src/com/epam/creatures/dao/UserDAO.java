@@ -106,13 +106,8 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
     }
 
     @Override
-    public boolean delete(User entity) throws DAOException{
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public boolean create(User entity) throws DAOException{
-        LOGGER.debug("Creating new user. " + entity);
+        LOGGER.debug("Inserting new user. " + entity);
 
         try (SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
              PreparedStatement preparedStatement=Objects.requireNonNull(connection).prepareStatement(INSERT_USER)){

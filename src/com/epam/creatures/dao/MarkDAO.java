@@ -69,13 +69,8 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
     }
 
     @Override
-    public boolean delete(Mark entity) throws DAOException {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public boolean create(Mark entity) throws DAOException {
-        LOGGER.debug("Creating new mark. "+entity);
+        LOGGER.debug("Inserting new mark. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(INSERT_MARK)){
@@ -87,7 +82,7 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while creating mark.",e);
+            throw new DAOException("Exception while inserting mark.",e);
         }
         return false;
     }
