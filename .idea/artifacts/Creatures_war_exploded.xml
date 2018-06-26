@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Creatures:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Creatures_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Creatures/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Creatures" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="org.ops4j.pax.logging:pax-logging-log4j2:1.10.1" />
+          <element id="library" level="project" name="mysql:mysql-connector-java:8.0.11" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
