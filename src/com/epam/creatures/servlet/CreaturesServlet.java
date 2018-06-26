@@ -12,10 +12,14 @@ import java.io.IOException;
 
 public class CreaturesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        processRequest(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request,response);
+    }
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response){
 
     }
 }
