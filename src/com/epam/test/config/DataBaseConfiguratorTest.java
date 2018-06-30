@@ -1,12 +1,15 @@
 package com.epam.test.config;
 
 import com.epam.creatures.config.DataBaseConfigurator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Properties;
 
 public class DataBaseConfiguratorTest {
+    private static final Logger LOGGER = LogManager.getLogger(DataBaseConfiguratorTest.class);
     @Test
     public void testConfig(){
 
@@ -16,12 +19,12 @@ public class DataBaseConfiguratorTest {
 
         Assert.assertNotNull(properties);
 
-        System.out.println("url: "+properties.get("url"));
-        System.out.println("user: "+properties.get("user"));
-        System.out.println("password: "+properties.get("password"));
-        System.out.println("autoReconnect: "+properties.get("autoReconnect"));
-        System.out.println("characterEncoding: "+properties.get("characterEncoding"));
-        System.out.println("useUnicode: "+properties.get("useUnicode"));
-        System.out.println("useSSL: "+properties.get("useSSL"));
+        LOGGER.info("url: ("+properties.get("url")+")");
+        LOGGER.info("user: ("+properties.get("user")+")");
+        LOGGER.info("password: ("+properties.get("password")+")");
+        LOGGER.info("autoReconnect: ("+properties.get("autoReconnect")+")");
+        LOGGER.info("characterEncoding: ("+properties.get("characterEncoding")+")");
+        LOGGER.info("useUnicode: ("+properties.get("useUnicode")+")");
+        LOGGER.info("useSSL: ("+properties.get("useSSL")+")");
     }
 }
