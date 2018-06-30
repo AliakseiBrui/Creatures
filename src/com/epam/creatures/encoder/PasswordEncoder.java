@@ -1,4 +1,4 @@
-package com.epam.task4.encoder;
+package com.epam.creatures.encoder;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;

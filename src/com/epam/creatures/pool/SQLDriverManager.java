@@ -1,6 +1,5 @@
 package com.epam.creatures.pool;
 
-import com.mysql.jdbc.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,7 +15,7 @@ class SQLDriverManager {
         LOGGER.debug("Registering drivers.");
 
         try {
-            DriverManager.registerDriver(new Driver());
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         } catch (SQLException e) {
             LOGGER.error("Exception in driver registration.",e);
             throw new RuntimeException(e);
