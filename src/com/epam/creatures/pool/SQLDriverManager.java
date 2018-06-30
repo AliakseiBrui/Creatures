@@ -17,7 +17,7 @@ class SQLDriverManager {
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         } catch (SQLException e) {
-            LOGGER.error("Exception in driver registration.",e);
+            LOGGER.fatal("Exception in driver registration.",e);
             throw new RuntimeException(e);
         }
     }
@@ -32,7 +32,7 @@ class SQLDriverManager {
         try {
             DriverManager.deregisterDriver(driver);
         } catch (SQLException e) {
-            LOGGER.error("Exception in driver deregistration",e);
+            LOGGER.fatal("Exception in driver deregistration",e);
             throw new RuntimeException(e);
         }
     }
