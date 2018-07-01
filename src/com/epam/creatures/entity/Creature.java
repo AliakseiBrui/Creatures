@@ -42,6 +42,16 @@ public class Creature implements Entity {
         this.creatorId = creatorId;
     }
 
+    public Creature(String creatureName, int limbQuantity, int headQuantity, int eyeQuantity, Gender creatureGender, String description, Integer creatorId) {
+        this.creatureName = creatureName;
+        this.limbQuantity = limbQuantity;
+        this.headQuantity = headQuantity;
+        this.eyeQuantity = eyeQuantity;
+        this.creatureGender = creatureGender;
+        this.description = description;
+        this.creatorId = creatorId;
+    }
+
     public Integer getCreatureId() {
         return creatureId;
     }

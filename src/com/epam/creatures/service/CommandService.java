@@ -1,4 +1,4 @@
-package com.epam.service;
+package com.epam.creatures.service;
 
 import javax.servlet.ServletException;
 import java.io.IOException;

@@ -18,4 +18,10 @@ public class CreatureFactory {
         LOGGER.debug("Creating creature.");
         return new Creature(creatureId,creatureName,limbQuantity,headQuantity,eyeQuantity,creatureGender, creatorId);
     }
+
+    public Creature createCreature(String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
+                                   Creature.Gender creatureGender, String description, Integer creatorId){
+        LOGGER.debug("Creating creature.");
+        return new Creature(creatureName,limbQuantity,headQuantity,eyeQuantity,creatureGender,description, creatorId);
+    }
 }

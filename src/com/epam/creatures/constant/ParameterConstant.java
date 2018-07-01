@@ -12,6 +12,7 @@ public class ParameterConstant {
     public static final String CREATURE_EYE_Q_PARAMETER = "creatureEyeQuantity";
     public static final String CREATURE_GENDER_PARAMETER = "creatureGender";
     public static final String CREATURE_DESCRIPTION_PARAMETER = "creatureDescription";
+    public static final String CREATOR_ID_PARAMETER = "creatorId";
 
     private ParameterConstant(){}
 }

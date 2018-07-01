@@ -1,7 +1,7 @@
 package com.epam.creatures.command;
 
 import com.epam.creatures.entity.Router;
-import com.epam.service.CommandService;
+import com.epam.creatures.service.CommandService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

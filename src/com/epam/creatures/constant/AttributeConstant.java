@@ -8,6 +8,7 @@ public class AttributeConstant {
     public static final String AVATAR_ATTRIBUTE = "avatar";
     public static final String ROUTER_ATTRIBUTE = "router";
     public static final String ID_ATTRIBUTE = "id";
+    public static final String ERROR_MESSAGE_ATTRIBUTE = "errorMessage";
 
     private AttributeConstant(){}
 }

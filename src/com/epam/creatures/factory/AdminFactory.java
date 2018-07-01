@@ -16,4 +16,8 @@ public class AdminFactory {
         LOGGER.debug("Creating admin.");
         return new Admin(login,password);
     }
+
+    public Admin createAdmin(){
+        return new Admin();
+    }
 }

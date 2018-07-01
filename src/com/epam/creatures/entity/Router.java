@@ -2,7 +2,7 @@ package com.epam.creatures.entity;
 
 import java.util.Objects;
 
-public class Router {
+public class Router implements Entity {
 
     public enum RouteType{
         FORWARD,
@@ -11,6 +11,11 @@ public class Router {
 
     private RouteType routeType;
     private String route;
+
+    public Router(RouteType routeType, String route) {
+        this.routeType = routeType;
+        this.route = route;
+    }
 
     public RouteType getRouteType() {
         return routeType;
@@ -41,5 +46,13 @@ public class Router {
     public int hashCode() {
 
         return Objects.hash(routeType, route);
+    }
+
+    @Override
+    public String toString() {
+        return "Router{" +
+                "routeType=" + routeType +
+                ", route='" + route + '\'' +
+                '}';
     }
 }

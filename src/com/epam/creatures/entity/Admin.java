@@ -7,6 +7,9 @@ public class Admin implements Entity {
     private String login;
     private String password;
 
+    public Admin() {
+    }
+
     public Admin(Integer id, String login, String password) {
         this.id = id;
         this.login = login;
