@@ -10,8 +10,11 @@
 <html>
 <head>
     <title>Application</title>
+
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
 </body>
 </html>

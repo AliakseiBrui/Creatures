@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 30.06.2018
-  Time: 23:24
+  Date: 01.07.2018
+  Time: 4:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Admin authorization</title>
+    <title>User authorization</title>
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -23,7 +23,7 @@
 
 <div align="center">
     <form action="/creatures" method="post">
-        <input type="hidden" name="commandType" value="ADMIN_AUTHORIZATION_COMMAND"/>
+        <input type="hidden" name="commandType" value="USER_AUTHORIZATION_COMMAND"/>
 
         <label for="login">Login</label><br/>
         <input type="text" name="login" id="login" class="input-text" maxlength="40"/>

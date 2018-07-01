@@ -9,9 +9,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Start page</title>
+    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+  <div>
+    <div style="float: left;">
+      <form action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="TO_ADMIN_AUTHORIZATION_PAGE_COMMAND"/>
 
+        <input type="submit" value="Log in as admin" class="nice-button"/>
+      </form>
+    </div>
+    <div style="float: right;">
+      <form action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="TO_USER_AUTHORIZATION_PAGE_COMMAND"/>
+
+        <input type="submit" value="Log in as user" class="nice-button"/>
+      </form>
+    </div>
+  </div>
   </body>
 </html>
