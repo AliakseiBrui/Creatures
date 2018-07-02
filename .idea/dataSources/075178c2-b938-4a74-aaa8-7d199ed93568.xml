@@ -1131,7 +1131,7 @@
     <column id="285" parent="280" name="id">
       <Position>1</Position>
       <Comment>Искусственный ПК.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1139,14 +1139,14 @@
     <column id="286" parent="280" name="login">
       <Position>2</Position>
       <Comment>Логин администратора.</Comment>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="287" parent="280" name="password">
       <Position>3</Position>
       <Comment>Пароль администратора.</Comment>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1167,7 +1167,7 @@
     <column id="291" parent="281" name="id">
       <Position>1</Position>
       <Comment>Искусственный ПК.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1182,15 +1182,14 @@
     <column id="293" parent="281" name="creature_id">
       <Position>3</Position>
       <Comment>ID существа, на которого оставлен комментарий.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="294" parent="281" name="user_id">
       <Position>4</Position>
       <Comment>ID пользователя, который оставил комментарий.</Comment>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>int(11) unsigned|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="295" parent="281" name="fk_creature_id_idx">
@@ -1206,7 +1205,7 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="298" parent="281" name="fk_comments_creature_id">
+    <foreign-key id="298" parent="281" name="fk_creatures_comments">
       <ColNames>creature_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>creatures</RefTableName>
@@ -1214,18 +1213,18 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="299" parent="281" name="fk_comments_user_id">
+    <foreign-key id="299" parent="281" name="fk_users_comments">
       <ColNames>user_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
+      <OnDelete>set-null</OnDelete>
     </foreign-key>
     <column id="300" parent="282" name="id">
       <Position>1</Position>
       <Comment>Искусственный ПК.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1275,7 +1274,7 @@
     <column id="307" parent="282" name="creator_id">
       <Position>8</Position>
       <Comment>ID админа, который создал существо.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1290,7 +1289,7 @@
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="310" parent="282" name="id_idx">
+    <index id="310" parent="282" name="fk_admins_creatures_idx">
       <ColNames>creator_id</ColNames>
       <Type>btree</Type>
     </index>
@@ -1303,7 +1302,7 @@
       <ColNames>name</ColNames>
       <UnderlyingIndexName>name_UNIQUE</UnderlyingIndexName>
     </key>
-    <foreign-key id="313" parent="282" name="admin_creator_id">
+    <foreign-key id="313" parent="282" name="fk_admins_creatures">
       <ColNames>creator_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>admins</RefTableName>
@@ -1321,14 +1320,14 @@
     <column id="315" parent="283" name="creature_id">
       <Position>2</Position>
       <Comment>ID существа, которому принадлежит оценка.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="316" parent="283" name="user_id">
       <Position>3</Position>
       <Comment>ID пользователя, который поставил оценку.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1336,7 +1335,7 @@
       <ColNames>creature_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="318" parent="283" name="fk_marks_users1_idx">
+    <index id="318" parent="283" name="fk_users_marks_idx">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
@@ -1346,7 +1345,7 @@
 user_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="320" parent="283" name="fk_marks_creature_id">
+    <foreign-key id="320" parent="283" name="fk_creatures_marks">
       <ColNames>creature_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>creatures</RefTableName>
@@ -1354,7 +1353,7 @@ user_id</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="321" parent="283" name="fk_marks_user_id">
+    <foreign-key id="321" parent="283" name="fk_users_marks">
       <ColNames>user_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1377,7 +1376,7 @@ user_id</ColNames>
     <column id="325" parent="284" name="id">
       <Position>1</Position>
       <Comment>Искусственный ПК.</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
@@ -1385,14 +1384,14 @@ user_id</ColNames>
     <column id="326" parent="284" name="login">
       <Position>2</Position>
       <Comment>Логин пользователя.</Comment>
-      <DataType>varchar(10)|0s</DataType>
+      <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="327" parent="284" name="password">
       <Position>3</Position>
       <Comment>Пароль пользователя.</Comment>
-      <DataType>varchar(10)|0s</DataType>
+      <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

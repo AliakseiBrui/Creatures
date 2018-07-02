@@ -7,15 +7,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Header</title>
-    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
-</head>
-<body>
     <div>
-        avatar,login
+        <div align="right">
+            <c:if test="${not empty login}">
+                <c:out value="Login: ${login} | Role: ${role} | ID: ${id}"/>
+            </c:if>
+        </div>
+        <br>
+
+        <div align="right">
+            <c:if test="${not empty login}">
+                <form action="/creatures" method="get">
+                    <input type="hidden" name="commandType" value="LOG_OUT_COMMAND"/>
+
+                    <input type="submit" value="Log out" class="nice-button"/>
+                </form>
+            </c:if>
+        </div>
     </div>
+
     <div align="center">
         <c:choose>
             <c:when test="${not empty errorMessage}">
@@ -30,5 +40,4 @@
             </c:otherwise>
         </c:choose>
     </div>
-</body>
-</html>
+

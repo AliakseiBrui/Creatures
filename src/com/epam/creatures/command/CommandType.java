@@ -24,7 +24,7 @@ public enum CommandType {
 
     USER_AUTHORIZATION_COMMAND(new UserAuthorizationCommand(new UserAuthorizationService())),
 
-    USER_REGISTRATION_COMMAN(new UserRegistrationCommand(new UserRegistrationService())),
+    USER_REGISTRATION_COMMAND(new UserRegistrationCommand(new UserRegistrationService())),
 
     TO_ADMIN_AUTHORIZATION_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminAuthorizationPageService())),
 
@@ -33,6 +33,8 @@ public enum CommandType {
     TO_USER_REGISTRATION_PAGE_COMMAND(new ToAnyPageCommand(new ToUserRegistrationPageService())),
 
     TO_START_PAGE_COMMAND(new ToAnyPageCommand(new ToStartPageService())),
+
+    LOG_OUT_COMMAND(new LogOutCommand(new LogOutService()))
     ;
 
     private AbstractCommand command;

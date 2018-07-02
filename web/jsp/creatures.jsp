@@ -14,7 +14,7 @@
 </head>
 <body>
 <div align="center">
-    <table width="100% ">
+    <table width="80%">
         <caption align="center" class="nice-text">
             Creatures
         </caption>

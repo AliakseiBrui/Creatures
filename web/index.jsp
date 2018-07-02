@@ -13,30 +13,33 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-  <div align="center">
+  <jsp:include page="jsp/header.jsp"/>
+  <div style="padding: 5%;">
+    <div align="center">
       <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_ADMIN_AUTHORIZATION_PAGE_COMMAND"/>
 
         <input type="submit" value="Log in as admin" class="nice-button"/>
       </form>
-  </div>
-  <br>
+    </div>
+    <br>
 
-  <div align="center">
+    <div align="center">
       <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_USER_AUTHORIZATION_PAGE_COMMAND"/>
 
         <input type="submit" value="Log in as user" class="nice-button"/>
       </form>
-  </div>
-  <br>
+    </div>
+    <br>
 
-  <div align="center">
-    <form action="/creatures" method="get">
-      <input type="hidden" name="commandType" value="TO_USER_REGISTRATION_PAGE_COMMAND"/>
+    <div align="center">
+      <form action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="TO_USER_REGISTRATION_PAGE_COMMAND"/>
 
-      <input type="submit" value="Sign in" class="nice-button"/>
-    </form>
+        <input type="submit" value="Sign in" class="nice-button"/>
+      </form>
+    </div>
   </div>
   </body>
 </html>

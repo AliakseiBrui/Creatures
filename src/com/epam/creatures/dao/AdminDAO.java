@@ -35,9 +35,9 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
             "SET creatures_db.admins.login = ?, creatures_db.admins.password = ? " +
             "WHERE creatures_db.admins.id = ?";
 
-    private static final String SELECT_ADMIN_BY_LOGIN = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned " +
-            "FROM creatures_db.users " +
-            "WHERE creatures_db.users.login = ?";
+    private static final String SELECT_ADMIN_BY_LOGIN = "SELECT creatures_db.admins.id,creatures_db.admins.login,creatures_db.admins.password " +
+            "FROM creatures_db.admins " +
+            "WHERE creatures_db.admins.login = ?";
 
     private AdminFactory adminFactory = new AdminFactory();
 

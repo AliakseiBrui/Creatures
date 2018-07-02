@@ -7,8 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
-
 public class ConnectionPoolTest {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolTest.class);
 
@@ -23,5 +21,4 @@ public class ConnectionPoolTest {
 
         ConnectionPool.INSTANCE.closeAll();
     }
-    
 }

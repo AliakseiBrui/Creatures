@@ -43,7 +43,7 @@ public class UserRegistrationService implements CommandService {
 
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.USER_AUTHORIZATION_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.START_PAGE));
 
     }
 }
