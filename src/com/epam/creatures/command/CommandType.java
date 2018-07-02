@@ -6,10 +6,7 @@ import com.epam.creatures.command.admincommand.CreateAdminCommand;
 import com.epam.creatures.command.admincommand.CreateCreatureCommand;
 import com.epam.creatures.command.usercommand.UserAuthorizationCommand;
 import com.epam.creatures.command.usercommand.UserRegistrationCommand;
-import com.epam.creatures.service.ShowCreaturesService;
-import com.epam.creatures.service.ToAdminAuthorizationPageService;
-import com.epam.creatures.service.ToStartPageService;
-import com.epam.creatures.service.ToUserAuthorizationPageService;
+import com.epam.creatures.service.*;
 import com.epam.creatures.service.adminservice.AdminAuthorizationService;
 import com.epam.creatures.service.adminservice.CreateAdminService;
 import com.epam.creatures.service.adminservice.CreateCreatureService;
@@ -32,6 +29,8 @@ public enum CommandType {
     TO_ADMIN_AUTHORIZATION_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminAuthorizationPageService())),
 
     TO_USER_AUTHORIZATION_PAGE_COMMAND(new ToAnyPageCommand(new ToUserAuthorizationPageService())),
+
+    TO_USER_REGISTRATION_PAGE_COMMAND(new ToAnyPageCommand(new ToUserRegistrationPageService())),
 
     TO_START_PAGE_COMMAND(new ToAnyPageCommand(new ToStartPageService())),
     ;

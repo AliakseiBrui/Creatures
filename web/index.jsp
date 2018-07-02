@@ -13,21 +13,30 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-  <div>
-    <div style="float: left;">
+  <div align="center">
       <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_ADMIN_AUTHORIZATION_PAGE_COMMAND"/>
 
         <input type="submit" value="Log in as admin" class="nice-button"/>
       </form>
-    </div>
-    <div style="float: right;">
+  </div>
+  <br>
+
+  <div align="center">
       <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_USER_AUTHORIZATION_PAGE_COMMAND"/>
 
         <input type="submit" value="Log in as user" class="nice-button"/>
       </form>
-    </div>
+  </div>
+  <br>
+
+  <div align="center">
+    <form action="/creatures" method="get">
+      <input type="hidden" name="commandType" value="TO_USER_REGISTRATION_PAGE_COMMAND"/>
+
+      <input type="submit" value="Sign in" class="nice-button"/>
+    </form>
   </div>
   </body>
 </html>
