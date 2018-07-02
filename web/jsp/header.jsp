@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -9,8 +10,25 @@
 <html>
 <head>
     <title>Header</title>
+    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+    <div>
+        avatar,login
+    </div>
+    <div align="center">
+        <c:choose>
+            <c:when test="${not empty errorMessage}">
+                <strong class="error-message">
+                    <c:out value="${errorMessage}"/>
+                </strong>
+            </c:when>
+            <c:otherwise>
+                <strong class="succeed-message">
+                    <c:out value="${message}"/>
+                </strong>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </body>
 </html>

@@ -29,11 +29,14 @@ public class CreateCreatureService implements CommandService {
         String description = parameterMap.get(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER);
         int creatorId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATOR_ID_PARAMETER));
         Creature creature = creatureFactory.createCreature(name,limbQuantity,headQuantity,eyeQuantity,gender,description,creatorId);
+        StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
 
         try {
 
-            if(!creaturesDAO.create(creature)){
+            if(creaturesDAO.create(creature)){
+                message.append("Creature has been created.");
+            }else{
                 errorMessage.append("Could not create creature.");
             }
 
@@ -41,6 +44,7 @@ public class CreateCreatureService implements CommandService {
             errorMessage.append(e);
         }
 
+        attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.ADMIN_MAIN_PAGE));
     }
