@@ -13,7 +13,7 @@ public class ConnectionPoolTest {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolTest.class);
 
     @Test
-    public void testConnectionPool(){
+    public void testConnectionPool() {
         DataBaseConfigurator.INSTANCE.configureDBProperties("web/config/db_config.properties");
         ConnectionPool.INSTANCE.init();
 
@@ -23,4 +23,5 @@ public class ConnectionPoolTest {
 
         ConnectionPool.INSTANCE.closeAll();
     }
+    
 }

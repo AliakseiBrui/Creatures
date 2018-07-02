@@ -30,7 +30,7 @@ public class CreateCreatureCommand extends AbstractCommand {
         parameterMap.put(ParameterConstant.CREATURE_EYE_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_EYE_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_GENDER_PARAMETER,request.getParameter(ParameterConstant.CREATURE_GENDER_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER,request.getParameter(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER));
-        parameterMap.put(ParameterConstant.CREATOR_ID_PARAMETER,request.getParameter(ParameterConstant.CREATOR_ID_PARAMETER));
+        parameterMap.put(ParameterConstant.CREATOR_ID_PARAMETER, Integer.toString((Integer) request.getSession().getAttribute(AttributeConstant.ID_ATTRIBUTE)));
 
         getService().process(parameterMap,attributeMap);
 
