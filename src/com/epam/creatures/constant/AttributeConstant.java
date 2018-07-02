@@ -9,6 +9,7 @@ public class AttributeConstant {
     public static final String ROUTER_ATTRIBUTE = "router";
     public static final String ID_ATTRIBUTE = "id";
     public static final String ERROR_MESSAGE_ATTRIBUTE = "errorMessage";
+    public static final String BANNED_ATTRIBUTE = "banned";
 
     private AttributeConstant(){}
 }

@@ -16,4 +16,12 @@ public class UserFactory {
         LOGGER.debug("Creating user.");
         return new User(login,password,status,isBanned);
     }
+
+    public User createUser(String login,String password){
+        return new User(login,password);
+    }
+
+    public User createUser(){
+        return new User();
+    }
 }

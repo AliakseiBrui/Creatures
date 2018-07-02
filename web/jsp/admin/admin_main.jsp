@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Application</title>
+    <title>User Page</title>
 
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
 </body>

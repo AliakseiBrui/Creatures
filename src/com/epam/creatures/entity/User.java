@@ -27,6 +27,11 @@ public class User implements Entity {
         this.isBanned = isBanned;
     }
 
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

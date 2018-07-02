@@ -32,12 +32,16 @@ public class CreateCreatureService implements CommandService {
         StringBuilder errorMessage = new StringBuilder();
 
         try {
-            creaturesDAO.create(creature);
+
+            if(!creaturesDAO.create(creature)){
+                errorMessage.append("Could not create creature.");
+            }
+
         } catch (DAOException e) {
             errorMessage.append(e);
         }
 
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.ADMIN_MAIN_PAGE));
     }
 }

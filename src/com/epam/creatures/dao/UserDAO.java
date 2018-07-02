@@ -26,8 +26,8 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
     private static final String DELETE_USER_BY_ID = "DELETE FROM creatures_db.users " +
             "WHERE creatures_db.users.id = ?";
 
-    private static final String INSERT_USER = "INSERT INTO creatures_db.users(creatures_db.users.login, creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned) " +
-            "VALUES (?,?,?,?)";
+    private static final String INSERT_USER = "INSERT INTO creatures_db.users(creatures_db.users.login, creatures_db.users.password) " +
+            "VALUES (?,?)";
 
     private static final String UPDATE_USER = "UPDATE creatures_db.users " +
             "SET creatures_db.users.login = ?, creatures_db.users.password = ?,creatures_db.users.status = ?,creatures_db.users.is_banned = ? " +
@@ -115,8 +115,6 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
             if(preparedStatement!=null){
                 preparedStatement.setString(1,entity.getLogin());
                 preparedStatement.setString(2,entity.getPassword());
-                preparedStatement.setDouble(3,entity.getStatus());
-                preparedStatement.setBoolean(4,entity.getBanned());
 
                 return preparedStatement.executeUpdate()>0;
             }

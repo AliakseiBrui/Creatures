@@ -34,7 +34,8 @@ public class AdminAuthorizationService implements CommandService {
             attributeMap.put(AttributeConstant.LOGIN_ATTRIBUTE,admin.getLogin());
             attributeMap.put(AttributeConstant.ID_ATTRIBUTE,admin.getId());
             attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE,Role.ADMIN);
-            attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.MAIN_PAGE));
+            attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));
+            //put avatar as well
         }else{
             errorMessage.append("Wrong login or password.");
             attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
