@@ -22,7 +22,7 @@
 <input type="number" name="creatureEyeQuantity" id="creatureEyeQuantity" class="input-text" min="0" max="100" value="0"/>
 <br/><br/>
 
-<label for="creatureGender">Select Gender: </label>
+<label for="creatureGender">Gender</label><br/>
 <select id="creatureGender" name="creatureGender" class="index-text">
     <option>NONE</option>
     <option>MALE</option>

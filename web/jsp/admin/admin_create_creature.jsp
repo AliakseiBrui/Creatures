@@ -25,7 +25,7 @@
     <form action="/creatures" method="post">
         <input type="hidden" name="commandType" value="CREATE_CREATURE_COMMAND"/>
 
-        <jsp:include page="../enter_creature_part.jsp"/>
+        <jsp:include page="../parts/enter_creature_data_part.jsp"/>
 
         <input type="submit" value="Create" class="nice-button"/>
     </form>

@@ -25,7 +25,9 @@
     <form action="/creatures" method="post">
         <input type="hidden" name="commandType" value="USER_AUTHORIZATION_COMMAND"/>
 
-        <jsp:include page="../log_in_part.jsp"/>
+        <jsp:include page="../parts/enter_user_data_part.jsp"/>
+
+        <input type="submit" name="log_in_button" value="Log in" class="nice-button"/>
     </form>
 </div>
 </body>

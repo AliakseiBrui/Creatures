@@ -14,4 +14,4 @@
 <input type="password" name="password" id="password" class="input-text" maxlength="40"/>
 <br/><br/>
 
-<input type="submit" name="log_in_button" value="Log in" class="nice-button"/>
+
