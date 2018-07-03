@@ -17,11 +17,18 @@ public class UserFactory {
         return new User(login,password,status,isBanned);
     }
 
-    public User createUser(String login,String password){
+    public User createUser(String login,String password) {
+        LOGGER.debug("Creating user.");
         return new User(login,password);
     }
 
     public User createUser(){
+        LOGGER.debug("Creating user.");
         return new User();
+    }
+
+    public User createUser(int id, boolean banned){
+        LOGGER.debug("Creating user.");
+        return new User(id,banned);
     }
 }

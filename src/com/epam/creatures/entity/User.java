@@ -12,6 +12,11 @@ public class User implements Entity {
     public User() {
     }
 
+    public User(Integer id, Boolean isBanned) {
+        this.id = id;
+        this.isBanned = isBanned;
+    }
+
     public User(Integer id, String login, String password, Double status, Boolean isBanned) {
         this.id = id;
         this.login = login;

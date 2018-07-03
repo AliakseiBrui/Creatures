@@ -1,9 +1,7 @@
 package com.epam.creatures.command;
 
 
-import com.epam.creatures.command.admincommand.AdminAuthorizationCommand;
-import com.epam.creatures.command.admincommand.CreateAdminCommand;
-import com.epam.creatures.command.admincommand.CreateCreatureCommand;
+import com.epam.creatures.command.admincommand.*;
 import com.epam.creatures.command.usercommand.UserAuthorizationCommand;
 import com.epam.creatures.command.usercommand.UserRegistrationCommand;
 import com.epam.creatures.service.*;
@@ -21,6 +19,8 @@ public enum CommandType {
 
     SHOW_CREATURES_COMMAND(new ShowCreaturesCommand(new ShowCreaturesService())),
 
+    SHOW_USERS_COMMAND(new ShowUsersCommand(new ShowUsersService())),
+
     USER_AUTHORIZATION_COMMAND(new UserAuthorizationCommand(new UserAuthorizationService())),
 
     USER_REGISTRATION_COMMAND(new UserRegistrationCommand(new UserRegistrationService())),
@@ -37,9 +37,21 @@ public enum CommandType {
 
     TO_CREATE_CREATURE_PAGE_COMMAND(new ToAnyPageCommand(new ToCreateCreaturePageService())),
 
+    TO_CREATE_ADMIN_PAGE_COMMAND(new ToAnyPageCommand(new ToCreateAdminPageService())),
+
     TO_ADMIN_MAIN_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminMainPageService())),
 
     TO_USER_MAIN_PAGE_COMMAND(new ToAnyPageCommand(new ToUserMainPageService())),
+
+    TO_UPDATE_CREATURE_PAGE_COMMAND(new ToUpdateCreaturePageCommand(new ToUpdateCreaturePageService())),
+
+    DELETE_CREATURE_COMMAND(new DeleteCreatureCommand(new DeleteCreatureService())),
+
+    UPDATE_CREATURE_COMMAND(new UpdateCreatureCommand(new UpdateCreatureService())),
+
+    CHANGE_USER_BANNED_COMMAND(new ChangeUserBannedCommand(new ChangeUserBannedService())),
+
+
     ;
 
     private AbstractCommand command;

@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CreateCreatureCommand extends AbstractCommand {
-    public CreateCreatureCommand(CommandService service) {
+public class UpdateCreatureCommand extends AbstractCommand {
+    public UpdateCreatureCommand(CommandService service) {
         super(service);
     }
 
-    public CreateCreatureCommand() {
+    public UpdateCreatureCommand() {
     }
 
     @Override
@@ -24,13 +24,13 @@ public class CreateCreatureCommand extends AbstractCommand {
         HashMap<String,String> parameterMap = new HashMap<>();
         HashMap<String,Object> attributeMap = new HashMap<>();
 
+        parameterMap.put(ParameterConstant.CREATURE_ID_PARAMETER,request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_NAME_PARAMETER,request.getParameter(ParameterConstant.CREATURE_NAME_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_LIMB_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_HEAD_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_HEAD_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_EYE_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_EYE_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_GENDER_PARAMETER,request.getParameter(ParameterConstant.CREATURE_GENDER_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER,request.getParameter(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER));
-        parameterMap.put(ParameterConstant.CREATOR_ID_PARAMETER, Integer.toString((Integer) request.getSession().getAttribute(AttributeConstant.ID_ATTRIBUTE)));
 
         getService().process(parameterMap,attributeMap);
 

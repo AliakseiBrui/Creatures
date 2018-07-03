@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 03.07.2018
-  Time: 19:08
+  Time: 20:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Creating admin</title>
+    <title>Creating creature</title>
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -23,11 +23,13 @@
 
 <div align="center">
     <form action="/creatures" method="post">
-        <input type="hidden" name="commandType" value="CREATE_ADMIN_COMMAND"/>
+        <input type="hidden" name="commandType" value="UPDATE_CREATURE_COMMAND"/>
 
-        <jsp:include page="../parts/enter_user_data_part.jsp"/>
+        <input type="hidden" name="creatureId" value="${creature.getCreatureId()}">
 
-        <input type="submit" value="Create" class="nice-button"/>
+        <jsp:include page="../parts/update_creature_data.jsp"/>
+
+        <input type="submit" value="Update" class="nice-button"/>
     </form>
 
 </div>

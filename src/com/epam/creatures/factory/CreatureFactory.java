@@ -24,4 +24,9 @@ public class CreatureFactory {
         LOGGER.debug("Creating creature.");
         return new Creature(creatureName,limbQuantity,headQuantity,eyeQuantity,creatureGender,description, creatorId);
     }
+
+    public Creature createCreature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity, Creature.Gender creatureGender, String description){
+        LOGGER.debug("Creating creature.");
+        return new Creature(creatureId,creatureName,limbQuantity,headQuantity,eyeQuantity,creatureGender,description);
+    }
 }

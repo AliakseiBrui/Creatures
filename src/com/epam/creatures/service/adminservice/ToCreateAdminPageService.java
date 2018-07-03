@@ -10,10 +10,10 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.Map;
 
-public class ToCreateCreaturePageService implements CommandService {
+public class ToCreateAdminPageService implements CommandService {
     private RouterFactory routerFactory = new RouterFactory();
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.CREATE_CREATURE_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.CREATE_ADMIN_PAGE));
     }
 }

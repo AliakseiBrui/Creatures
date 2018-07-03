@@ -33,6 +33,10 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
             "SET creatures_db.users.login = ?, creatures_db.users.password = ?,creatures_db.users.status = ?,creatures_db.users.is_banned = ? " +
             "WHERE creatures_db.users.id = ?";
 
+    private static final String UPDATE_USER_BAN = "UPDATE creatures_db.users " +
+            "SET creatures_db.users.is_banned = ? " +
+            "WHERE creatures_db.users.id = ?";
+
     private static final String SELECT_USER_BY_LOGIN = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned " +
             "FROM creatures_db.users " +
             "WHERE creatures_db.users.login = ?";
@@ -168,5 +172,24 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
             throw new DAOException("Exception while selecting user by login",e);
         }
         return null;
+    }
+
+    @Override
+    public boolean updateUserBan(User user) throws DAOException {
+        LOGGER.debug("Updating user." + user);
+
+        try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
+            PreparedStatement preparedStatement=Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_BAN);){
+
+            if(preparedStatement != null){
+                preparedStatement.setInt(2,user.getId());
+                preparedStatement.setBoolean(1,user.getBanned());
+
+                return preparedStatement.executeUpdate()>0;
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Exception while updating user",e);
+        }
+        return false;
     }
 }

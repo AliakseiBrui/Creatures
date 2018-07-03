@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CreateCreatureCommand extends AbstractCommand {
-    public CreateCreatureCommand(CommandService service) {
+public class ToUpdateCreaturePageCommand extends AbstractCommand {
+    public ToUpdateCreaturePageCommand(CommandService service) {
         super(service);
     }
 
-    public CreateCreatureCommand() {
+    public ToUpdateCreaturePageCommand() {
     }
 
     @Override
@@ -24,18 +24,17 @@ public class CreateCreatureCommand extends AbstractCommand {
         HashMap<String,String> parameterMap = new HashMap<>();
         HashMap<String,Object> attributeMap = new HashMap<>();
 
+        parameterMap.put(ParameterConstant.CREATURE_ID_PARAMETER,request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_NAME_PARAMETER,request.getParameter(ParameterConstant.CREATURE_NAME_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_LIMB_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_HEAD_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_HEAD_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_EYE_Q_PARAMETER,request.getParameter(ParameterConstant.CREATURE_EYE_Q_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_GENDER_PARAMETER,request.getParameter(ParameterConstant.CREATURE_GENDER_PARAMETER));
         parameterMap.put(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER,request.getParameter(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER));
-        parameterMap.put(ParameterConstant.CREATOR_ID_PARAMETER, Integer.toString((Integer) request.getSession().getAttribute(AttributeConstant.ID_ATTRIBUTE)));
 
         getService().process(parameterMap,attributeMap);
 
-        request.setAttribute(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,attributeMap.get(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE));
-        request.setAttribute(AttributeConstant.MESSAGE_ATTRIBUTE,attributeMap.get(AttributeConstant.MESSAGE_ATTRIBUTE));
+        request.setAttribute(AttributeConstant.CREATURE_ATTRIBUTE, attributeMap.get(AttributeConstant.CREATURE_ATTRIBUTE));
         return (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
     }
 }

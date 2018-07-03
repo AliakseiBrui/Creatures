@@ -6,7 +6,7 @@
   Time: 4:23
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Admin Page</title>
@@ -21,8 +21,17 @@
 
         <input type="submit" value="Create new creature" class="nice-button"/>
     </form>
+
+    <form action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="TO_CREATE_ADMIN_PAGE_COMMAND"/>
+
+        <input type="submit" value="Create new admin" class="nice-button"/>
+    </form>
 </div>
 
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
+<br/><br/>
+
+<c:import url="/creatures?commandType=SHOW_USERS_COMMAND"/>
 </body>
 </html>

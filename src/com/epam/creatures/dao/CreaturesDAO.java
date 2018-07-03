@@ -33,7 +33,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
             "VALUES (?,?,?,?,?,?,?)";
 
     private static final String UPDATE_CREATURE = "UPDATE creatures_db.creatures " +
-            "SET name = ?, limb_quantity = ?, head_quantity = ?, eye_quantity = ?, gender = ?, description = ?, rating = ?, creator_id = ? " +
+            "SET name = ?, limb_quantity = ?, head_quantity = ?, eye_quantity = ?, gender = ?, description = ?" +
             "WHERE creatures_db.creatures.id = ?";
 
     private static final String SELECT_CREATURE_BY_NAME = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
@@ -142,14 +142,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
              PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_CREATURE)){
 
             if(preparedStatement!=null){
-                preparedStatement.setInt(8,entity.getCreatureId());
+                preparedStatement.setInt(7,entity.getCreatureId());
                 preparedStatement.setString(1,entity.getCreatureName());
                 preparedStatement.setInt(2,entity.getLimbQuantity());
                 preparedStatement.setInt(3,entity.getHeadQuantity());
                 preparedStatement.setInt(4,entity.getEyeQuantity());
                 preparedStatement.setString(5,entity.getCreatureGender().toString());
                 preparedStatement.setString(6,entity.getDescription());
-                preparedStatement.setInt(7,entity.getCreatorId());
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
