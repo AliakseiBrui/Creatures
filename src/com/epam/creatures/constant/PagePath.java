@@ -8,6 +8,7 @@ public class PagePath {
     public static final String USER_MAIN_PAGE = "jsp/user/user_main.jsp";
     public static final String USER_AUTHORIZATION_PAGE = "jsp/user/user_log_in.jsp";
     public static final String USER_REGISTRATION_PAGE = "jsp/user/user_sign_in.jsp";
+    public static final String CREATE_CREATURE_PAGE = "jsp/admin/admin_create_creature.jsp";
 
     private PagePath(){ }
 }

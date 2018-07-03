@@ -7,9 +7,8 @@ import com.epam.creatures.command.admincommand.CreateCreatureCommand;
 import com.epam.creatures.command.usercommand.UserAuthorizationCommand;
 import com.epam.creatures.command.usercommand.UserRegistrationCommand;
 import com.epam.creatures.service.*;
-import com.epam.creatures.service.adminservice.AdminAuthorizationService;
-import com.epam.creatures.service.adminservice.CreateAdminService;
-import com.epam.creatures.service.adminservice.CreateCreatureService;
+import com.epam.creatures.service.adminservice.*;
+import com.epam.creatures.service.userservice.ToUserMainPageService;
 import com.epam.creatures.service.userservice.UserAuthorizationService;
 import com.epam.creatures.service.userservice.UserRegistrationService;
 
@@ -34,7 +33,13 @@ public enum CommandType {
 
     TO_START_PAGE_COMMAND(new ToAnyPageCommand(new ToStartPageService())),
 
-    LOG_OUT_COMMAND(new LogOutCommand(new LogOutService()))
+    LOG_OUT_COMMAND(new LogOutCommand(new LogOutService())),
+
+    TO_CREATE_CREATURE_PAGE_COMMAND(new ToAnyPageCommand(new ToCreateCreaturePageService())),
+
+    TO_ADMIN_MAIN_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminMainPageService())),
+
+    TO_USER_MAIN_PAGE_COMMAND(new ToAnyPageCommand(new ToUserMainPageService())),
     ;
 
     private AbstractCommand command;

@@ -163,3 +163,23 @@ q
 Asrc/com/epam/creatures/service/ToUserRegistrationPageService.java,7\7\77087a3ae10909dad0ccc65a0afe352b44b03d53
 M
 web/jsp/user/user_sign_in.jsp,8\d\8de20b9df196210fa9b0332585b33b283e754f79
+j
+:.idea/dataSources/075178c2-b938-4a74-aaa8-7d199ed93568.xml,9\9\99281d79f3ae06096d60da700dffc4c0ae04bab9
+a
+1src/com/epam/creatures/command/LogOutCommand.java,9\0\9026bb2d180bc6234df3064de2986fd7a202f893
+a
+1src/com/epam/creatures/service/LogOutService.java,8\1\81ee27d62ec228d35e8a8e78904867e98c7a765c
+G
+web/jsp/log_in_part.jsp,0\1\012c580c3edb8f17da97fc2c0c8953bf92c536a1
+H
+web/jsp/sign_in_form.jsp,9\6\96ac44504cfde4289dd1dff824c5e9711a24194d
+O
+web/jsp/enter_creature_part.jsp,2\0\20c03749f3d6cb4106d4327ee83194d422fdf1c9
+u
+Esrc/com/epam/creatures/service/userservice/ToUserMainPageService.java,f\2\f2dee63d3f1b0ac043c280dc263bd46bb5007454
+w
+Gsrc/com/epam/creatures/service/adminservice/ToAdminMainPageService.java,7\c\7c4ebb7ed220404544aa4a2afe5cbb1860aa1e4f
+|
+Lsrc/com/epam/creatures/service/adminservice/ToCreateCreaturePageService.java,5\5\55e2d53984ad168407d9ed0e9f21335de8364dd6
+W
+'web/jsp/admin/admin_create_creature.jsp,c\c\cc26e55c496fb549e367fc4081880bc41458ecee
