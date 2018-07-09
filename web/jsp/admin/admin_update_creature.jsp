@@ -12,7 +12,7 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="../header.jsp"/>
+<%@ include file="../header.jsp"%>
 <div align="left">
     <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_ADMIN_MAIN_PAGE_COMMAND"/>

@@ -7,24 +7,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
-    <div>
-        <div align="right">
-            <c:if test="${not empty login}">
-                <c:out value="Login: ${login} | Role: ${role} | ID: ${id}"/>
-                <c:if test="${role=='USER'}">
-                    <c:out value=" | Status: ${status}"/>
-                </c:if>
-            </c:if>
+    <div class="header">
+        <div class="header-left">
+
         </div>
-        <br>
-
-        <div align="right">
+        <div  class="header-right">
             <c:if test="${not empty login}">
-                <form action="/creatures" method="get">
-                    <input type="hidden" name="commandType" value="LOG_OUT_COMMAND"/>
-
-                    <input type="submit" value="Log out" class="nice-button"/>
-                </form>
+                <div class="header-panel">
+                    <c:out value="Login: ${login} | Role: ${role} | ID: ${id}"/>
+                    <c:if test="${role=='USER'}">
+                        <c:out value=" | Status: ${status}"/>
+                    </c:if>
+                </div>
+                <br/>
+                <div align="right">
+                    <form action="/creatures" method="get">
+                        <input type="hidden" name="commandType" value="LOG_OUT_COMMAND"/>
+                        <input type="submit" value="Log out" class="nice-button"/>
+                    </form>
+                </div>
             </c:if>
         </div>
     </div>

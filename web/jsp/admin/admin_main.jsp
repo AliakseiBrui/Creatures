@@ -13,7 +13,7 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="../header.jsp"/>
+<%@ include file="../header.jsp"%>
 
 <div align="right">
     <form action="/creatures" method="get">
