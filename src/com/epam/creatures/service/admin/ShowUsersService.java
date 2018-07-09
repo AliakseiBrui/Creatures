@@ -1,4 +1,4 @@
-package com.epam.creatures.service.adminservice;
+package com.epam.creatures.service.admin;
 
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
@@ -10,15 +10,13 @@ import com.epam.creatures.service.ShowCreaturesService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.Map;
 
 public class ShowUsersService implements CommandService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreaturesService.class);
     private UserDAO userDAO = new UserDAO();
     @Override
-    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
+    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
 
         try {
             attributeMap.put(AttributeConstant.USER_LIST_ATTRIBUTE,userDAO.findAll());

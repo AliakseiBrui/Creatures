@@ -12,8 +12,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 public enum ConnectionPool {
     INSTANCE;
 
+    private static final String DB_URL_PROPERTY = "url";
     private static final int DEFAULT_POOL_SIZE = 10;
-    private LinkedBlockingQueue<SafeConnection> connectionQueue = new LinkedBlockingQueue<>();
+    private final LinkedBlockingQueue<SafeConnection> connectionQueue = new LinkedBlockingQueue<>();
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private SQLDriverManager sqlDriverManager = new SQLDriverManager();
     private boolean canInitialize = true;
@@ -74,7 +75,7 @@ public enum ConnectionPool {
     private SafeConnection createConnection(Properties dbProperties){
 
         try {
-            return new SafeConnection(DriverManager.getConnection((String) dbProperties.get("url"),dbProperties));
+            return new SafeConnection(DriverManager.getConnection((String) dbProperties.get(DB_URL_PROPERTY),dbProperties));
         } catch (SQLException e) {
             LOGGER.fatal("Exception while creating connection.",e);
             throw new RuntimeException(e);

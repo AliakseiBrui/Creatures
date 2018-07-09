@@ -1,4 +1,4 @@
-package com.epam.creatures.service.adminservice;
+package com.epam.creatures.service.admin;
 
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
@@ -11,8 +11,6 @@ import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.Map;
 
 public class UpdateCreatureService implements CommandService {
@@ -20,7 +18,7 @@ public class UpdateCreatureService implements CommandService {
     private RouterFactory routerFactory = new RouterFactory();
     private CreaturesDAO creaturesDAO = new CreaturesDAO();
     @Override
-    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
+    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         int id = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
         String name = parameterMap.get(ParameterConstant.CREATURE_NAME_PARAMETER);
         int limbQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));
@@ -41,7 +39,7 @@ public class UpdateCreatureService implements CommandService {
             }
 
         } catch (DAOException e) {
-            errorMessage.append(e);
+            errorMessage.append(e.getSQLState()).append(";").append(e);
         }
 
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);

@@ -10,14 +10,12 @@ import com.epam.creatures.entity.Router;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.Map;
 
 public class ShowCreaturesService implements CommandService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreaturesService.class);
     @Override
-    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
+    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         CreaturesDAO creaturesDAO = new CreaturesDAO();
 
         try {

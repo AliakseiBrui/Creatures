@@ -1,14 +1,14 @@
 package com.epam.creatures.command;
 
 
-import com.epam.creatures.command.admincommand.*;
-import com.epam.creatures.command.usercommand.UserAuthorizationCommand;
-import com.epam.creatures.command.usercommand.UserRegistrationCommand;
+import com.epam.creatures.command.admin.*;
+import com.epam.creatures.command.user.UserAuthorizationCommand;
+import com.epam.creatures.command.user.UserRegistrationCommand;
 import com.epam.creatures.service.*;
-import com.epam.creatures.service.adminservice.*;
-import com.epam.creatures.service.userservice.ToUserMainPageService;
-import com.epam.creatures.service.userservice.UserAuthorizationService;
-import com.epam.creatures.service.userservice.UserRegistrationService;
+import com.epam.creatures.service.admin.*;
+import com.epam.creatures.service.user.ToUserMainPageService;
+import com.epam.creatures.service.user.UserAuthorizationService;
+import com.epam.creatures.service.user.UserRegistrationService;
 
 public enum CommandType {
     ADMIN_AUTHORIZATION_COMMAND(new AdminAuthorizationCommand(new AdminAuthorizationService())),

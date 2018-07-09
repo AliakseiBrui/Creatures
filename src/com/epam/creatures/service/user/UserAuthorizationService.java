@@ -1,4 +1,4 @@
-package com.epam.creatures.service.userservice;
+package com.epam.creatures.service.user;
 
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
@@ -13,8 +13,6 @@ import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.service.CommandService;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.Map;
 
 public class UserAuthorizationService implements CommandService {
@@ -24,7 +22,7 @@ public class UserAuthorizationService implements CommandService {
     private UserFactory userFactory = new UserFactory();
 
     @Override
-    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
+    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String password = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
         StringBuilder errorMessage = new StringBuilder();
@@ -59,7 +57,7 @@ public class UserAuthorizationService implements CommandService {
                 return true;
             }
         } catch (DAOException e) {
-            errorMessage.append(e);
+            errorMessage.append(e.getSQLState()).append(";").append(e);
         }
         return false;
     }

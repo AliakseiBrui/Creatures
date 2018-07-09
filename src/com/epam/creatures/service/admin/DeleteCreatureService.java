@@ -1,4 +1,4 @@
-package com.epam.creatures.service.adminservice;
+package com.epam.creatures.service.admin;
 
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
@@ -9,8 +9,6 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.Map;
 
 public class DeleteCreatureService implements CommandService {
@@ -18,7 +16,7 @@ public class DeleteCreatureService implements CommandService {
     private CreaturesDAO creaturesDAO = new CreaturesDAO();
 
     @Override
-    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
+    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         int creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
         StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
@@ -31,7 +29,7 @@ public class DeleteCreatureService implements CommandService {
                 errorMessage.append("Could not delete creature.");
             }
         } catch (DAOException e) {
-            errorMessage.append(e);
+            errorMessage.append(e.getSQLState()).append(";").append(e);
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);

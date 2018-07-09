@@ -3,9 +3,7 @@ package com.epam.creatures.command;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.service.CommandService;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 public abstract class AbstractCommand {
     private CommandService service;
@@ -26,6 +24,5 @@ public abstract class AbstractCommand {
         this.service = service;
     }
 
-    public abstract Router execute(HttpServletRequest request)
-            throws ServletException, IOException;
+    public abstract Router execute(HttpServletRequest request);
 }

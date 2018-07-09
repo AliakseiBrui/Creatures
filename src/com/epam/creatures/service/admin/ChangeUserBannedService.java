@@ -1,4 +1,4 @@
-package com.epam.creatures.service.adminservice;
+package com.epam.creatures.service.admin;
 
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
@@ -10,15 +10,13 @@ import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.Map;
 
 public class ChangeUserBannedService implements CommandService {
     private RouterFactory routerFactory = new RouterFactory();
     private UserDAO userDAO = new UserDAO();
     @Override
-    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) throws ServletException, IOException {
+    public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         int userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
         StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
@@ -39,7 +37,7 @@ public class ChangeUserBannedService implements CommandService {
                 errorMessage.append("Something went wrong.");
             }
         }catch (DAOException e){
-            errorMessage.append(e);
+            errorMessage.append(e.getSQLState()).append(";").append(e);
         }
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
