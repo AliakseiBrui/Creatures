@@ -9,9 +9,9 @@ import com.epam.creatures.service.CommandService;
 import java.util.Map;
 
 public class ToCreateAdminPageService implements CommandService {
-    private RouterFactory routerFactory = new RouterFactory();
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        RouterFactory routerFactory = new RouterFactory();
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.CREATE_ADMIN_PAGE));
     }
 }

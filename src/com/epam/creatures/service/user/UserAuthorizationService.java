@@ -17,12 +17,13 @@ import java.util.Map;
 
 public class UserAuthorizationService implements CommandService {
     private UserDAO userDAO = new UserDAO();
-    private PasswordEncoder passwordEncoder = new PasswordEncoder();
-    private RouterFactory routerFactory = new RouterFactory();
-    private UserFactory userFactory = new UserFactory();
+
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        PasswordEncoder passwordEncoder = new PasswordEncoder();
+        RouterFactory routerFactory = new RouterFactory();
+        UserFactory userFactory = new UserFactory();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String password = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
         StringBuilder errorMessage = new StringBuilder();

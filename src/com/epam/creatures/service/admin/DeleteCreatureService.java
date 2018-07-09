@@ -12,11 +12,12 @@ import com.epam.creatures.service.CommandService;
 import java.util.Map;
 
 public class DeleteCreatureService implements CommandService {
-    private RouterFactory routerFactory = new RouterFactory();
-    private CreaturesDAO creaturesDAO = new CreaturesDAO();
+
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        RouterFactory routerFactory = new RouterFactory();
+        CreaturesDAO creaturesDAO = new CreaturesDAO();
         int creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
         StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();

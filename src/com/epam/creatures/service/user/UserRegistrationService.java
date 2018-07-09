@@ -15,13 +15,14 @@ import com.epam.creatures.service.CommandService;
 import java.util.Map;
 
 public class UserRegistrationService implements CommandService {
-    private UserFactory userFactory = new UserFactory();
-    private PasswordEncoder passwordEncoder = new PasswordEncoder();
-    private RouterFactory routerFactory = new RouterFactory();
-    private UserDAO userDAO = new UserDAO();
+
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        UserFactory userFactory = new UserFactory();
+        PasswordEncoder passwordEncoder = new PasswordEncoder();
+        RouterFactory routerFactory = new RouterFactory();
+        UserDAO userDAO = new UserDAO();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
         User user = userFactory.createUser(login,encryptedPassword);

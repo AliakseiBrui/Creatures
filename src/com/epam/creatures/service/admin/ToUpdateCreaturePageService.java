@@ -12,10 +12,11 @@ import com.epam.creatures.service.CommandService;
 import java.util.Map;
 
 public class ToUpdateCreaturePageService implements CommandService {
-    private CreatureFactory creatureFactory = new CreatureFactory();
-    private RouterFactory routerFactory = new RouterFactory();
+
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        CreatureFactory creatureFactory = new CreatureFactory();
+        RouterFactory routerFactory = new RouterFactory();
         int id = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
         String name = parameterMap.get(ParameterConstant.CREATURE_NAME_PARAMETER);
         int limbQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));

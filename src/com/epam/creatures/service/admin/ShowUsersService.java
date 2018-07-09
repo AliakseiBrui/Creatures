@@ -14,9 +14,10 @@ import java.util.Map;
 
 public class ShowUsersService implements CommandService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreaturesService.class);
-    private UserDAO userDAO = new UserDAO();
+
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        UserDAO userDAO = new UserDAO();
 
         try {
             attributeMap.put(AttributeConstant.USER_LIST_ATTRIBUTE,userDAO.findAll());

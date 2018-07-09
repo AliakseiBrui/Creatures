@@ -14,11 +14,12 @@ import com.epam.creatures.service.CommandService;
 import java.util.Map;
 
 public class CreateCreatureService implements CommandService {
-    private CreatureFactory creatureFactory = new CreatureFactory();
-    private RouterFactory routerFactory = new RouterFactory();
-    private CreaturesDAO creaturesDAO = new CreaturesDAO();
+
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        CreatureFactory creatureFactory = new CreatureFactory();
+        RouterFactory routerFactory = new RouterFactory();
+        CreaturesDAO creaturesDAO = new CreaturesDAO();
         String name = parameterMap.get(ParameterConstant.CREATURE_NAME_PARAMETER);
         int limbQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));
         int headQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_HEAD_Q_PARAMETER));

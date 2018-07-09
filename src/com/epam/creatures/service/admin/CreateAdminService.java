@@ -15,12 +15,13 @@ import com.epam.creatures.service.CommandService;
 import java.util.Map;
 
 public class CreateAdminService implements CommandService {
-    private AdminFactory adminFactory = new AdminFactory();
-    private PasswordEncoder passwordEncoder = new PasswordEncoder();
-    private AdminDAO adminDAO = new AdminDAO();
-    private RouterFactory routerFactory = new RouterFactory();
+
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        AdminFactory adminFactory = new AdminFactory();
+        PasswordEncoder passwordEncoder = new PasswordEncoder();
+        AdminDAO adminDAO = new AdminDAO();
+        RouterFactory routerFactory = new RouterFactory();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
         Admin admin = adminFactory.createAdmin(login,encryptedPassword);
