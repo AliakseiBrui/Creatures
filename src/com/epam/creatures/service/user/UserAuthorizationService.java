@@ -45,13 +45,13 @@ public class UserAuthorizationService implements CommandService {
 
             }else{
                 errorMessage.append("Wrong login or password.");
-                attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
             }
         } catch (DAOException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         } catch (UserBannedException e) {
             errorMessage.append("Your account is banned.");
         }
+        attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
                 .createRouter(routeType,route));
     }

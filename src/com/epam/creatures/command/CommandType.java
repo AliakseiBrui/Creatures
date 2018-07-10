@@ -53,9 +53,9 @@ public enum CommandType {
 
     LIKE_CREATURE_COMMAND(new LikeCreatureCommand(new LikeCreatureService())),
 
-    COMMENT_CREATURE_COMMAND(new CommentCreatureCommand(new CommentCreatureService()))
+    COMMENT_CREATURE_COMMAND(new CommentCreatureCommand(new CommentCreatureService())),
 
-
+    FAKE_FORWARD_COMMAND(new FakeForwardCommand(new FakeForwardService())),
     ;
 
     private AbstractCommand command;
