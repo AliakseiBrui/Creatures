@@ -35,12 +35,14 @@ public class UserAuthorizationService implements CommandService {
             attributeMap.put(AttributeConstant.STATUS_ATTRIBUTE,user.getStatus());
             attributeMap.put(AttributeConstant.BANNED_ATTRIBUTE,user.getBanned());
             attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE,Role.USER);
-            attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.USER_MAIN_PAGE));
+            attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
+                    .createRouter(Router.RouteType.REDIRECT,PagePath.USER_MAIN_PAGE));
             //put avatar as well
         }else{
             errorMessage.append("Wrong login or password.");
             attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-            attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.USER_AUTHORIZATION_PAGE));
+            attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
+                    .createRouter(Router.RouteType.FORWARD,PagePath.USER_AUTHORIZATION_PAGE));
         }
     }
 

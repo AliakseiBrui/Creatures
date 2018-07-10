@@ -29,19 +29,14 @@
             </c:if>
         </div>
     </div>
-
+    <br/>
     <div align="center">
-        <c:choose>
-            <c:when test="${not empty errorMessage}">
-                <strong class="error-message">
-                    <c:out value="${errorMessage}"/>
-                </strong>
-            </c:when>
-            <c:otherwise>
-                <strong class="succeed-message">
-                    <c:out value="${message}"/>
-                </strong>
-            </c:otherwise>
-        </c:choose>
+        <strong class="error-message">
+            <c:out value="${errorMessage}"/>
+        </strong>
+        <strong class="succeed-message">
+            <c:out value="${message}"/>
+        </strong>
     </div>
+    <br/>
 

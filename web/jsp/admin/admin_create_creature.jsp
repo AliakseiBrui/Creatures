@@ -16,7 +16,6 @@
 <div align="left">
     <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_ADMIN_MAIN_PAGE_COMMAND"/>
-
         <input type="submit" name="to_main_page_button" value="Main Page" class="nice-button"/>
     </form>
 </div>
@@ -24,12 +23,9 @@
 <div align="center">
     <form action="/creatures" method="post">
         <input type="hidden" name="commandType" value="CREATE_CREATURE_COMMAND"/>
-
         <jsp:include page="../parts/enter_creature_data_part.jsp"/>
-
         <input type="submit" value="Create" class="nice-button"/>
     </form>
-
 </div>
 </body>
 </html>

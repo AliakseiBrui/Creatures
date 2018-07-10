@@ -27,6 +27,7 @@ public class ToUpdateCreaturePageService implements CommandService {
         Creature creature = creatureFactory.createCreature(id,name,limbQuantity,headQuantity,eyeQuantity,gender,description);
 
         attributeMap.put(AttributeConstant.CREATURE_ATTRIBUTE,creature);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.UPDATE_CREATURE_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
+                .createRouter(Router.RouteType.FORWARD,PagePath.UPDATE_CREATURE_PAGE));
     }
 }

@@ -3,32 +3,33 @@ package com.epam.creatures.service.user;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
+import com.epam.creatures.dao.CommentDAO;
 import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.MarkDAO;
 import com.epam.creatures.entity.Router;
-import com.epam.creatures.factory.MarkFactory;
+import com.epam.creatures.factory.CommentFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class LikeCreatureService implements CommandService {
+public class CommentCreatureService implements CommandService {
+    private static final Logger LOGGER = LogManager.getLogger(CommentCreatureService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
+        CommentDAO commentDAO = new CommentDAO();
         RouterFactory routerFactory = new RouterFactory();
-        MarkDAO markDAO = new MarkDAO();
-        MarkFactory markFactory = new MarkFactory();
-        Double value = Double.parseDouble(parameterMap.get(ParameterConstant.MARK_PARAMETER));
+        CommentFactory commentFactory = new CommentFactory();
+        String commentData = parameterMap.get(ParameterConstant.COMMENT_PARAMETER);
         Integer creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
         Integer userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
-        StringBuilder errorMessage = new StringBuilder();
 
         try {
-            markDAO.create(markFactory.createMark(value,creatureId,userId));
+            commentDAO.create(commentFactory.createComment(commentData,creatureId,userId));
         } catch (DAOException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            LOGGER.error("Exception while commenting creature.",e);
         }
-        attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
                 .createRouter(Router.RouteType.REDIRECT,PagePath.USER_MAIN_PAGE));
     }

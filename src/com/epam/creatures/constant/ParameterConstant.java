@@ -18,6 +18,7 @@ public class ParameterConstant {
     public static final String ROLE_PARAMETER = "role";
     public static final String USER_ID_PARAMETER = "userId";
     public static final String USER_BANNED_PARAMETER = "userBanned";
+    public static final String COMMENT_PARAMETER = "comment";
 
     private ParameterConstant(){}
 }

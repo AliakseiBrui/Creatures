@@ -2,15 +2,13 @@ package com.epam.creatures.command;
 
 
 import com.epam.creatures.command.admin.*;
+import com.epam.creatures.command.user.CommentCreatureCommand;
 import com.epam.creatures.command.user.LikeCreatureCommand;
 import com.epam.creatures.command.user.UserAuthorizationCommand;
 import com.epam.creatures.command.user.UserRegistrationCommand;
 import com.epam.creatures.service.*;
 import com.epam.creatures.service.admin.*;
-import com.epam.creatures.service.user.LikeCreatureService;
-import com.epam.creatures.service.user.ToUserMainPageService;
-import com.epam.creatures.service.user.UserAuthorizationService;
-import com.epam.creatures.service.user.UserRegistrationService;
+import com.epam.creatures.service.user.*;
 
 public enum CommandType {
     ADMIN_AUTHORIZATION_COMMAND(new AdminAuthorizationCommand(new AdminAuthorizationService())),
@@ -54,6 +52,8 @@ public enum CommandType {
     CHANGE_USER_BANNED_COMMAND(new ChangeUserBannedCommand(new ChangeUserBannedService())),
 
     LIKE_CREATURE_COMMAND(new LikeCreatureCommand(new LikeCreatureService())),
+
+    COMMENT_CREATURE_COMMAND(new CommentCreatureCommand(new CommentCreatureService()))
 
 
     ;

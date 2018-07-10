@@ -9,19 +9,19 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
     <label for="creatureName">Name</label><br/>
-    <input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="40" pattern="^[^\s]+" value=" "/>
+    <input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="40" pattern="^[^\s]+" required/>
     <br/><br/>
 
     <label for="creatureLimbQuantity">Limb quantity</label><br/>
-    <input type="number" name="creatureLimbQuantity" id="creatureLimbQuantity" class="input-text" min="0" max="100" value="0"/>
+    <input type="number" name="creatureLimbQuantity" id="creatureLimbQuantity" class="input-text" min="0" max="100" value="0" required/>
     <br/><br/>
 
     <label for="creatureHeadQuantity">Head quantity</label><br/>
-    <input type="number" name="creatureHeadQuantity" id="creatureHeadQuantity" class="input-text" min="0" max="100" value="0"/>
+    <input type="number" name="creatureHeadQuantity" id="creatureHeadQuantity" class="input-text" min="0" max="100" value="0" required/>
     <br/><br/>
 
     <label for="creatureEyeQuantity">Eye quantity</label><br/>
-    <input type="number" name="creatureEyeQuantity" id="creatureEyeQuantity" class="input-text" min="0" max="100" value="0"/>
+    <input type="number" name="creatureEyeQuantity" id="creatureEyeQuantity" class="input-text" min="0" max="100" value="0" required/>
     <br/><br/>
 
     <label for="creatureGender">Gender</label><br/>
@@ -33,6 +33,6 @@
     <br/><br/>
 
     <label for="creatureDescription">Description</label><br/>
-    <input type="text" name="creatureDescription" id="creatureDescription" class="input-text" maxlength="100" style="row-span: initial;"/>
+    <textarea id="creatureDescription" name="creatureDescription" class="input-text"></textarea>
     <br/><br/>
 

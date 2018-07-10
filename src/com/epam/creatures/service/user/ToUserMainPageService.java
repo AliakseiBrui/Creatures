@@ -12,6 +12,7 @@ public class ToUserMainPageService implements CommandService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.USER_MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
+                .createRouter(Router.RouteType.REDIRECT,PagePath.USER_MAIN_PAGE));
     }
 }
