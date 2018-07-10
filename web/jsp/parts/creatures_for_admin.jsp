@@ -13,6 +13,7 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<br/>
 <div align="center">
     <c:forEach var="creature" items="${creatureList}">
         <div class="creature">
@@ -45,7 +46,26 @@
             <div class="creature-footer">
                 <div class="creature-mark">
                     <c:out value="${creature.getCreatureRating()}"/>
-
+                </div>
+                <div class="creature-button">
+                    <form action="/creatures" method="post">
+                        <input type="hidden" name="commandType" value="TO_UPDATE_CREATURE_PAGE_COMMAND"/>
+                        <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+                        <input type="hidden" name="creatureName" value="${creature.getCreatureName()}"/>
+                        <input type="hidden" name="creatureLimbQuantity" value="${creature.getLimbQuantity()}"/>
+                        <input type="hidden" name="creatureHeadQuantity" value="${creature.getHeadQuantity()}"/>
+                        <input type="hidden" name="creatureEyeQuantity" value="${creature.getEyeQuantity()}"/>
+                        <input type="hidden" name="creatureGender" value="${creature.getCreatureGender()}"/>
+                        <input type="hidden" name="creatureDescription" value="${creature.getDescription()}"/>
+                        <input type="submit" value="Update" class="nice-button"/>
+                    </form>
+                </div>
+                <div class="creature-button">
+                    <form action="/creatures" method="post">
+                        <input type="hidden" name="commandType" value="DELETE_CREATURE_COMMAND"/>
+                        <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+                        <input type="submit" value="Delete" class="nice-button"/>
+                    </form>
                 </div>
             </div>
         </div>

@@ -33,6 +33,9 @@
     font-size: 16px;
     opacity: 0.6;
 }
+.nice-button:hover{
+    background-color: #c3cbff;
+}
 .nice-table-button{
     background-color: black;
     border: none;
@@ -203,4 +206,5 @@ tr:hover {background-color: #f5f5f5;}
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }

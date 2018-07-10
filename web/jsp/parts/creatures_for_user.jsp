@@ -13,6 +13,7 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<br/>
 <div align="center">
     <c:forEach var="creature" items="${creatureList}">
         <div class="creature">
