@@ -11,6 +11,7 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
+import com.epam.creatures.validator.DataValidator;
 
 import java.util.Map;
 
@@ -21,6 +22,7 @@ public class CreateAdminService implements CommandService {
         AdminFactory adminFactory = new AdminFactory();
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         AdminDAO adminDAO = new AdminDAO();
+        DataValidator dataValidator = new DataValidator();
         RouterFactory routerFactory = new RouterFactory();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
@@ -30,12 +32,16 @@ public class CreateAdminService implements CommandService {
 
         try {
 
-            if(adminDAO.create(admin)){
-                message.append("Admin has been created.");
-            }else{
-                errorMessage.append("Could not create admin.");
-            }
+            if(dataValidator.validateLogin(login)) {
 
+                if (adminDAO.create(admin)) {
+                    message.append("Admin has been created.");
+                } else {
+                    errorMessage.append("Could not create admin.");
+                }
+            }else{
+                errorMessage.append("Wrong data in login field.");
+            }
         } catch (DAOException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }
