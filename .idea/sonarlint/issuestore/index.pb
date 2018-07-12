@@ -217,3 +217,15 @@ p
 @src/com/epam/creatures/service/user/UserRegistrationService.java,c\4\c44a775e57840152781b56330479eadeb1034ee8
 l
 <src/com/epam/creatures/command/user/LikeCreatureCommand.java,e\e\eeafb9ca2d15d3db4eb822e6afa12d43d69bd18c
+o
+?src/com/epam/creatures/command/user/CommentCreatureCommand.java,2\9\293bf05adfce4b6947bbf497bee8f70c2b4b514b
+d
+4src/com/epam/creatures/validator/AdminValidator.java,1\f\1fdec06907a5ff162fbc66d1dc3525c35308f2d8
+i
+9src/com/epam/creatures/exception/UserBannedException.java,8\5\85712c83f1165855f6948572adb1403ca459e5b4
+c
+3src/com/epam/creatures/validator/UserValidator.java,b\4\b444d63b23d789907fdd1dffc75befb5ad9be822
+o
+?src/com/epam/creatures/service/user/CommentCreatureService.java,b\9\b91eb1c9d72b642c6fd7ed654f075b745ae68936
+\
+,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c

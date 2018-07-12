@@ -38,11 +38,9 @@ public class CreateCreatureService implements CommandService {
             }else{
                 errorMessage.append("Could not create creature.");
             }
-
         } catch (DAOException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }
-
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.ADMIN_MAIN_PAGE));

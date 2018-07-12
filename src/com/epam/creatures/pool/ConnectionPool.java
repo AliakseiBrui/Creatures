@@ -16,7 +16,6 @@ public enum ConnectionPool {
     private static final int DEFAULT_POOL_SIZE = 10;
     private final LinkedBlockingQueue<SafeConnection> connectionQueue = new LinkedBlockingQueue<>();
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
-    private SQLDriverManager sqlDriverManager = new SQLDriverManager();
     private boolean canInitialize = true;
 
     public SafeConnection takeConnection(){
@@ -39,6 +38,7 @@ public enum ConnectionPool {
     }
 
     public void init(){
+        SQLDriverManager sqlDriverManager = new SQLDriverManager();
 
         if(canInitialize) {
             LOGGER.debug("Initializing connection pool.");
@@ -58,8 +58,9 @@ public enum ConnectionPool {
     }
 
     public void closeAll(){
+        SQLDriverManager sqlDriverManager = new SQLDriverManager();
 
-       for(int i=0; i<DEFAULT_POOL_SIZE; i++){
+        for(int i=0; i<DEFAULT_POOL_SIZE; i++){
 
             try {
                 connectionQueue.take().closeConnection();

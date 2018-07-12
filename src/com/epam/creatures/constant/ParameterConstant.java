@@ -14,6 +14,7 @@ public class ParameterConstant {
     public static final String CREATURE_EYE_Q_PARAMETER = "creatureEyeQuantity";
     public static final String CREATURE_GENDER_PARAMETER = "creatureGender";
     public static final String CREATURE_DESCRIPTION_PARAMETER = "creatureDescription";
+    public static final String CREATURE_RATING_PARAMETER = "creatureRating";
     public static final String CREATOR_ID_PARAMETER = "creatorId";
     public static final String ROLE_PARAMETER = "role";
     public static final String USER_ID_PARAMETER = "userId";
@@ -22,6 +23,7 @@ public class ParameterConstant {
     public static final String PAGE_PARAMETER = "page";
     public static final String MESSAGE_PARAMETER = "message";
     public static final String ERROR_MESSAGE_PARAMETER = "errorMessage";
+
 
     private ParameterConstant(){}
 }

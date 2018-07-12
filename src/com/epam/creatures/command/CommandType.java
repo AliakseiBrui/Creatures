@@ -54,6 +54,12 @@ public enum CommandType {
     LIKE_CREATURE_COMMAND(new LikeCreatureCommand(new LikeCreatureService())),
 
     COMMENT_CREATURE_COMMAND(new CommentCreatureCommand(new CommentCreatureService())),
+
+    SHOW_CREATURE_COMMENTS_COMMAND(new ShowCreatureCommentsCommand(new ShowCreatureCommentsService())),
+
+    TO_CREATURE_DETAILS_PAGE_COMMAND(new ToCreatureDetailsPageCommand(new ToCreatureDetailsPageService())),
+
+
     ;
 
     private AbstractCommand command;

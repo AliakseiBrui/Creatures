@@ -13,6 +13,7 @@ public class AttributeConstant {
     public static final String MESSAGE_ATTRIBUTE = "message";
     public static final String CREATURE_ATTRIBUTE = "creature";
     public static final String USER_LIST_ATTRIBUTE = "userList";
+    public static final String COMMENT_LIST_ATTRIBUTE = "commentList";
 
     private AttributeConstant(){}
 }
