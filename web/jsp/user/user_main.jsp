@@ -14,6 +14,9 @@
 </head>
 <body>
 <%@ include file="../parts/header.jsp"%>
-<c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
+<br/>
+<div>
+    <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
+</div>
 </body>
 </html>

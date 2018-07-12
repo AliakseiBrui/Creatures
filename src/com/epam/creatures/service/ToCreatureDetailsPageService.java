@@ -4,7 +4,7 @@ import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Creature;
-import com.epam.creatures.entity.Role;
+import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
@@ -26,10 +26,10 @@ public class ToCreatureDetailsPageService implements CommandService {
         Integer creatorId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATOR_ID_PARAMETER));
         Double creatureRating = Double.parseDouble(parameterMap.get(ParameterConstant.CREATURE_RATING_PARAMETER));
         Creature creature = creatureFactory.createCreature(id,name,limbQuantity,headQuantity,eyeQuantity,gender,description,creatureRating,creatorId);
-        Role role = Role.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
+        ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
         String route=null;
 
-        switch (role){
+        switch (clientRole){
             case USER:
                 route=PagePath.USER_CREATURE_DETAILS_PAGE;
                 break;

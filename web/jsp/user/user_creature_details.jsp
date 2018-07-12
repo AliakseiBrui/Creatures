@@ -56,6 +56,14 @@
         </div>
     </div>
     <br/>
+    <div align="center">
+        <form action="/creatures" method="get">
+            <input type="hidden" name="commandType" value="TO_COMMENT_CREATURE_PAGE_COMMAND"/>
+            <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+
+            <input type="submit" value="Comment creature" class="nice-button"/>
+        </form>
+    </div>
     <c:import url="/creatures?commandType=SHOW_CREATURE_COMMENTS_COMMAND&creatureId=${creature.getCreatureId()}"/>
 </div>
 </body>

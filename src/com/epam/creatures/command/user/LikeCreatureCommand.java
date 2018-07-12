@@ -24,8 +24,8 @@ public class LikeCreatureCommand extends AbstractCommand {
         HashMap<String,Object> attributeMap = new HashMap<>();
 
         parameterMap.put(ParameterConstant.MARK_PARAMETER,request.getParameter(ParameterConstant.MARK_PARAMETER));
-        parameterMap.put(ParameterConstant.CREATURE_ID_PARAMETER,request.getParameter(ParameterConstant.CREATOR_ID_PARAMETER));
-        parameterMap.put(ParameterConstant.USER_ID_PARAMETER,request.getParameter(ParameterConstant.USER_ID_PARAMETER));
+        parameterMap.put(ParameterConstant.CREATURE_ID_PARAMETER,request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
+        parameterMap.put(ParameterConstant.USER_ID_PARAMETER, String.valueOf(request.getSession().getAttribute(AttributeConstant.ID_ATTRIBUTE)));
 
         getService().process(parameterMap,attributeMap);
 

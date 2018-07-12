@@ -3,9 +3,9 @@ package com.epam.creatures.service;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.CommentDAO;
+import com.epam.creatures.dao.impl.CommentDAO;
 import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.entity.Role;
+import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.RouterFactory;
 import org.apache.logging.log4j.LogManager;
@@ -23,10 +23,10 @@ public class ShowCreatureCommentsService implements CommandService {
         try {
             Integer creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
             attributeMap.put(AttributeConstant.COMMENT_LIST_ATTRIBUTE,commentDAO.findCommentsByCreatureId(creatureId));
-            Role role = Role.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
+            ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
             String route=null;
 
-            switch (role){
+            switch (clientRole){
                 case USER:
                     route = PagePath.COMMENTS_FOR_USER_PAGE;
                     break;

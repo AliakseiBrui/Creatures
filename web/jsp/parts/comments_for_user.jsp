@@ -19,10 +19,10 @@
         <div class="comment">
             <div class="comment-body">
                 <div class="comment-creator">
-                    <c:out value="${comment.getUserId()}"/>
+                    <c:out value="${comment.getUserId()}"/>:
                 </div>
                 <div class="comment-content">
-                    Creator: <c:out value="${comment.getContent()}"/>
+                     <c:out value="${comment.getContent()}"/>
                 </div>
             </div>
             <div class="comment-footer">

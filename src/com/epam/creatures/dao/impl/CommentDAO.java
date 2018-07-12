@@ -1,6 +1,9 @@
-package com.epam.creatures.dao;
+package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.CommentColumn;
+import com.epam.creatures.dao.AbstractDAO;
+import com.epam.creatures.dao.CommentTableDAO;
+import com.epam.creatures.dao.DAOException;
 import com.epam.creatures.entity.Comment;
 import com.epam.creatures.factory.CommentFactory;
 import com.epam.creatures.pool.ConnectionPool;
@@ -37,7 +40,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
 
     private static final String SELECT_COMMENT_BY_CREATURE_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id " +
             "FROM creatures_db.comments " +
-            "WHERE creatures_db.comments.user_id = ?";
+            "WHERE creatures_db.comments.creature_id = ?";
 
     private CommentFactory commentFactory = new CommentFactory();
 
@@ -151,7 +154,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 preparedStatement.setInt(1,creatureId);
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                if(resultSet.next()){
+                while(resultSet.next()){
                     commentList.add(commentFactory
                             .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),resultSet.getInt(CommentColumn.USER_ID)));
                 }

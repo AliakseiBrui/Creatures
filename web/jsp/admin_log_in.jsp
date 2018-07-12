@@ -12,7 +12,7 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<%@ include file="../parts/header.jsp"%>
+<%@ include file="parts/header.jsp"%>
 <div align="left">
     <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_START_PAGE_COMMAND"/>
@@ -25,7 +25,7 @@
     <form action="/creatures" method="post">
         <input type="hidden" name="commandType" value="ADMIN_AUTHORIZATION_COMMAND"/>
 
-        <jsp:include page="../parts/enter_user_data_part.jsp"/>
+        <jsp:include page="parts/enter_user_data_part.jsp"/>
 
         <input type="submit" name="log_in_button" value="Log in" class="nice-button"/>
     </form>

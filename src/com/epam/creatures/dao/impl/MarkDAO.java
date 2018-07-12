@@ -1,6 +1,9 @@
-package com.epam.creatures.dao;
+package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.MarkColumn;
+import com.epam.creatures.dao.AbstractDAO;
+import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.MarkTableDAO;
 import com.epam.creatures.entity.Mark;
 import com.epam.creatures.factory.MarkFactory;
 import com.epam.creatures.pool.ConnectionPool;
@@ -33,6 +36,10 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
             "FROM creatures_db.marks "+
             "WHERE creatures_db.marks.creature_id = ? " +
             "AND creatures_db.marks.user_id = ?";
+
+    private static final String SELECT_MARKS_BY_USER_ID = "SELECT creatures_db.marks.mark_value,creatures_db.marks.creature_id " +
+            "FROM creatures_db.marks "+
+            "WHERE creatures_db.marks.user_id = ?";
 
     private MarkFactory markFactory = new MarkFactory();
 
@@ -126,5 +133,27 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
             throw new DAOException("Exception while selecting mark.",e);
         }
         return null;
+    }
+
+    @Override
+    public List<Mark> findMarks(Integer userId) throws DAOException {
+        LOGGER.debug("Selecting mark by creatureId and userId.");
+        List<Mark> markList = new ArrayList<>();
+
+        try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
+            PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(SELECT_MARKS_BY_USER_ID)){
+
+            if(preparedStatement!=null){
+                preparedStatement.setInt(1,userId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while(resultSet.next()){
+                    markList.add(markFactory.createMark(resultSet.getDouble(MarkColumn.MARK_VALUE),resultSet.getInt(MarkColumn.CREATURE_ID),userId));
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Exception while selecting mark.",e);
+        }
+        return markList;
     }
 }

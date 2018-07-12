@@ -109,8 +109,6 @@ _
 /src/com/epam/creatures/command/CommandType.java,a\5\a54549bbb99d8303675dcd5485df7c7e061750cf
 a
 1src/com/epam/creatures/factory/RouterFactory.java,d\a\da74154ca3df848464c3ede2441a31071f0d17b7
-B
-web/jsp/header.jsp,8\d\8d7b955531af43c07d384e5a0c05dfd5671e7b8e
 C
 web/WEB-INF/web.xml,c\d\cdcc12da5c4054f6995aab32914d7e0243194c05
 h
@@ -247,3 +245,7 @@ V
 &web/jsp/user/user_creature_details.jsp,8\2\824700b419d8052dabe161328df6c0b308b020e4
 c
 3src/com/epam/creatures/validator/DataValidator.java,9\6\96b78e98257621232790a435927e3a62fc6f86dd
+H
+web/jsp/parts/header.jsp,e\f\ef72a255d9b280fd08c8fa5007bcf63b9cff4eed
+a
+1src/com/epam/creatures/filter/PartsUrlFilter.java,9\4\947be8693da521f79032606dd4ddf4ce2d6f01c8

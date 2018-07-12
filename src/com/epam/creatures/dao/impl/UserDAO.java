@@ -1,6 +1,9 @@
-package com.epam.creatures.dao;
+package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.UserColumn;
+import com.epam.creatures.dao.AbstractDAO;
+import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.UserTableDAO;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.pool.ConnectionPool;

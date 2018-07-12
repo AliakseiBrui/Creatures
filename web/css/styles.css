@@ -208,3 +208,40 @@ tr:hover {background-color: #f5f5f5;}
     margin-right: auto;
     width: 100%;
 }
+.comment{
+    font-family: "Amaranth", sans-serif;
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    background: #ddf8ff;
+    box-shadow: 0 -3px 30px -5px rgba(0, 0, 0, 0.2);
+}
+.comment:hover{
+    transform: translateY(+2px);
+    box-shadow: 0 -10px 40px -5px rgba(0, 0, 0, 0.3);
+}
+
+.comment-body{
+    padding: 20px;
+}
+
+.comment-creator{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 2px;
+}
+.comment-content{
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid;
+}
+.comment-footer{
+    padding: 10px;
+
+}

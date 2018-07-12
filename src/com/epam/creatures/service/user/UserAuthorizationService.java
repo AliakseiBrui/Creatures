@@ -5,7 +5,7 @@ import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.dao.DAOException;
 import com.epam.creatures.encoder.PasswordEncoder;
-import com.epam.creatures.entity.Role;
+import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.exception.UserBannedException;
@@ -42,7 +42,7 @@ public class UserAuthorizationService implements CommandService {
                     attributeMap.put(AttributeConstant.ID_ATTRIBUTE, user.getId());
                     attributeMap.put(AttributeConstant.STATUS_ATTRIBUTE, user.getStatus());
                     attributeMap.put(AttributeConstant.BANNED_ATTRIBUTE, user.getBanned());
-                    attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, Role.USER);
+                    attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, ClientRole.USER);
                     //put avatar as well
                     routeType = Router.RouteType.REDIRECT;
                     route = PagePath.USER_MAIN_PAGE;

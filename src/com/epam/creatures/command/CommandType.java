@@ -4,6 +4,7 @@ package com.epam.creatures.command;
 import com.epam.creatures.command.admin.*;
 import com.epam.creatures.command.user.CommentCreatureCommand;
 import com.epam.creatures.command.user.LikeCreatureCommand;
+import com.epam.creatures.command.user.ToCommentCreaturePageCommand;
 import com.epam.creatures.command.user.UserAuthorizationCommand;
 import com.epam.creatures.command.user.UserRegistrationCommand;
 import com.epam.creatures.service.*;
@@ -58,6 +59,8 @@ public enum CommandType {
     SHOW_CREATURE_COMMENTS_COMMAND(new ShowCreatureCommentsCommand(new ShowCreatureCommentsService())),
 
     TO_CREATURE_DETAILS_PAGE_COMMAND(new ToCreatureDetailsPageCommand(new ToCreatureDetailsPageService())),
+
+    TO_COMMENT_CREATURE_PAGE_COMMAND(new ToCommentCreaturePageCommand(new ToCommentCreaturePageService())),
 
 
     ;

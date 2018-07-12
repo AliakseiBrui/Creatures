@@ -14,8 +14,8 @@
         <div  class="header-right">
             <c:if test="${not empty login}">
                 <div class="header-panel">
-                    <c:out value="Login: ${login} | Role: ${role} | ID: ${id}"/>
-                    <c:if test="${role=='USER'}">
+                    <c:out value="Login: ${login} | Role: ${clientRole} | ID: ${id}"/>
+                    <c:if test="${clientRole=='USER'}">
                         <c:out value=" | Status: ${status}"/>
                     </c:if>
                 </div>

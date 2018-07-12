@@ -4,7 +4,7 @@ import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.UserDAO;
+import com.epam.creatures.dao.impl.UserDAO;
 import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;

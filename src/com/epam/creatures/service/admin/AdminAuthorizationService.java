@@ -6,7 +6,7 @@ import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.dao.DAOException;
 import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.Admin;
-import com.epam.creatures.entity.Role;
+import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
@@ -39,7 +39,7 @@ public class AdminAuthorizationService implements CommandService {
                 if (adminValidator.validateAdminLogin(admin)) {
                     attributeMap.put(AttributeConstant.LOGIN_ATTRIBUTE, admin.getLogin());
                     attributeMap.put(AttributeConstant.ID_ATTRIBUTE, admin.getId());
-                    attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, Role.ADMIN);
+                    attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, ClientRole.ADMIN);
                     //put avatar as well
                     routeType = Router.RouteType.REDIRECT;
                     route = PagePath.ADMIN_MAIN_PAGE;

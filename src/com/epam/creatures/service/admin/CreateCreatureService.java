@@ -3,7 +3,7 @@ package com.epam.creatures.service.admin;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.CreaturesDAO;
+import com.epam.creatures.dao.impl.CreaturesDAO;
 import com.epam.creatures.dao.DAOException;
 import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;

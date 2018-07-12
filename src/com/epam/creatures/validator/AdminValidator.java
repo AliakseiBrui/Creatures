@@ -1,6 +1,6 @@
 package com.epam.creatures.validator;
 
-import com.epam.creatures.dao.AdminDAO;
+import com.epam.creatures.dao.impl.AdminDAO;
 import com.epam.creatures.dao.DAOException;
 import com.epam.creatures.entity.Admin;
 

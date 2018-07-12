@@ -1,6 +1,6 @@
 package com.epam.creatures.entity;
 
-public enum Role {
+public enum ClientRole {
     USER,
     ADMIN
 }

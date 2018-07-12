@@ -1,5 +1,6 @@
-package com.epam.creatures.command;
+package com.epam.creatures.command.user;
 
+import com.epam.creatures.command.AbstractCommand;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Router;
@@ -8,13 +9,12 @@ import com.epam.creatures.service.CommandService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
-public class ShowCreaturesCommand extends AbstractCommand {
-
-    public ShowCreaturesCommand(CommandService service) {
+public class ToCommentCreaturePageCommand extends AbstractCommand {
+    public ToCommentCreaturePageCommand(CommandService service) {
         super(service);
     }
 
-    public ShowCreaturesCommand() {
+    public ToCommentCreaturePageCommand() {
     }
 
     @Override
@@ -22,13 +22,11 @@ public class ShowCreaturesCommand extends AbstractCommand {
         HashMap<String,String> parameterMap = new HashMap<>();
         HashMap<String,Object> attributeMap = new HashMap<>();
 
-        parameterMap.put(ParameterConstant.ROLE_PARAMETER,request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE).toString());
-        parameterMap.put(ParameterConstant.USER_ID_PARAMETER, String.valueOf(request.getSession().getAttribute(AttributeConstant.ID_ATTRIBUTE)));
+        parameterMap.put(ParameterConstant.CREATURE_ID_PARAMETER,request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
 
         getService().process(parameterMap,attributeMap);
 
-        request.setAttribute(AttributeConstant.CREATURE_LIST_ATTRIBUTE,attributeMap.get(AttributeConstant.CREATURE_LIST_ATTRIBUTE));
-
+        request.setAttribute(AttributeConstant.CREATURE_ID_ATTRIBUTE, attributeMap.get(AttributeConstant.CREATURE_ID_ATTRIBUTE));
         return (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
     }
 }

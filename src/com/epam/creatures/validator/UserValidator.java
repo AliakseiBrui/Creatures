@@ -1,7 +1,7 @@
 package com.epam.creatures.validator;
 
 import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.UserDAO;
+import com.epam.creatures.dao.impl.UserDAO;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.exception.UserBannedException;
 

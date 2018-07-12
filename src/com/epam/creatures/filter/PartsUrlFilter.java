@@ -17,7 +17,8 @@ public class PartsUrlFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         request.getRequestDispatcher(START_PAGE_RELATIVE_PATH).forward(servletRequest,servletResponse);
         LOGGER.debug("PartsUrlFilter has worked.");

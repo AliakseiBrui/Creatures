@@ -45,7 +45,28 @@
             </div>
             <div class="creature-footer">
                 <div class="creature-mark">
-                    <c:out value="${creature.getCreatureRating()}"/>
+                    <c:choose>
+                        <c:when test="${creature.isMarked() == true}">
+                            <c:out value="${creature.getCreatureRating()}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <div align="right">
+                                <form id="likeForm" action="/creatures" method="get">
+                                    <input type="hidden" name="commandType" value="LIKE_CREATURE_COMMAND"/>
+                                    <input type="hidden" name="creatureId" value="${creature.getCreatureId()}">
+                                    <select name="mark" class="custom-select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <br/><br/>
+                                    <input type="submit" value="like" class="nice-button"/>
+                                </form>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div class="creature-button">
                     <form id="creatureForm" action="/creatures" method="post">

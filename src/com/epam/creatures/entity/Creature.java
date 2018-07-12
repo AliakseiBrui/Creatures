@@ -17,6 +17,7 @@ public class Creature implements Entity {
     private String description;
     private Double creatureRating;
     private Integer creatorId;
+    private boolean marked=false;
 
     public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
                     Gender creatureGender, String description, Double creatureRating, Integer creatorId) {
@@ -132,6 +133,14 @@ public class Creature implements Entity {
 
     public void setCreatorId(Integer creatorId) {
         this.creatorId = creatorId;
+    }
+
+    public boolean isMarked() {
+        return marked;
+    }
+
+    public void setMarked(boolean marked) {
+        this.marked = marked;
     }
 
     @Override
