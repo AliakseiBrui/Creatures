@@ -12,7 +12,7 @@
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<%@ include file="../header.jsp"%>
+<%@ include file="../parts/header.jsp"%>
 <div align="center">
     <br/>
     <c:import url="/creatures?commandType=SHOW_CREATURE_COMMENTS_COMMAND"/>

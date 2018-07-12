@@ -9,18 +9,19 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
 public class ChangeUserBannedService implements CommandService {
+    private static final Logger LOGGER = LogManager.getLogger(ChangeUserBannedService.class);
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
         UserDAO userDAO = new UserDAO();
         int userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
-        StringBuilder message = new StringBuilder();
-        StringBuilder errorMessage = new StringBuilder();
 
         try{
 
@@ -29,19 +30,11 @@ public class ChangeUserBannedService implements CommandService {
             if(user!=null) {
 
                 user.setBanned(!user.getBanned());
-                if (userDAO.updateUserBan(user)) {
-                    message.append("Success");
-                } else {
-                    errorMessage.append("Something went wrong.");
-                }
-            }else{
-                errorMessage.append("Something went wrong.");
+                userDAO.updateUserBan(user);
             }
         }catch (DAOException e){
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            LOGGER.error(e);
         }
-        attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
-        attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.FORWARD,PagePath.ADMIN_MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));
     }
 }

@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<%@ include file="../header.jsp"%>
+<%@ include file="../parts/header.jsp"%>
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
 </body>
 </html>
