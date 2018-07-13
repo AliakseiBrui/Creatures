@@ -33,6 +33,6 @@
     <br/><br/>
 
     <label for="creatureDescription">Description</label><br/>
-    <textarea id="creatureDescription" name="creatureDescription" class="input-text"></textarea>
+    <textarea id="creatureDescription" name="creatureDescription" class="input-text" maxlength="200"></textarea>
     <br/><br/>
 

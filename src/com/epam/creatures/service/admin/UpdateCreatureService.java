@@ -10,11 +10,14 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
+import com.epam.creatures.validator.CreatureValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
 public class UpdateCreatureService implements CommandService {
-
+    private static final Logger LOGGER = LogManager.getLogger(UpdateCreatureService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         CreatureFactory creatureFactory = new CreatureFactory();
@@ -30,19 +33,25 @@ public class UpdateCreatureService implements CommandService {
         Creature creature = creatureFactory.createCreature(id,name,limbQuantity,headQuantity,eyeQuantity,gender,description);
         StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
+        CreatureValidator creatureValidator = new CreatureValidator();
 
-        try {
+        if(creatureValidator.validateCreature(creature)) {
 
-            if(creaturesDAO.update(creature)){
-                message.append("Creature has been updated.");
-            }else{
-                errorMessage.append("Could not update creature.");
+            try {
+
+                if (creaturesDAO.update(creature)) {
+                    message.append("Creature has been updated.");
+                } else {
+                    errorMessage.append("Could not update creature.");
+                }
+
+            } catch (DAOException e) {
+                LOGGER.error(e);
+                errorMessage.append(e.getSQLState()).append(";").append(e);
             }
-
-        } catch (DAOException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+        }else{
+            errorMessage.append("Wrong data.");
         }
-
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));

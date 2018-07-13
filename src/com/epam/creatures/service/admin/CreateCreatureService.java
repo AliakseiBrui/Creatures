@@ -10,11 +10,14 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
+import com.epam.creatures.validator.CreatureValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
 public class CreateCreatureService implements CommandService {
-
+    private  static final Logger LOGGER = LogManager.getLogger(CreateCreatureService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         CreatureFactory creatureFactory = new CreatureFactory();
@@ -30,16 +33,23 @@ public class CreateCreatureService implements CommandService {
         Creature creature = creatureFactory.createCreature(name,limbQuantity,headQuantity,eyeQuantity,gender,description,creatorId);
         StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
+        CreatureValidator creatureValidator = new CreatureValidator();
 
-        try {
+        if(creatureValidator.validateCreature(creature)) {
 
-            if(creaturesDAO.create(creature)){
-                message.append("Creature has been created.");
-            }else{
-                errorMessage.append("Could not create creature.");
+            try {
+
+                if (creaturesDAO.create(creature)) {
+                    message.append("Creature has been created.");
+                } else {
+                    errorMessage.append("Could not create creature.");
+                }
+            } catch (DAOException e) {
+                LOGGER.error(e);
+                errorMessage.append(e.getSQLState()).append(";").append(e);
             }
-        } catch (DAOException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+        }else{
+            errorMessage.append("Wrong data.");
         }
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
