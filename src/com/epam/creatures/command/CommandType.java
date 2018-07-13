@@ -64,6 +64,8 @@ public enum CommandType {
 
     TO_USER_CHANGE_AVATAR_PAGE_COMMAND(new ToAnyPageCommand(new ToUserChangeAvatarPageService())),
 
+    TO_ADMIN_CHANGE_AVATAR_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminChangeAvatarPageService())),
+
 
     ;
 

@@ -43,7 +43,7 @@ public class AdminAuthorizationService implements CommandService {
                     attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, ClientRole.ADMIN);
 
                     if(admin.getAvatar()!=null) {
-                        attributeMap.put(AttributeConstant.AVATAR_ATTRIBUTE,Base64.getEncoder().encode(admin.getAvatar()));
+                        attributeMap.put(AttributeConstant.AVATAR_ATTRIBUTE,Base64.getEncoder().encodeToString(admin.getAvatar()));
                     }
                     routeType = Router.RouteType.REDIRECT;
                     route = PagePath.ADMIN_MAIN_PAGE;

@@ -14,7 +14,7 @@
 </head>
 <body>
 <%@ include file="../parts/header.jsp"%>
-
+<br/>
 <div align="right">
     <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_CREATE_CREATURE_PAGE_COMMAND"/>
@@ -28,6 +28,7 @@
         <input type="submit" value="Create new admin" class="nice-button"/>
     </form>
 </div>
+<br/>
 <c:import url="/creatures?commandType=SHOW_USERS_COMMAND"/>
 <br/><br/>
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
