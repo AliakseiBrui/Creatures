@@ -18,9 +18,40 @@ public class Creature implements Entity {
     private String description;
     private Double creatureRating;
     private Integer creatorId;
+    private String creatorName;
     private byte[] image;
     private String encodedImage;
     private boolean marked=false;
+
+    public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity,
+                    int eyeQuantity, Gender creatureGender, String description, Double creatureRating,
+                    Integer creatorId, String creatorName, byte[] image) {
+        this.creatureId = creatureId;
+        this.creatureName = creatureName;
+        this.limbQuantity = limbQuantity;
+        this.headQuantity = headQuantity;
+        this.eyeQuantity = eyeQuantity;
+        this.creatureGender = creatureGender;
+        this.description = description;
+        this.creatureRating = creatureRating;
+        this.creatorId = creatorId;
+        this.creatorName = creatorName;
+        this.image = image;
+    }
+
+    public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
+                    Gender creatureGender, String description, Double creatureRating, String creatorName, byte[] image) {
+        this.creatureId = creatureId;
+        this.creatureName = creatureName;
+        this.limbQuantity = limbQuantity;
+        this.headQuantity = headQuantity;
+        this.eyeQuantity = eyeQuantity;
+        this.creatureGender = creatureGender;
+        this.description = description;
+        this.creatureRating = creatureRating;
+        this.creatorName = creatorName;
+        this.image = image;
+    }
 
     public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
                     Gender creatureGender, String description, Double creatureRating, Integer creatorId, byte[] image) {
@@ -176,6 +207,14 @@ public class Creature implements Entity {
         this.encodedImage = encodedImage;
     }
 
+    public String getCreatorName() {
+        return creatorName;
+    }
+
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -191,6 +230,7 @@ public class Creature implements Entity {
                 Objects.equals(description, creature.description) &&
                 Objects.equals(creatureRating, creature.creatureRating) &&
                 Objects.equals(creatorId, creature.creatorId) &&
+                Objects.equals(creatorName, creature.creatorName) &&
                 Arrays.equals(image, creature.image) &&
                 Objects.equals(encodedImage, creature.encodedImage);
     }
@@ -198,7 +238,7 @@ public class Creature implements Entity {
     @Override
     public int hashCode() {
 
-        int result = Objects.hash(creatureId, creatureName, limbQuantity, headQuantity, eyeQuantity, creatureGender, description, creatureRating, creatorId, encodedImage, marked);
+        int result = Objects.hash(creatureId, creatureName, limbQuantity, headQuantity, eyeQuantity, creatureGender, description, creatureRating, creatorId, creatorName, encodedImage, marked);
         result = 31 * result + Arrays.hashCode(image);
         return result;
     }
@@ -215,6 +255,7 @@ public class Creature implements Entity {
                 ", description='" + description + '\'' +
                 ", creatureRating=" + creatureRating +
                 ", creatorId=" + creatorId +
+                ", creatorName='" + creatorName + '\'' +
                 ", image=" + Arrays.toString(image) +
                 ", encodedImage='" + encodedImage + '\'' +
                 ", marked=" + marked +

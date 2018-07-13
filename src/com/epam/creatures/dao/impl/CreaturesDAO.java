@@ -1,5 +1,6 @@
 package com.epam.creatures.dao.impl;
 
+import com.epam.creatures.constant.AdminColumn;
 import com.epam.creatures.constant.CreatureColumn;
 import com.epam.creatures.dao.AbstractDAO;
 import com.epam.creatures.dao.CreatureTableDAO;
@@ -21,13 +22,15 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
     private static final Logger LOGGER = LogManager.getLogger(CreaturesDAO.class);
     private static final String SELECT_ALL_CREATURES = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id, creatures_db.creatures.image " +
-            "FROM creatures_db.creatures";
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id, a.login, creatures_db.creatures.image " +
+            "FROM creatures_db.creatures " +
+            "INNER JOIN creatures_db.admins a ON creatures.creator_id = a.id";
 
     private static final String SELECT_CREATURE_BY_ID = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,creatures_db.creatures.image " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id, a.login, creatures_db.creatures.image " +
             "FROM creatures_db.creatures " +
+            "INNER JOIN creatures_db.admins a ON creatures.creator_id = a.id " +
             "WHERE creatures_db.creatures.id = ?";
 
     private static final String DELETE_CREATURE = "DELETE FROM creatures_db.creatures " +
@@ -42,14 +45,16 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
 
     private static final String SELECT_CREATURE_BY_NAME = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,creatures_db.creatures.image " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,a.login,creatures_db.creatures.image " +
             "FROM creatures_db.creatures " +
+            "INNER JOIN creatures_db.admins a ON creatures.creator_id = a.id " +
             "WHERE creatures_db.creatures.name = ?";
 
     private static final String SELECT_CREATURES_BY_CREATOR_ID = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,creatures_db.creatures.image " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id, a.login,creatures_db.creatures.image " +
             "FROM creatures_db.creatures " +
+            "INNER JOIN creatures_db.admins a ON creatures.creator_id = a.id " +
             "WHERE creatures_db.creatures.creator_id = ?";
 
     private static final String UPDATE_CREATURE_IMAGE = "UPDATE creatures_db.creatures " +
@@ -72,7 +77,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                         resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
                         resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
                         resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
-                        resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE)));
+                        resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getString(AdminColumn.LOGIN),resultSet.getBytes(CreatureColumn.IMAGE)));
             }
 
         } catch (SQLException e) {
@@ -97,7 +102,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                             resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
                             resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
                             resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
-                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE));
+                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getString(AdminColumn.LOGIN),resultSet.getBytes(CreatureColumn.IMAGE));
                 }
             }
         } catch (SQLException e) {
@@ -185,7 +190,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                             resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
                             resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
                             resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
-                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE));
+                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getString(AdminColumn.LOGIN),resultSet.getBytes(CreatureColumn.IMAGE));
                 }
             }
         } catch (SQLException e) {
@@ -211,7 +216,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                             resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
                             resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
                             resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
-                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE)));
+                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getString(AdminColumn.LOGIN),resultSet.getBytes(CreatureColumn.IMAGE)));
                 }
             }
         } catch (SQLException e) {

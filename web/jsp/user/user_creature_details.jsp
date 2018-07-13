@@ -33,7 +33,7 @@
                     <c:out value="${creature.getCreatureName()}"/>
                 </div>
                 <div class="creature-creator">
-                    Creator: <c:out value="${creature.getCreatorId()}"/>
+                    Creator: <c:out value="${creature.getCreatorName()}"/>
                 </div>
                 <div class="creature-limbs">
                     Limbs: <c:out value="${creature.getLimbQuantity()}"/>

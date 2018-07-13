@@ -277,3 +277,13 @@ M
 web/jsp/parts/avatar_part.jsp,5\4\548feea7e041fbac5d03199740cfe4cc78535c81
 S
 #web/jsp/user/user_change_avatar.jsp,c\f\cf380eb89f79120b396cb9704de4b8ea811171a6
+z
+Jsrc/com/epam/creatures/command/admin/ToChangeCreatureImagePageCommand.java,3\1\3144c9d401abc36b945f560b7207e75766c6ccad
+z
+Jsrc/com/epam/creatures/service/admin/ToChangeCreatureImagePageService.java,0\c\0cc1f4f7808eca50c98713bcf10a716c5138697d
+]
+-web/jsp/admin/admin_change_creature_image.jsp,1\a\1a847394cf7a48fbad8971e47803cdb268e864da
+L
+web/jsp/parts/image_part.jsp,0\d\0d7d63f0cdbcf46803a44005901013f37caebd7e
+g
+7src/com/epam/creatures/validator/CreatureValidator.java,c\b\cbe04e9143691c3254344469e0beae3be5f792a0
