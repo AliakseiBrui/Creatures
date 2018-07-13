@@ -20,51 +20,54 @@
         <input type="submit" value="Main Page" class="nice-button"/>
     </form>
 </div>
-<br/>
-<div align="center">
-    <div class="creature">
-        <div class="creature-body">
-            <div class="creature-img">
-                    <img content="${creatureImage}"/>
-            </div>
-            <div class="creature-name">
-                <c:out value="${creature.getCreatureName()}"/>
-            </div>
-            <div class="creature-creator">
-                Creator: <c:out value="${creature.getCreatorId()}"/>
-            </div>
-            <div class="creature-limbs">
-                Limbs: <c:out value="${creature.getLimbQuantity()}"/>
-            </div>
-            <div class="creature-heads">
-                Heads: <c:out value="${creature.getHeadQuantity()}"/>
-            </div>
-            <div class="creature-eyes">
-                Eyes: <c:out value="${creature.getEyeQuantity()}"/>
-            </div>
-            <div class="creature-gender">
-                Gender: <c:out value="${creature.getCreatureGender()}"/>
-            </div>
-            <div class="creature-desc">
-                <c:out value="${creature.getDescription()}"/>
-            </div>
-        </div>
-        <div class="creature-footer">
-            <div class="creature-mark">
-                <c:out value="${creature.getCreatureRating()}"/>
-            </div>
-        </div>
-    </div>
-    <br/>
+<br/><br/>
+<div>
     <div align="center">
-        <form action="/creatures" method="get">
-            <input type="hidden" name="commandType" value="TO_COMMENT_CREATURE_PAGE_COMMAND"/>
-            <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+        <c:import url="/creatures?commandType=SHOW_CREATURE_COMMENTS_COMMAND&creatureId=${creature.getCreatureId()}"/>
+        <div class="creature">
+            <div class="creature-body">
+                <div class="creature-img">
+                    <%@ include file="../parts/image_part.jsp"%>
+                </div>
+                <div class="creature-name">
+                    <c:out value="${creature.getCreatureName()}"/>
+                </div>
+                <div class="creature-creator">
+                    Creator: <c:out value="${creature.getCreatorId()}"/>
+                </div>
+                <div class="creature-limbs">
+                    Limbs: <c:out value="${creature.getLimbQuantity()}"/>
+                </div>
+                <div class="creature-heads">
+                    Heads: <c:out value="${creature.getHeadQuantity()}"/>
+                </div>
+                <div class="creature-eyes">
+                    Eyes: <c:out value="${creature.getEyeQuantity()}"/>
+                </div>
+                <div class="creature-gender">
+                    Gender: <c:out value="${creature.getCreatureGender()}"/>
+                </div>
+                <div class="creature-desc">
+                    <c:out value="${creature.getDescription()}"/>
+                </div>
+            </div>
+            <div class="creature-footer">
+                <div class="creature-mark">
+                    <c:out value="${creature.getCreatureRating()}"/>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div align="center">
+            <form action="/creatures" method="get">
+                <input type="hidden" name="commandType" value="TO_COMMENT_CREATURE_PAGE_COMMAND"/>
+                <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
 
-            <input type="submit" value="Comment creature" class="nice-button"/>
-        </form>
+                <input type="submit" value="Comment creature" class="nice-button"/>
+            </form>
+        </div>
+
     </div>
-    <c:import url="/creatures?commandType=SHOW_CREATURE_COMMENTS_COMMAND&creatureId=${creature.getCreatureId()}"/>
 </div>
 </body>
 </html>

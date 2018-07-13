@@ -20,6 +20,7 @@ public class PagePath {
     public static final String CREATE_COMMENT_PAGE = "jsp/user/user_create_comment.jsp";
     public static final String USER_CHANGE_AVATAR_PAGE = "jsp/user/user_change_avatar.jsp";
     public static final String ADMIN_CHANGE_AVATAR_PAGE = "jsp/admin/admin_change_avatar.jsp";
+    public static final String ADMIN_CHANGE_CREATURE_IMAGE_PAGE = "jsp/admin/admin_change_creature_image.jsp";
 
     private PagePath(){ }
 }

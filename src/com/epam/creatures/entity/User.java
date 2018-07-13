@@ -1,5 +1,6 @@
 package com.epam.creatures.entity;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class User implements Entity {
@@ -104,13 +105,16 @@ public class User implements Entity {
                 Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(status, user.status) &&
-                Objects.equals(isBanned, user.isBanned);
+                Objects.equals(isBanned, user.isBanned) &&
+                Arrays.equals(avatar, user.avatar);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, login, password, status, isBanned);
+        int result = Objects.hash(id, login, password, status, isBanned);
+        result = 31 * result + Arrays.hashCode(avatar);
+        return result;
     }
 
     @Override
@@ -121,6 +125,7 @@ public class User implements Entity {
                 ", password='" + password + '\'' +
                 ", status=" + status +
                 ", isBanned=" + isBanned +
+                ", avatar=" + Arrays.toString(avatar) +
                 '}';
     }
 }

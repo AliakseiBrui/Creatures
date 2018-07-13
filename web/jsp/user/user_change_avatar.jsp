@@ -24,7 +24,7 @@
     <form action="/upload" enctype="multipart/form-data" method="post">
         <input type="hidden" name="pictureType" value="USER_AVATAR"/>
         <input type="hidden" name="userId" value="${id}"/>
-        <input type="file" name="picture" accept="image/x-png, image/gif, image/jpeg" formenctype="multipart/form-data" maxlength="3072" required/>
+        <input type="file" name="picture" accept="image/x-png, image/gif, image/jpeg" formenctype="multipart/form-data" maxlength="3072" required class="nice-button"/>
         <br/><br/>
         <input type="submit" value="Update" class="nice-button"/>
     </form>

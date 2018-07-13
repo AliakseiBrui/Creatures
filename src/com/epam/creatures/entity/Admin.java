@@ -1,5 +1,6 @@
 package com.epam.creatures.entity;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Admin implements Entity {
@@ -68,13 +69,16 @@ public class Admin implements Entity {
         Admin admin = (Admin) o;
         return Objects.equals(id, admin.id) &&
                 Objects.equals(login, admin.login) &&
-                Objects.equals(password, admin.password);
+                Objects.equals(password, admin.password) &&
+                Arrays.equals(avatar, admin.avatar);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, login, password);
+        int result = Objects.hash(id, login, password);
+        result = 31 * result + Arrays.hashCode(avatar);
+        return result;
     }
 
     @Override
@@ -83,6 +87,7 @@ public class Admin implements Entity {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", avatar=" + Arrays.toString(avatar) +
                 '}';
     }
 }

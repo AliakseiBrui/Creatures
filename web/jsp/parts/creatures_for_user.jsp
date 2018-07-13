@@ -19,7 +19,7 @@
         <div class="creature">
             <div class="creature-body">
                 <div class="creature-img">
-
+                    <%@ include file="../parts/image_part.jsp"%>
                 </div>
                 <div class="creature-name">
                     <c:out value="${creature.getCreatureName()}"/>
@@ -72,14 +72,6 @@
                     <form id="creatureForm" action="/creatures" method="post">
                         <input type="hidden" name="commandType" value="TO_CREATURE_DETAILS_PAGE_COMMAND"/>
                         <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
-                        <input type="hidden" name="creatureName" value="${creature.getCreatureName()}"/>
-                        <input type="hidden" name="creatureLimbQuantity" value="${creature.getLimbQuantity()}"/>
-                        <input type="hidden" name="creatureHeadQuantity" value="${creature.getHeadQuantity()}"/>
-                        <input type="hidden" name="creatureEyeQuantity" value="${creature.getEyeQuantity()}"/>
-                        <input type="hidden" name="creatureGender" value="${creature.getCreatureGender()}"/>
-                        <input type="hidden" name="creatureDescription" value="${creature.getDescription()}"/>
-                        <input type="hidden" name="creatorId" value="${creature.getCreatorId()}"/>
-                        <input type="hidden" name="creatureRating" value="${creature.getCreatureRating()}"/>
                         <input type="submit" value="Details" class="nice-button"/>
                     </form>
                 </div>

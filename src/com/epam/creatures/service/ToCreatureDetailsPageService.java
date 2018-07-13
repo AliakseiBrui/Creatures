@@ -3,29 +3,35 @@ package com.epam.creatures.service;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.entity.Creature;
+import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.impl.CreaturesDAO;
 import com.epam.creatures.entity.ClientRole;
+import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;
-import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.Base64;
 import java.util.Map;
 
 public class ToCreatureDetailsPageService implements CommandService {
+    private static final Logger LOGGER = LogManager.getLogger(ToCreatureDetailsPageService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
-        CreatureFactory creatureFactory = new CreatureFactory();
+        CreaturesDAO creaturesDAO = new CreaturesDAO();
         RouterFactory routerFactory = new RouterFactory();
         Integer id = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
-        String name = parameterMap.get(ParameterConstant.CREATURE_NAME_PARAMETER);
-        Integer limbQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));
-        Integer headQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_HEAD_Q_PARAMETER));
-        Integer eyeQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_EYE_Q_PARAMETER));
-        Creature.Gender gender = Creature.Gender.valueOf(parameterMap.get(ParameterConstant.CREATURE_GENDER_PARAMETER));
-        String description = parameterMap.get(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER);
-        Integer creatorId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATOR_ID_PARAMETER));
-        Double creatureRating = Double.parseDouble(parameterMap.get(ParameterConstant.CREATURE_RATING_PARAMETER));
-        Creature creature = creatureFactory.createCreature(id,name,limbQuantity,headQuantity,eyeQuantity,gender,description,creatureRating,creatorId);
+        Creature creature = null;
+        try {
+            creature = creaturesDAO.findEntityById(id);
+
+            if(creature.getImage()!=null){
+                creature.setEncodedImage(Base64.getEncoder().encodeToString(creature.getImage()));
+            }
+        } catch (DAOException e) {
+            LOGGER.error(e);
+        }
         ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
         String route=null;
 

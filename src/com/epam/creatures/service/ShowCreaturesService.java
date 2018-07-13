@@ -14,6 +14,7 @@ import com.epam.creatures.factory.RouterFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,11 @@ public class ShowCreaturesService implements CommandService {
 
         try {
             List<Creature> creatureList = creaturesDAO.findAll();
+            creatureList.forEach(creature -> {
+                if(creature.getImage()!=null){
+                    creature.setEncodedImage(Base64.getEncoder().encodeToString(creature.getImage()));
+                }
+            });
             ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
             String route=null;
 

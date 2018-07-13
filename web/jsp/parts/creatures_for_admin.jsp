@@ -19,7 +19,7 @@
         <div class="creature">
             <div class="creature-body">
                 <div class="creature-img">
-                    mb later
+                    <%@ include file="../parts/image_part.jsp"%>
                 </div>
                 <div class="creature-name">
                     <c:out value="${creature.getCreatureName()}"/>
@@ -65,6 +65,13 @@
                         <input type="hidden" name="commandType" value="DELETE_CREATURE_COMMAND"/>
                         <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
                         <input type="submit" value="Delete" class="nice-button"/>
+                    </form>
+                </div>
+                <div class="creature-button">
+                    <form action="/creatures" method="post">
+                        <input type="hidden" name="commandType" value="TO_CHANGE_CREATURE_IMAGE_PAGE_COMMAND"/>
+                        <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+                        <input type="submit" value="Change image" class="nice-button"/>
                     </form>
                 </div>
             </div>

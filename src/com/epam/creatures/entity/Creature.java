@@ -1,5 +1,6 @@
 package com.epam.creatures.entity;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Creature implements Entity {
@@ -18,6 +19,7 @@ public class Creature implements Entity {
     private Double creatureRating;
     private Integer creatorId;
     private byte[] image;
+    private String encodedImage;
     private boolean marked=false;
 
     public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
@@ -166,6 +168,14 @@ public class Creature implements Entity {
         this.image = image;
     }
 
+    public String getEncodedImage() {
+        return encodedImage;
+    }
+
+    public void setEncodedImage(String encodedImage) {
+        this.encodedImage = encodedImage;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -174,18 +184,23 @@ public class Creature implements Entity {
         return limbQuantity == creature.limbQuantity &&
                 headQuantity == creature.headQuantity &&
                 eyeQuantity == creature.eyeQuantity &&
+                marked == creature.marked &&
                 Objects.equals(creatureId, creature.creatureId) &&
                 Objects.equals(creatureName, creature.creatureName) &&
                 creatureGender == creature.creatureGender &&
                 Objects.equals(description, creature.description) &&
                 Objects.equals(creatureRating, creature.creatureRating) &&
-                Objects.equals(creatorId, creature.creatorId);
+                Objects.equals(creatorId, creature.creatorId) &&
+                Arrays.equals(image, creature.image) &&
+                Objects.equals(encodedImage, creature.encodedImage);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(creatureId, creatureName, limbQuantity, headQuantity, eyeQuantity, creatureGender, description, creatureRating, creatorId);
+        int result = Objects.hash(creatureId, creatureName, limbQuantity, headQuantity, eyeQuantity, creatureGender, description, creatureRating, creatorId, encodedImage, marked);
+        result = 31 * result + Arrays.hashCode(image);
+        return result;
     }
 
     @Override
@@ -200,6 +215,9 @@ public class Creature implements Entity {
                 ", description='" + description + '\'' +
                 ", creatureRating=" + creatureRating +
                 ", creatorId=" + creatorId +
+                ", image=" + Arrays.toString(image) +
+                ", encodedImage='" + encodedImage + '\'' +
+                ", marked=" + marked +
                 '}';
     }
 }
