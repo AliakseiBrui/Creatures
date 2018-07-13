@@ -17,7 +17,22 @@ public class Creature implements Entity {
     private String description;
     private Double creatureRating;
     private Integer creatorId;
+    private byte[] image;
     private boolean marked=false;
+
+    public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
+                    Gender creatureGender, String description, Double creatureRating, Integer creatorId, byte[] image) {
+        this.creatureId = creatureId;
+        this.creatureName = creatureName;
+        this.limbQuantity = limbQuantity;
+        this.headQuantity = headQuantity;
+        this.eyeQuantity = eyeQuantity;
+        this.creatureGender = creatureGender;
+        this.description = description;
+        this.creatureRating = creatureRating;
+        this.creatorId = creatorId;
+        this.image = image;
+    }
 
     public Creature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
                     Gender creatureGender, String description, Double creatureRating, Integer creatorId) {
@@ -141,6 +156,14 @@ public class Creature implements Entity {
 
     public void setMarked(boolean marked) {
         this.marked = marked;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Override

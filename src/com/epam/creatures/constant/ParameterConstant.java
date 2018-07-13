@@ -17,11 +17,13 @@ public class ParameterConstant {
     public static final String CREATOR_ID_PARAMETER = "creatorId";
     public static final String ROLE_PARAMETER = "clientRole";
     public static final String USER_ID_PARAMETER = "userId";
+    public static final String ADMIN_ID_PARAMETER = "adminId";
     public static final String USER_BANNED_PARAMETER = "userBanned";
     public static final String COMMENT_PARAMETER = "comment";
     public static final String PAGE_PARAMETER = "page";
     public static final String MESSAGE_PARAMETER = "message";
     public static final String ERROR_MESSAGE_PARAMETER = "errorMessage";
+    public static final String PICTURE_TYPE_PARAMETER = "pictureType";
 
 
     private ParameterConstant(){}

@@ -11,6 +11,7 @@ import com.epam.creatures.pool.SafeConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +21,12 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
     private static final Logger LOGGER = LogManager.getLogger(CreaturesDAO.class);
     private static final String SELECT_ALL_CREATURES = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id, creatures_db.creatures.image " +
             "FROM creatures_db.creatures";
 
     private static final String SELECT_CREATURE_BY_ID = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,creatures_db.creatures.image " +
             "FROM creatures_db.creatures " +
             "WHERE creatures_db.creatures.id = ?";
 
@@ -41,15 +42,19 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
 
     private static final String SELECT_CREATURE_BY_NAME = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,creatures_db.creatures.image " +
             "FROM creatures_db.creatures " +
             "WHERE creatures_db.creatures.name = ?";
 
     private static final String SELECT_CREATURES_BY_CREATOR_ID = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
-            "creatures_db.creatures.rating, creatures_db.creatures.creator_id " +
+            "creatures_db.creatures.rating, creatures_db.creatures.creator_id,creatures_db.creatures.image " +
             "FROM creatures_db.creatures " +
             "WHERE creatures_db.creatures.creator_id = ?";
+
+    private static final String UPDATE_CREATURE_IMAGE = "UPDATE creatures_db.creatures " +
+            "SET creatures_db.creatures.image = ? " +
+            "WHERE creatures_db.creatures.id = ?";
 
     private CreatureFactory creatureFactory = new CreatureFactory();
 
@@ -63,9 +68,11 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
             ResultSet resultSet = statement.executeQuery(SELECT_ALL_CREATURES)){
 
             while (resultSet.next()){
-                creatureList.add(creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),resultSet.getInt(CreatureColumn.LIMB_QUANTITY),
-                        resultSet.getInt(CreatureColumn.HEAD_QUANTITY),resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
-                        resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),resultSet.getInt(CreatureColumn.CREATOR_ID)));
+                creatureList.add(creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),
+                        resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
+                        resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
+                        resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
+                        resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE)));
             }
 
         } catch (SQLException e) {
@@ -86,9 +93,11 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 if(resultSet.next()){
-                    return creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),resultSet.getInt(CreatureColumn.LIMB_QUANTITY),
-                            resultSet.getInt(CreatureColumn.HEAD_QUANTITY),resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
-                            resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),resultSet.getInt(CreatureColumn.CREATOR_ID));
+                    return creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),
+                            resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
+                            resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
+                            resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
+                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE));
                 }
             }
         } catch (SQLException e) {
@@ -172,9 +181,11 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 if(resultSet.next()){
-                    return creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),resultSet.getInt(CreatureColumn.LIMB_QUANTITY),
-                            resultSet.getInt(CreatureColumn.HEAD_QUANTITY),resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
-                            resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),resultSet.getInt(CreatureColumn.CREATOR_ID));
+                    return creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),
+                            resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
+                            resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
+                            resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
+                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE));
                 }
             }
         } catch (SQLException e) {
@@ -196,14 +207,32 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()){
-                    creatureList.add(creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),resultSet.getInt(CreatureColumn.LIMB_QUANTITY),
-                            resultSet.getInt(CreatureColumn.HEAD_QUANTITY),resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
-                            resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),resultSet.getInt(CreatureColumn.CREATOR_ID)));
+                    creatureList.add(creatureFactory.createCreature(resultSet.getInt(CreatureColumn.ID),resultSet.getString(CreatureColumn.NAME),
+                            resultSet.getInt(CreatureColumn.LIMB_QUANTITY), resultSet.getInt(CreatureColumn.HEAD_QUANTITY),
+                            resultSet.getInt(CreatureColumn.EYE_QUANTITY),Creature.Gender.valueOf(resultSet.getString(CreatureColumn.GENDER)),
+                            resultSet.getString(CreatureColumn.DESCRIPTION),resultSet.getDouble(CreatureColumn.RATING),
+                            resultSet.getInt(CreatureColumn.CREATOR_ID),resultSet.getBytes(CreatureColumn.IMAGE)));
                 }
             }
         } catch (SQLException e) {
             throw new DAOException("Exception while selecting creatures by creatorId.",e);
         }
         return creatureList;
+    }
+
+    @Override
+    public boolean updateCreatureImage(Integer id, InputStream image) throws DAOException {
+        try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
+            PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_CREATURE_IMAGE)){
+
+            if(preparedStatement!=null){
+                preparedStatement.setInt(2,id);
+                preparedStatement.setBlob(1,image);
+                return preparedStatement.executeUpdate()>0;
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Exception while updating creature's image.",e);
+        }
+        return false;
     }
 }

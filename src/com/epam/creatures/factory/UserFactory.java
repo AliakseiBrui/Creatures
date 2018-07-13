@@ -12,6 +12,11 @@ public class UserFactory {
         return new User(id,login,password,status,isBanned);
     }
 
+    public User createUser(Integer id,String login, String password, Double status, Boolean isBanned, byte[] avatar){
+        LOGGER.debug("Creating user.");
+        return new User(id,login,password,status,isBanned,avatar);
+    }
+
     public User createUser(String login, String password, Double status, Boolean isBanned){
         LOGGER.debug("Creating user.");
         return new User(login,password,status,isBanned);

@@ -34,13 +34,15 @@ public class UserUrlFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         ClientRole role = (ClientRole) request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
-        LOGGER.debug("UserUrlFilter has worked.");
+
 
         if(role==null){
             request.getRequestDispatcher(START_PAGE_RELATIVE_PATH).forward(request,response);
+            LOGGER.debug("UserUrlFilter has worked.");
             return;
         }else if(role == ClientRole.ADMIN){
             request.getRequestDispatcher(ADMIN_MAIN_PAGE_RELATIVE_PATH).forward(request,response);
+            LOGGER.debug("UserUrlFilter has worked.");
             return;
         }
         filterChain.doFilter(servletRequest,servletResponse);

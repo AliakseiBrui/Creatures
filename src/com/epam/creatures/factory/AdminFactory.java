@@ -12,6 +12,11 @@ public class AdminFactory {
         return new Admin(id,login,password);
     }
 
+    public Admin createAdmin(Integer id, String login, String password, byte[] avatar){
+        LOGGER.debug("Creating admin.");
+        return new Admin(id,login,password,avatar);
+    }
+
     public Admin createAdmin(String login, String password){
         LOGGER.debug("Creating admin.");
         return new Admin(login,password);

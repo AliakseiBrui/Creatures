@@ -18,6 +18,7 @@ public class PagePath {
     public static final String USER_CREATURE_DETAILS_PAGE = "jsp/user/user_creature_details.jsp";
     public static final String ADMIN_CREATURE_DETAILS_PAGE = "jsp/admin/admin_creature_details.jsp";
     public static final String CREATE_COMMENT_PAGE = "jsp/user/user_create_comment.jsp";
+    public static final String USER_CHANGE_AVATAR_PAGE = "jsp/user/user_change_avatar.jsp";
 
     private PagePath(){ }
 }

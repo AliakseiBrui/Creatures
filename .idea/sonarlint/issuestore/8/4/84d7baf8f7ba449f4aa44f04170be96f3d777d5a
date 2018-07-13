@@ -1,5 +1,0 @@
-
-ésquid:S1192"ÊDefine a constant instead of duplicating this literal "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned " 3 times.(éÙ‡ı8øïØÃ,
-}squid:S1192"`Define a constant instead of duplicating this literal "WHERE creatures_db.users.id = ?" 4 times.(´ÌM8¨ÄîØÃ,
-jsquid:S2095P"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Å¥Íóÿÿÿÿÿ8’ªÈÚÃ,
-ksquid:S2095£"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(Å¥Íóÿÿÿÿÿ8’ªÈÚÃ,

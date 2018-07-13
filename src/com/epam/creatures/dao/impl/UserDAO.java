@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,11 @@ import java.util.Objects;
 
 public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
     private static final Logger LOGGER = LogManager.getLogger(UserDAO.class);
-    private static final String SELECT_USER_BY_ID = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned " +
+    private static final String SELECT_USER_BY_ID = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned, creatures_db.users.avatar " +
             "FROM creatures_db.users " +
             "WHERE creatures_db.users.id = ?";
 
-    private static final String SELECT_ALL_USERS = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned " +
+    private static final String SELECT_ALL_USERS = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned, creatures_db.users.avatar " +
             "FROM creatures_db.users";
 
     private static final String DELETE_USER_BY_ID = "DELETE FROM creatures_db.users " +
@@ -40,9 +41,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
             "SET creatures_db.users.is_banned = ? " +
             "WHERE creatures_db.users.id = ?";
 
-    private static final String SELECT_USER_BY_LOGIN = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned " +
+    private static final String SELECT_USER_BY_LOGIN = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned, creatures_db.users.avatar " +
             "FROM creatures_db.users " +
             "WHERE creatures_db.users.login = ?";
+
+    private static final String UPDATE_USER_AVATAR = "UPDATE creatures_db.users " +
+            "SET creatures_db.users.avatar = ? " +
+            "WHERE creatures_db.users.id = ?";
 
     private UserFactory userFactory = new UserFactory();
 
@@ -60,8 +65,9 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
 
                 while (resultSet.next()){
                     userList.add(userFactory
-                            .createUser(resultSet.getInt(UserColumn.ID),resultSet.getString(UserColumn.LOGIN),resultSet.getString(UserColumn.PASSWORD),
-                                    resultSet.getDouble(UserColumn.STATUS),resultSet.getBoolean(UserColumn.IS_BANNED)));
+                            .createUser(resultSet.getInt(UserColumn.ID),resultSet.getString(UserColumn.LOGIN),
+                                    resultSet.getString(UserColumn.PASSWORD), resultSet.getDouble(UserColumn.STATUS),
+                                    resultSet.getBoolean(UserColumn.IS_BANNED),resultSet.getBytes(UserColumn.AVATAR)));
                 }
             }
         } catch (SQLException e) {
@@ -85,8 +91,9 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
 
             if(resultSet!=null && resultSet.next()){
                 return userFactory
-                        .createUser(resultSet.getInt(UserColumn.ID),resultSet.getString(UserColumn.LOGIN),resultSet.getString(UserColumn.PASSWORD),
-                            resultSet.getDouble(UserColumn.STATUS),resultSet.getBoolean(UserColumn.IS_BANNED));
+                        .createUser(resultSet.getInt(UserColumn.ID),resultSet.getString(UserColumn.LOGIN),
+                                resultSet.getString(UserColumn.PASSWORD), resultSet.getDouble(UserColumn.STATUS),
+                                resultSet.getBoolean(UserColumn.IS_BANNED),resultSet.getBytes(UserColumn.AVATAR));
             }
         } catch (SQLException e) {
             throw new DAOException("Exception while selecting user by id",e);
@@ -168,8 +175,9 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
 
             if(resultSet!=null && resultSet.next()){
                 return userFactory
-                        .createUser(resultSet.getInt(UserColumn.ID),resultSet.getString(UserColumn.LOGIN),resultSet.getString(UserColumn.PASSWORD),
-                                resultSet.getDouble(UserColumn.STATUS),resultSet.getBoolean(UserColumn.IS_BANNED));
+                        .createUser(resultSet.getInt(UserColumn.ID),resultSet.getString(UserColumn.LOGIN),
+                                resultSet.getString(UserColumn.PASSWORD), resultSet.getDouble(UserColumn.STATUS),
+                                resultSet.getBoolean(UserColumn.IS_BANNED),resultSet.getBytes(UserColumn.AVATAR));
             }
         } catch (SQLException e) {
             throw new DAOException("Exception while selecting user by login",e);
@@ -192,6 +200,22 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
             }
         } catch (SQLException e) {
             throw new DAOException("Exception while updating user",e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateUserAvatar(Integer id, InputStream avatar) throws DAOException {
+        try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
+            PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_AVATAR)){
+
+            if(preparedStatement!=null){
+                preparedStatement.setInt(2,id);
+                preparedStatement.setBlob(1,avatar);
+                return preparedStatement.executeUpdate()>0;
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Exception while updating user's avatar.",e);
         }
         return false;
     }

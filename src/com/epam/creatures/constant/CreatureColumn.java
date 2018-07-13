@@ -10,6 +10,7 @@ public class CreatureColumn {
     public static final String DESCRIPTION = "description";
     public static final String CREATOR_ID = "creator_id";
     public static final String RATING = "rating";
+    public static final String IMAGE = "image";
 
     private CreatureColumn(){}
 }

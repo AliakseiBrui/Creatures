@@ -21,6 +21,7 @@ public class UserValidator {
             user.setBanned(currentUser.getBanned());
             user.setId(currentUser.getId());
             user.setStatus(currentUser.getStatus());
+            user.setAvatar(currentUser.getAvatar());
             return true;
         }
         return false;

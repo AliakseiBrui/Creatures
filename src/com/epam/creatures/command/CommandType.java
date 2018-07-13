@@ -62,6 +62,8 @@ public enum CommandType {
 
     TO_COMMENT_CREATURE_PAGE_COMMAND(new ToCommentCreaturePageCommand(new ToCommentCreaturePageService())),
 
+    TO_USER_CHANGE_AVATAR_PAGE_COMMAND(new ToAnyPageCommand(new ToUserChangeAvatarPageService())),
+
 
     ;
 

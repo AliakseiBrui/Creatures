@@ -14,6 +14,7 @@ import com.epam.creatures.service.CommandService;
 import com.epam.creatures.validator.AdminValidator;
 import com.epam.creatures.validator.DataValidator;
 
+import java.util.Base64;
 import java.util.Map;
 
 public class AdminAuthorizationService implements CommandService {
@@ -40,7 +41,10 @@ public class AdminAuthorizationService implements CommandService {
                     attributeMap.put(AttributeConstant.LOGIN_ATTRIBUTE, admin.getLogin());
                     attributeMap.put(AttributeConstant.ID_ATTRIBUTE, admin.getId());
                     attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, ClientRole.ADMIN);
-                    //put avatar as well
+
+                    if(admin.getAvatar()!=null) {
+                        attributeMap.put(AttributeConstant.AVATAR_ATTRIBUTE,Base64.getEncoder().encode(admin.getAvatar()));
+                    }
                     routeType = Router.RouteType.REDIRECT;
                     route = PagePath.ADMIN_MAIN_PAGE;
                 } else {

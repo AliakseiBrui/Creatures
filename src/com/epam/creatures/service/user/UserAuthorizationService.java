@@ -15,6 +15,7 @@ import com.epam.creatures.service.CommandService;
 import com.epam.creatures.validator.DataValidator;
 import com.epam.creatures.validator.UserValidator;
 
+import java.util.Base64;
 import java.util.Map;
 
 public class UserAuthorizationService implements CommandService {
@@ -43,7 +44,10 @@ public class UserAuthorizationService implements CommandService {
                     attributeMap.put(AttributeConstant.STATUS_ATTRIBUTE, user.getStatus());
                     attributeMap.put(AttributeConstant.BANNED_ATTRIBUTE, user.getBanned());
                     attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, ClientRole.USER);
-                    //put avatar as well
+
+                    if(user.getAvatar()!=null) {
+                        attributeMap.put(AttributeConstant.AVATAR_ATTRIBUTE,Base64.getEncoder().encodeToString(user.getAvatar()));
+                    }
                     routeType = Router.RouteType.REDIRECT;
                     route = PagePath.USER_MAIN_PAGE;
 

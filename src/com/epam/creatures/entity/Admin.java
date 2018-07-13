@@ -6,8 +6,16 @@ public class Admin implements Entity {
     private Integer id;
     private String login;
     private String password;
+    private byte[] avatar;
 
     public Admin() {
+    }
+
+    public Admin(Integer id, String login, String password, byte[] avatar) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.avatar = avatar;
     }
 
     public Admin(Integer id, String login, String password) {
@@ -43,6 +51,14 @@ public class Admin implements Entity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
 
     @Override

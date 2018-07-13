@@ -12,6 +12,7 @@ public class AdminValidator {
 
         if(currentAdmin!=null && currentAdmin.getPassword().equals(admin.getPassword())){
             admin.setId(currentAdmin.getId());
+            admin.setAvatar(currentAdmin.getAvatar());
             return true;
         }
         return false;

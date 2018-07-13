@@ -14,6 +14,12 @@ public class CreatureFactory {
     }
 
     public Creature createCreature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
+                                   Creature.Gender creatureGender, String description, Double creatureRating, Integer creatorId,byte[] image){
+        LOGGER.debug("Creating creature.");
+        return new Creature(creatureId,creatureName,limbQuantity,headQuantity,eyeQuantity,creatureGender,description,creatureRating, creatorId, image);
+    }
+
+    public Creature createCreature(Integer creatureId, String creatureName, int limbQuantity, int headQuantity, int eyeQuantity,
                                    Creature.Gender creatureGender, Integer creatorId){
         LOGGER.debug("Creating creature.");
         return new Creature(creatureId,creatureName,limbQuantity,headQuantity,eyeQuantity,creatureGender, creatorId);

@@ -8,6 +8,7 @@ public class User implements Entity {
     private String password =null;
     private Double status = null;
     private Boolean isBanned = null;
+    private byte[] avatar = null;
 
     public User() {
     }
@@ -23,6 +24,15 @@ public class User implements Entity {
         this.password = password;
         this.status = status;
         this.isBanned = isBanned;
+    }
+
+    public User(Integer id, String login, String password, Double status, Boolean isBanned, byte[] avatar) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.status = status;
+        this.isBanned = isBanned;
+        this.avatar = avatar;
     }
 
     public User(String login, String password, Double status, Boolean isBanned) {
@@ -75,6 +85,14 @@ public class User implements Entity {
 
     public void setBanned(Boolean banned) {
         isBanned = banned;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
 
     @Override
