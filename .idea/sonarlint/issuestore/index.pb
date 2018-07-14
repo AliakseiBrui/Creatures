@@ -287,3 +287,7 @@ L
 web/jsp/parts/image_part.jsp,0\d\0d7d63f0cdbcf46803a44005901013f37caebd7e
 g
 7src/com/epam/creatures/validator/CreatureValidator.java,c\b\cbe04e9143691c3254344469e0beae3be5f792a0
+a
+1src/com/epam/creatures/filter/GuestUrlFilter.java,6\d\6d07672c4bed34c1907017d34ce90f2e6c4619e7
+b
+2src/com/epam/creatures/filter/StartPageFilter.java,2\3\237306b1275d095a86601b62efa6225ce66d4265

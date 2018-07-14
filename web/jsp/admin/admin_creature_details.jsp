@@ -13,9 +13,50 @@
 </head>
 <body>
 <%@ include file="../parts/header.jsp"%>
+<div align="left">
+    <form action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="TO_ADMIN_MAIN_PAGE_COMMAND"/>
+        <input type="submit" name="to_main_page_button" value="Main Page" class="nice-button"/>
+    </form>
+</div>
 <div align="center">
     <br/>
     <c:import url="/creatures?commandType=SHOW_CREATURE_COMMENTS_COMMAND"/>
+    <br/>
+    <div class="creature">
+        <div class="creature-body">
+            <div class="creature-img">
+                <%@ include file="../parts/image_part.jsp"%>
+            </div>
+            <div class="creature-name">
+                <c:out value="${creature.getCreatureName()}"/>
+            </div>
+            <div class="creature-creator">
+                Creator: <c:out value="${creature.getCreatorName()}"/>
+            </div>
+            <div class="creature-limbs">
+                Limbs: <c:out value="${creature.getLimbQuantity()}"/>
+            </div>
+            <div class="creature-heads">
+                Heads: <c:out value="${creature.getHeadQuantity()}"/>
+            </div>
+            <div class="creature-eyes">
+                Eyes: <c:out value="${creature.getEyeQuantity()}"/>
+            </div>
+            <div class="creature-gender">
+                Gender: <c:out value="${creature.getCreatureGender()}"/>
+            </div>
+            <div class="creature-desc">
+                <c:out value="${creature.getDescription()}"/>
+            </div>
+        </div>
+        <div class="creature-footer">
+            <div class="creature-mark">
+                <c:out value="${creature.getCreatureRating()}"/>
+            </div>
+        </div>
+    </div>
+    <br/>
 </div>
 </body>
 </html>

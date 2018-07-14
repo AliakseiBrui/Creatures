@@ -27,6 +27,11 @@ public class UserFactory {
         return new User(login,password);
     }
 
+    public User createUser(Integer id,String login,byte[] avatar) {
+        LOGGER.debug("Creating user.");
+        return new User(id,login,avatar);
+    }
+
     public User createUser(){
         LOGGER.debug("Creating user.");
         return new User();
@@ -35,5 +40,10 @@ public class UserFactory {
     public User createUser(int id, boolean banned){
         LOGGER.debug("Creating user.");
         return new User(id,banned);
+    }
+
+    public User createUser(int id){
+        LOGGER.debug("Creating user.");
+        return new User(id);
     }
 }

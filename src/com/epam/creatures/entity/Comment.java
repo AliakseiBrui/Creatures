@@ -6,19 +6,19 @@ public class Comment implements Entity{
     private Integer id;
     private String content;
     private Integer creatureId;
-    private Integer userId;
+    private User user;
 
-    public Comment(Integer id, String content, Integer creatureId, Integer userId) {
+    public Comment(Integer id, String content, Integer creatureId, User user) {
         this.id = id;
         this.content = content;
         this.creatureId = creatureId;
-        this.userId = userId;
+        this.user = user;
     }
 
-    public Comment(String content, Integer creatureId, Integer userId) {
+    public Comment(String content, Integer creatureId, User user) {
         this.content = content;
         this.creatureId = creatureId;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -45,12 +45,12 @@ public class Comment implements Entity{
         this.creatureId = creatureId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -61,13 +61,13 @@ public class Comment implements Entity{
         return Objects.equals(id, comment.id) &&
                 Objects.equals(content, comment.content) &&
                 Objects.equals(creatureId, comment.creatureId) &&
-                Objects.equals(userId, comment.userId);
+                Objects.equals(user, comment.user);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, content, creatureId, userId);
+        return Objects.hash(id, content, creatureId, user);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class Comment implements Entity{
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", creatureId=" + creatureId +
-                ", userId=" + userId +
+                ", user=" + user +
                 '}';
     }
 }

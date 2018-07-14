@@ -1,11 +1,14 @@
 package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.CommentColumn;
+import com.epam.creatures.constant.UserColumn;
 import com.epam.creatures.dao.AbstractDAO;
 import com.epam.creatures.dao.CommentTableDAO;
 import com.epam.creatures.dao.DAOException;
 import com.epam.creatures.entity.Comment;
+import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.CommentFactory;
+import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.pool.ConnectionPool;
 import com.epam.creatures.pool.SafeConnection;
 import org.apache.logging.log4j.LogManager;
@@ -21,12 +24,14 @@ import java.util.Objects;
 
 public class CommentDAO extends AbstractDAO<Integer, Comment> implements CommentTableDAO {
     private static final Logger LOGGER = LogManager.getLogger(CommentDAO.class);
-    private static final String SELECT_COMMENT_BY_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id " +
+    private static final String SELECT_COMMENT_BY_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id, u.login, u.avatar " +
             "FROM creatures_db.comments " +
+            "INNER JOIN creatures_db.users u ON comments.user_id = u.id " +
             "WHERE creatures_db.comments.id = ?";
 
-    private static final String SELECT_ALL_COMMENTS = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id " +
-            "FROM creatures_db.comments";
+    private static final String SELECT_ALL_COMMENTS = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id, creatures_db.comments.user_id,u.login, u.avatar " +
+            "FROM creatures_db.comments " +
+            "INNER JOIN creatures_db.users u ON comments.user_id = u.id";
 
     private static final String DELETE_COMMENT_BY_ID = "DELETE FROM creatures_db.comments " +
             "WHERE creatures_db.comments.id = ?";
@@ -38,12 +43,13 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
             "SET creatures_db.comments.comment_content = ?, creatures_db.comments.creature_id = ?,creatures_db.comments.user_id = ? " +
             "WHERE creatures_db.comments.id = ?";
 
-    private static final String SELECT_COMMENT_BY_CREATURE_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id " +
+    private static final String SELECT_COMMENT_BY_CREATURE_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id,u.login, u.avatar " +
             "FROM creatures_db.comments " +
+            "INNER JOIN creatures_db.users u ON comments.user_id = u.id " +
             "WHERE creatures_db.comments.creature_id = ?";
 
     private CommentFactory commentFactory = new CommentFactory();
-
+    private UserFactory userFactory = new UserFactory();
     @Override
     public List<Comment> findAll() throws DAOException {
         List<Comment> commentList = new ArrayList<>();
@@ -54,8 +60,9 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
             ResultSet resultSet = statement.executeQuery(SELECT_ALL_COMMENTS)){
 
             while (resultSet.next()){
+                User user = userFactory.createUser(resultSet.getInt(CommentColumn.USER_ID),resultSet.getString(UserColumn.LOGIN),resultSet.getBytes(UserColumn.AVATAR));
                 commentList.add(commentFactory
-                        .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),resultSet.getInt(CommentColumn.USER_ID)));
+                        .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),user));
             }
         } catch (SQLException e) {
             throw new DAOException("Exception while selecting all comments.",e);
@@ -75,8 +82,9 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 if(resultSet.next()){
+                    User user = userFactory.createUser(resultSet.getInt(CommentColumn.USER_ID),resultSet.getString(UserColumn.LOGIN),resultSet.getBytes(UserColumn.AVATAR));
                     return commentFactory
-                            .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),resultSet.getInt(CommentColumn.USER_ID));
+                            .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),user);
                 }
             }
         } catch (SQLException e) {
@@ -113,7 +121,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
             if(preparedStatement!=null){
                 preparedStatement.setString(1,entity.getContent());
                 preparedStatement.setInt(2,entity.getCreatureId());
-                preparedStatement.setInt(3,entity.getUserId());
+                preparedStatement.setInt(3,entity.getUser().getId());
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
@@ -133,7 +141,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 preparedStatement.setInt(4,entity.getId());
                 preparedStatement.setString(1,entity.getContent());
                 preparedStatement.setInt(2,entity.getCreatureId());
-                preparedStatement.setInt(3,entity.getUserId());
+                preparedStatement.setInt(3,entity.getUser().getId());
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
@@ -155,8 +163,9 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 while(resultSet.next()){
+                    User user = userFactory.createUser(resultSet.getInt(CommentColumn.USER_ID),resultSet.getString(UserColumn.LOGIN),resultSet.getBytes(UserColumn.AVATAR));
                     commentList.add(commentFactory
-                            .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),resultSet.getInt(CommentColumn.USER_ID)));
+                            .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),user));
                 }
             }
         } catch (SQLException e) {

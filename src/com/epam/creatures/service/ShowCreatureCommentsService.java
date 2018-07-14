@@ -3,14 +3,17 @@ package com.epam.creatures.service;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.impl.CommentDAO;
 import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.impl.CommentDAO;
 import com.epam.creatures.entity.ClientRole;
+import com.epam.creatures.entity.Comment;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.RouterFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Base64;
+import java.util.List;
 import java.util.Map;
 
 public class ShowCreatureCommentsService implements CommandService {
@@ -22,7 +25,15 @@ public class ShowCreatureCommentsService implements CommandService {
 
         try {
             Integer creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
-            attributeMap.put(AttributeConstant.COMMENT_LIST_ATTRIBUTE,commentDAO.findCommentsByCreatureId(creatureId));
+            List<Comment> commentList = commentDAO.findCommentsByCreatureId(creatureId);
+            commentList.forEach(comment -> {
+                if(comment.getUser()!=null && comment.getUser().getAvatar()!=null){
+
+                    comment.getUser().setEncodedAvatar(Base64.getEncoder().encodeToString(comment.getUser().getAvatar()));
+                }
+            });
+            attributeMap.put(AttributeConstant.COMMENT_LIST_ATTRIBUTE,commentList);
+
             ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
             String route=null;
 

@@ -48,6 +48,13 @@
                     <c:out value="${creature.getCreatureRating()}"/>
                 </div>
                 <div class="creature-button">
+                    <form id="creatureForm" action="/creatures" method="post">
+                        <input type="hidden" name="commandType" value="TO_CREATURE_DETAILS_PAGE_COMMAND"/>
+                        <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+                        <input type="submit" value="Details" class="nice-button"/>
+                    </form>
+                </div>
+                <div class="creature-button">
                     <form action="/creatures" method="post">
                         <input type="hidden" name="commandType" value="TO_UPDATE_CREATURE_PAGE_COMMAND"/>
                         <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>

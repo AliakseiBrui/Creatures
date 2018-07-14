@@ -10,8 +10,19 @@ public class User implements Entity {
     private Double status = null;
     private Boolean isBanned = null;
     private byte[] avatar = null;
+    private String encodedAvatar = null;
 
     public User() {
+    }
+
+    public User(Integer id) {
+        this.id = id;
+    }
+
+    public User(Integer id, String login, byte[] avatar) {
+        this.id = id;
+        this.login = login;
+        this.avatar = avatar;
     }
 
     public User(Integer id, Boolean isBanned) {
@@ -94,6 +105,14 @@ public class User implements Entity {
 
     public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
+    }
+
+    public String getEncodedAvatar() {
+        return encodedAvatar;
+    }
+
+    public void setEncodedAvatar(String encodedAvatar) {
+        this.encodedAvatar = encodedAvatar;
     }
 
     @Override
