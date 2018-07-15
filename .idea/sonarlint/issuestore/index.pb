@@ -291,3 +291,5 @@ a
 1src/com/epam/creatures/filter/GuestUrlFilter.java,6\d\6d07672c4bed34c1907017d34ce90f2e6c4619e7
 b
 2src/com/epam/creatures/filter/StartPageFilter.java,2\3\237306b1275d095a86601b62efa6225ce66d4265
+T
+$web/jsp/parts/comments_for_admin.jsp,9\b\9bcff8e42b1e43a24524e297299e6427ac358984

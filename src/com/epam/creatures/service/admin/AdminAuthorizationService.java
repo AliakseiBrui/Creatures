@@ -12,7 +12,7 @@ import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
 import com.epam.creatures.validator.AdminValidator;
-import com.epam.creatures.validator.DataValidator;
+import com.epam.creatures.validator.ClientDataValidator;
 
 import java.util.Base64;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class AdminAuthorizationService implements CommandService {
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         RouterFactory routerFactory = new RouterFactory();
         AdminFactory adminFactory = new AdminFactory();
-        DataValidator dataValidator = new DataValidator();
+        ClientDataValidator clientDataValidator = new ClientDataValidator();
         AdminValidator adminValidator = new AdminValidator();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String password = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
@@ -35,7 +35,7 @@ public class AdminAuthorizationService implements CommandService {
 
         try {
 
-            if(dataValidator.validateLogin(login)) {
+            if(clientDataValidator.validateLogin(login)) {
 
                 if (adminValidator.validateAdminLogin(admin)) {
                     attributeMap.put(AttributeConstant.LOGIN_ATTRIBUTE, admin.getLogin());

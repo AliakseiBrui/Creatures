@@ -33,7 +33,6 @@ public class CreateCreatureCommand extends AbstractCommand {
         getService().process(parameterMap,attributeMap);
 
         request.setAttribute(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,attributeMap.get(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE));
-        request.setAttribute(AttributeConstant.MESSAGE_ATTRIBUTE,attributeMap.get(AttributeConstant.MESSAGE_ATTRIBUTE));
         return (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
     }
 }

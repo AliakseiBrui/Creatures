@@ -31,16 +31,17 @@ public class UpdateCreatureService implements CommandService {
         Creature.Gender gender = Creature.Gender.valueOf(parameterMap.get(ParameterConstant.CREATURE_GENDER_PARAMETER));
         String description = parameterMap.get(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER);
         Creature creature = creatureFactory.createCreature(id,name,limbQuantity,headQuantity,eyeQuantity,gender,description);
-        StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
         CreatureValidator creatureValidator = new CreatureValidator();
+        Router.RouteType routeType = Router.RouteType.FORWARD;
+        String route = PagePath.ADMIN_MAIN_PAGE;
 
         if(creatureValidator.validateCreature(creature)) {
 
             try {
 
                 if (creaturesDAO.update(creature)) {
-                    message.append("Creature has been updated.");
+                    routeType=Router.RouteType.REDIRECT;
                 } else {
                     errorMessage.append("Could not update creature.");
                 }
@@ -52,8 +53,7 @@ public class UpdateCreatureService implements CommandService {
         }else{
             errorMessage.append("Wrong data.");
         }
-        attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(routeType,route));
     }
 }

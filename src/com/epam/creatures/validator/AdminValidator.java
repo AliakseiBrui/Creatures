@@ -8,12 +8,14 @@ public class AdminValidator {
 
     public boolean validateAdminLogin(Admin admin) throws DAOException {
         AdminDAO adminDAO = new AdminDAO();
-        Admin currentAdmin = adminDAO.findAdminByLogin(admin.getLogin());
+        if(admin!=null) {
+            Admin currentAdmin = adminDAO.findAdminByLogin(admin.getLogin());
 
-        if(currentAdmin!=null && currentAdmin.getPassword().equals(admin.getPassword())){
-            admin.setId(currentAdmin.getId());
-            admin.setAvatar(currentAdmin.getAvatar());
-            return true;
+            if (currentAdmin != null && currentAdmin.getPassword().equals(admin.getPassword())) {
+                admin.setId(currentAdmin.getId());
+                admin.setAvatar(currentAdmin.getAvatar());
+                return true;
+            }
         }
         return false;
     }

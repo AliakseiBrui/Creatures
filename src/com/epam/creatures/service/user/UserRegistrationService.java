@@ -11,7 +11,7 @@ import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.service.CommandService;
-import com.epam.creatures.validator.DataValidator;
+import com.epam.creatures.validator.ClientDataValidator;
 
 import java.util.Map;
 
@@ -24,7 +24,7 @@ public class UserRegistrationService implements CommandService {
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         RouterFactory routerFactory = new RouterFactory();
         UserDAO userDAO = new UserDAO();
-        DataValidator dataValidator = new DataValidator();
+        ClientDataValidator clientDataValidator = new ClientDataValidator();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
         User user = userFactory.createUser(login,encryptedPassword);
@@ -33,7 +33,7 @@ public class UserRegistrationService implements CommandService {
 
         try {
 
-            if(dataValidator.validateLogin(login)) {
+            if(clientDataValidator.validateLogin(login)) {
 
                 if (userDAO.create(user)) {
                     message.append("Registration succeeded.");

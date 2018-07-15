@@ -11,7 +11,7 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
-import com.epam.creatures.validator.DataValidator;
+import com.epam.creatures.validator.ClientDataValidator;
 
 import java.util.Map;
 
@@ -22,20 +22,22 @@ public class CreateAdminService implements CommandService {
         AdminFactory adminFactory = new AdminFactory();
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         AdminDAO adminDAO = new AdminDAO();
-        DataValidator dataValidator = new DataValidator();
+        ClientDataValidator clientDataValidator = new ClientDataValidator();
         RouterFactory routerFactory = new RouterFactory();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
         Admin admin = adminFactory.createAdmin(login,encryptedPassword);
-        StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
+        Router.RouteType routeType = Router.RouteType.FORWARD;
+        String route = PagePath.CREATE_ADMIN_PAGE;
 
         try {
 
-            if(dataValidator.validateLogin(login)) {
+            if(clientDataValidator.validateLogin(login)) {
 
                 if (adminDAO.create(admin)) {
-                    message.append("Admin has been created.");
+                    routeType=Router.RouteType.REDIRECT;
+                    route=PagePath.ADMIN_MAIN_PAGE;
                 } else {
                     errorMessage.append("Could not create admin.");
                 }
@@ -45,9 +47,7 @@ public class CreateAdminService implements CommandService {
         } catch (DAOException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }
-
-        attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(routeType,route));
     }
 }

@@ -31,16 +31,18 @@ public class CreateCreatureService implements CommandService {
         String description = parameterMap.get(ParameterConstant.CREATURE_DESCRIPTION_PARAMETER);
         int creatorId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATOR_ID_PARAMETER));
         Creature creature = creatureFactory.createCreature(name,limbQuantity,headQuantity,eyeQuantity,gender,description,creatorId);
-        StringBuilder message = new StringBuilder();
         StringBuilder errorMessage = new StringBuilder();
         CreatureValidator creatureValidator = new CreatureValidator();
+        Router.RouteType routeType = Router.RouteType.FORWARD;
+        String route = PagePath.CREATE_CREATURE_PAGE;
 
         if(creatureValidator.validateCreature(creature)) {
 
             try {
 
                 if (creaturesDAO.create(creature)) {
-                    message.append("Creature has been created.");
+                    routeType=Router.RouteType.REDIRECT;
+                    route=PagePath.ADMIN_MAIN_PAGE;
                 } else {
                     errorMessage.append("Could not create creature.");
                 }
@@ -51,8 +53,7 @@ public class CreateCreatureService implements CommandService {
         }else{
             errorMessage.append("Wrong data.");
         }
-        attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(routeType,route));
     }
 }

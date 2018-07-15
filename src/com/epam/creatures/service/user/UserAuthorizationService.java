@@ -12,7 +12,7 @@ import com.epam.creatures.exception.UserBannedException;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.service.CommandService;
-import com.epam.creatures.validator.DataValidator;
+import com.epam.creatures.validator.ClientDataValidator;
 import com.epam.creatures.validator.UserValidator;
 
 import java.util.Base64;
@@ -25,7 +25,7 @@ public class UserAuthorizationService implements CommandService {
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         RouterFactory routerFactory = new RouterFactory();
         UserFactory userFactory = new UserFactory();
-        DataValidator dataValidator = new DataValidator();
+        ClientDataValidator clientDataValidator = new ClientDataValidator();
         UserValidator userValidator = new UserValidator();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String password = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
@@ -36,7 +36,7 @@ public class UserAuthorizationService implements CommandService {
 
         try {
 
-            if(dataValidator.validateLogin(login)) {
+            if(clientDataValidator.validateLogin(login)) {
 
                 if (userValidator.validateUser(user)) {
                     attributeMap.put(AttributeConstant.LOGIN_ATTRIBUTE, user.getLogin());

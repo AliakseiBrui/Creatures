@@ -10,5 +10,7 @@ public interface UserTableDAO {
 
     boolean updateUserBan(User user) throws DAOException;
 
+    boolean updateUserStatus(Integer id, Double status) throws DAOException;
+
     boolean updateUserAvatar(Integer id, InputStream avatar) throws DAOException;
 }

@@ -49,6 +49,10 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
             "SET creatures_db.users.avatar = ? " +
             "WHERE creatures_db.users.id = ?";
 
+    private static final String UPDATE_USER_STATUS = "UPDATE creatures_db.users " +
+            "SET creatures_db.users.status = ? " +
+            "WHERE creatures_db.users.id = ?";
+
     private UserFactory userFactory = new UserFactory();
 
     @Override
@@ -187,7 +191,7 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
 
     @Override
     public boolean updateUserBan(User user) throws DAOException {
-        LOGGER.debug("Updating user." + user);
+        LOGGER.debug("Updating user's ban." + user);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement=Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_BAN);){
@@ -205,7 +209,25 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
     }
 
     @Override
+    public boolean updateUserStatus(Integer id, Double status) throws DAOException {
+        LOGGER.debug("Updating user's status. Status:" + status);
+        try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
+            PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_STATUS)){
+
+            if(preparedStatement!=null){
+                preparedStatement.setInt(2,id);
+                preparedStatement.setDouble(1,status);
+                return preparedStatement.executeUpdate()>0;
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Exception while updating user's status.",e);
+        }
+        return false;
+    }
+
+    @Override
     public boolean updateUserAvatar(Integer id, InputStream avatar) throws DAOException {
+        LOGGER.debug("Updating user's avatar.");
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_AVATAR)){
 
