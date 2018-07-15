@@ -225,8 +225,6 @@ S
 #web/jsp/parts/comments_for_user.jsp,6\d\6dff10b9699e51bd3386bce4eb87791c4dfad15b
 V
 &web/jsp/user/user_creature_details.jsp,8\2\824700b419d8052dabe161328df6c0b308b020e4
-c
-3src/com/epam/creatures/validator/DataValidator.java,9\6\96b78e98257621232790a435927e3a62fc6f86dd
 H
 web/jsp/parts/header.jsp,e\f\ef72a255d9b280fd08c8fa5007bcf63b9cff4eed
 a
@@ -293,3 +291,9 @@ b
 2src/com/epam/creatures/filter/StartPageFilter.java,2\3\237306b1275d095a86601b62efa6225ce66d4265
 T
 $web/jsp/parts/comments_for_admin.jsp,9\b\9bcff8e42b1e43a24524e297299e6427ac358984
+i
+9src/com/epam/creatures/validator/ClientDataValidator.java,0\8\08599ddc4abeb2d43b16c88ee587231c5a5411b4
+f
+6src/com/epam/creatures/validator/CommentValidator.java,4\2\427c57bdf0ae0e25ec17a97ed621c653b1326395
+c
+3src/com/epam/creatures/action/StatusCalculator.java,4\6\4680728198995ebb90ae7cecded235046b851f29

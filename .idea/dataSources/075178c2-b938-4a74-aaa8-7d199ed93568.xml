@@ -1344,21 +1344,28 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="320" parent="284" name="fk_marks_creatures1_idx">
+    <column id="320" parent="284" name="status_component">
+      <Position>4</Position>
+      <DataType>double|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;5&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="321" parent="284" name="fk_marks_creatures1_idx">
       <ColNames>creature_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="321" parent="284" name="fk_users_marks_idx">
+    <index id="322" parent="284" name="fk_users_marks_idx">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="322" parent="284" name="PRIMARY">
+    <key id="323" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>creature_id
 user_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="323" parent="284" name="fk_creatures_marks">
+    <foreign-key id="324" parent="284" name="fk_creatures_marks">
       <ColNames>creature_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>creatures</RefTableName>
@@ -1366,7 +1373,7 @@ user_id</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="324" parent="284" name="fk_users_marks">
+    <foreign-key id="325" parent="284" name="fk_users_marks">
       <ColNames>user_id</ColNames>
       <RefSchemaName>creatures_db</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1374,19 +1381,19 @@ user_id</ColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <trigger id="325" parent="284" name="marks_AFTER_INSERT">
+    <trigger id="326" parent="284" name="marks_AFTER_INSERT">
       <Turn>after-row</Turn>
       <Events>I</Events>
     </trigger>
-    <trigger id="326" parent="284" name="marks_AFTER_UPDATE">
+    <trigger id="327" parent="284" name="marks_AFTER_UPDATE">
       <Turn>after-row</Turn>
       <Events>U</Events>
     </trigger>
-    <trigger id="327" parent="284" name="marks_AFTER_DELETE">
+    <trigger id="328" parent="284" name="marks_AFTER_DELETE">
       <Turn>after-row</Turn>
       <Events>D</Events>
     </trigger>
-    <column id="328" parent="285" name="id">
+    <column id="329" parent="285" name="id">
       <Position>1</Position>
       <Comment>Искусственный ПК.</Comment>
       <DataType>int(11) unsigned|0s</DataType>
@@ -1394,49 +1401,50 @@ user_id</ColNames>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="285" name="login">
+    <column id="330" parent="285" name="login">
       <Position>2</Position>
       <Comment>Логин пользователя.</Comment>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="285" name="password">
+    <column id="331" parent="285" name="password">
       <Position>3</Position>
       <Comment>Пароль пользователя.</Comment>
       <DataType>char(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="285" name="status">
+    <column id="332" parent="285" name="status">
       <Position>4</Position>
       <Comment>Статус пользователя.</Comment>
-      <DataType>int(2)|0s</DataType>
+      <DataType>decimal(4,2 digit)|0s</DataType>
+      <DefaultExpression>&apos;5.00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="332" parent="285" name="is_banned">
+    <column id="333" parent="285" name="is_banned">
       <Position>5</Position>
       <Comment>Забанен ли пользователь.</Comment>
       <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="333" parent="285" name="avatar">
+    <column id="334" parent="285" name="avatar">
       <Position>6</Position>
       <DataType>mediumblob|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="334" parent="285" name="login_UNIQUE">
+    <index id="335" parent="285" name="login_UNIQUE">
       <ColNames>login</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="335" parent="285" name="PRIMARY">
+    <key id="336" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="336" parent="285" name="login_UNIQUE">
+    <key id="337" parent="285" name="login_UNIQUE">
       <ColNames>login</ColNames>
       <UnderlyingIndexName>login_UNIQUE</UnderlyingIndexName>
     </key>

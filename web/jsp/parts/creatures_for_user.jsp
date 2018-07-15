@@ -55,6 +55,7 @@
                                     <input type="hidden" name="commandType" value="LIKE_CREATURE_COMMAND"/>
                                     <input type="hidden" name="creatureId" value="${creature.getCreatureId()}">
                                     <select name="mark" class="custom-select">
+                                        <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>

@@ -24,8 +24,8 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
     private static final String SELECT_ALL_MARKS = "SELECT creatures_db.marks.mark_value, creatures_db.marks.creature_id, creatures_db.marks.user_id " +
             "FROM creatures_db.marks";
 
-    private static final String INSERT_MARK = "INSERT INTO creatures_db.marks(creatures_db.marks.mark_value, creatures_db.marks.creature_id, creatures_db.marks.user_id) " +
-            "VALUES (?,?,?)";
+    private static final String INSERT_MARK = "INSERT INTO creatures_db.marks(creatures_db.marks.mark_value, creatures_db.marks.creature_id, creatures_db.marks.user_id, creatures_db.marks.status_component) " +
+            "VALUES (?,?,?,?)";
 
     private static final String UPDATE_MARK = "UPDATE creatures_db.marks " +
             "SET creatures_db.marks.mark_value = ? " +
@@ -86,6 +86,7 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 preparedStatement.setDouble(1,entity.getMarkValue());
                 preparedStatement.setInt(2,entity.getCreatureId());
                 preparedStatement.setInt(3,entity.getUserId());
+                preparedStatement.setDouble(4,entity.getStatusComponent());
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {

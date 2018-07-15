@@ -11,4 +11,9 @@ public class MarkFactory {
         LOGGER.debug("Creating mark.");
         return new Mark(markValue,creatureId,userId);
     }
+
+    public Mark createMark(Double markValue, Integer creatureId, Integer userId, Double statusComponent){
+        LOGGER.debug("Creating mark.");
+        return new Mark(markValue,creatureId,userId,statusComponent);
+    }
 }

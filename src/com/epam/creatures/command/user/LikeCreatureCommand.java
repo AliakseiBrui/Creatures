@@ -29,6 +29,7 @@ public class LikeCreatureCommand extends AbstractCommand {
 
         getService().process(parameterMap,attributeMap);
 
+        request.getSession().setAttribute(AttributeConstant.STATUS_ATTRIBUTE,attributeMap.get(AttributeConstant.STATUS_ATTRIBUTE));
         return (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
     }
 }

@@ -6,6 +6,14 @@ public class Mark implements Entity {
     private Double markValue;
     private Integer creatureId;
     private Integer userId;
+    private Double statusComponent;
+
+    public Mark(Double markValue, Integer creatureId, Integer userId, Double statusComponent) {
+        this.markValue = markValue;
+        this.creatureId = creatureId;
+        this.userId = userId;
+        this.statusComponent = statusComponent;
+    }
 
     public Mark(Double markValue, Integer creatureId, Integer userId) {
         this.markValue = markValue;
@@ -35,6 +43,14 @@ public class Mark implements Entity {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Double getStatusComponent() {
+        return statusComponent;
+    }
+
+    public void setStatusComponent(Double statusComponent) {
+        this.statusComponent = statusComponent;
     }
 
     @Override
