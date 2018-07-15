@@ -3,7 +3,7 @@ package com.epam.creatures.validator;
 import com.epam.creatures.entity.Creature;
 
 public class CreatureValidator {
-    private static final Integer NAME_MAX_LENGTH = 40;
+    private static final Integer NAME_MAX_LENGTH = 15;
     private static final String RIGHT_NAME_DATA = ".+";
     private static final Integer DESCRIPTION_MAX_LENGTH = 200;
     private static final String RIGHT_DESCRIPTION_DATA = ".+";

@@ -299,3 +299,5 @@ c
 3src/com/epam/creatures/action/StatusCalculator.java,4\6\4680728198995ebb90ae7cecded235046b851f29
 f
 6src/com/epam/creatures/validator/PictureValidator.java,5\2\52c940d053ccbac3d0925078919366e28ee56a99
+H
+web/jsp/parts/footer.jsp,3\6\36032852055262762382d76b2883d8f475117882

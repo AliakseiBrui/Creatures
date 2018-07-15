@@ -213,7 +213,7 @@ tr:hover {background-color: #f5f5f5;}
     border-top: 1px solid;
 }
 .creature-mark{
-    color: blue;
+    color: #b471ff;
     text-align: right;
 }
 .creature-gender{
@@ -384,7 +384,8 @@ tr:hover {background-color: #f5f5f5;}
     border-top: 1px solid;
 }
 .client-status{
-    color: blue;
+    padding: 5px;
+    color: #5882ff;
     text-align: left;
 }
 .client-button{

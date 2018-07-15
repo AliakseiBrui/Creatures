@@ -68,6 +68,8 @@ public enum CommandType {
 
     TO_CHANGE_CREATURE_IMAGE_PAGE_COMMAND(new ToChangeCreatureImagePageCommand(new ToChangeCreatureImagePageService())),
 
+    TO_USERS_MANAGEMENT_PAGE_COMMAND(new ToAnyPageCommand(new ToUsersManagementPageService())),
+
 
     ;
 

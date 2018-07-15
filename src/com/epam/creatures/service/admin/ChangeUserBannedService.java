@@ -35,6 +35,6 @@ public class ChangeUserBannedService implements CommandService {
         }catch (DAOException e){
             LOGGER.error(e);
         }
-        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_MAIN_PAGE));
+        attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_USERS_MANAGEMENT_PAGE));
     }
 }

@@ -27,6 +27,12 @@
 
         <input type="submit" value="Create new admin" class="nice-button"/>
     </form>
+
+    <form action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="TO_USERS_MANAGEMENT_PAGE_COMMAND"/>
+
+        <input type="submit" value="Manage users" class="nice-button"/>
+    </form>
 </div>
 <br/><br/>
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>

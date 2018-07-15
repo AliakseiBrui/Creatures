@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
     <label for="creatureName">Name</label><br/>
-    <input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="40" pattern="^[^\s]+" required/>
+    <input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="10" pattern="^[^\s]+" required/>
     <br/><br/>
 
     <label for="creatureLimbQuantity">Limb quantity</label><br/>

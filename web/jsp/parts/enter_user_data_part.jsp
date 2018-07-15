@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <label for="login">Login</label><br/>
-<input type="text" name="login" id="login" class="input-text" maxlength="40" required/>
+<input type="text" name="login" id="login" class="input-text" maxlength="10" required/>
 <br/><br/>
 
 <label for="password">Password</label><br/>

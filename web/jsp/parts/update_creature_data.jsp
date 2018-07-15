@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <label for="creatureName">Name</label><br/>
-<input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="40" pattern="^[^\s]+" value="${creature.getCreatureName()}" required/>
+<input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="10" pattern="^[^\s]+" value="${creature.getCreatureName()}" required/>
 <br/><br/>
 
 <label for="creatureLimbQuantity">Limb quantity</label><br/>
