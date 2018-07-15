@@ -24,6 +24,16 @@
 <div>
     <div align="center">
         <c:import url="/creatures?commandType=SHOW_CREATURE_COMMENTS_COMMAND&creatureId=${creature.getCreatureId()}"/>
+        <br/>
+        <div align="center">
+            <form action="/creatures" method="get">
+                <input type="hidden" name="commandType" value="TO_COMMENT_CREATURE_PAGE_COMMAND"/>
+                <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
+
+                <input type="submit" value="Comment creature" class="nice-button"/>
+            </form>
+        </div>
+        <br/>
         <div class="creature">
             <div class="creature-body">
                 <div class="creature-img">
@@ -57,17 +67,8 @@
                 </div>
             </div>
         </div>
-        <br/>
-        <div align="center">
-            <form action="/creatures" method="get">
-                <input type="hidden" name="commandType" value="TO_COMMENT_CREATURE_PAGE_COMMAND"/>
-                <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
-
-                <input type="submit" value="Comment creature" class="nice-button"/>
-            </form>
-        </div>
-
     </div>
 </div>
+<%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

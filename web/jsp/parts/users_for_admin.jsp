@@ -14,36 +14,39 @@
 </head>
 <body>
 <div align="center">
-    <table width="80%">
-        <caption align="center" class="nice-text">
-            Users
-        </caption>
-        <thead>
-        <tr>
-            <th>Login</th>
-            <th>Status</th>
-            <th>Banned</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="client-container">
         <c:forEach var="user" items="${userList}">
-            <tr>
-                <td><c:out value="${user.getLogin()}"/></td>
-                <td><c:out value="${user.getStatus()}"/></td>
-                <td><c:out value="${user.getBanned()}"/></td>
-                <td>
-                    <form action="/creatures" method="get">
-                        <input type="hidden" name="commandType" value="CHANGE_USER_BANNED_COMMAND"/>
-                        <input type="hidden" name="userId" value="${user.getId()}"/>
+            <div class="client">
+                <div class="client-body">
+                    <div class="client-avatar">
+                        <img class="client-avatar-img" alt="NO AVATAR" src="data:image/jpg;base64,${user.getEncodedAvatar()}">
+                    </div>
+                </div>
+                <div class="client-login">
+                    <c:out value="${user.getLogin()}"/>
+                </div>
+                <div class="client-banned">
+                    <p>
+                        Banned:
+                        <c:out value="${user.getBanned()}"/>
+                    </p>
+                </div>
+                <div class="client-footer">
+                    <div class="client-status">
+                        <c:out value="${user.getStatus()}"/>
+                    </div>
+                    <div class="client-button">
+                        <form action="/creatures" method="get">
+                            <input type="hidden" name="commandType" value="CHANGE_USER_BANNED_COMMAND"/>
+                            <input type="hidden" name="userId" value="${user.getId()}"/>
 
-                        <input type="submit" value="Ban\Unban" class="nice-table-button"/>
-                    </form>
-                </td>
-            </tr>
+                            <input type="submit" value="Ban\Unban" class="nice-table-button"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </c:forEach>
-        </tbody>
-    </table>
+    </div>
     <br/>
 </div>
 </body>

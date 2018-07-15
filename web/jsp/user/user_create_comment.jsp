@@ -31,5 +31,6 @@
         <input type="submit" value="Post comment" class="nice-button"/>
     </form>
 </div>
+<%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

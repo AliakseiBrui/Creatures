@@ -30,5 +30,6 @@
         <input type="submit" value="Update" class="nice-button"/>
     </form>
 </div>
+<%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

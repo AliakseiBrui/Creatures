@@ -15,6 +15,7 @@
 <body>
 <br/>
 <div align="center">
+    <div class="creature-container">
     <c:forEach var="creature" items="${creatureList}">
         <div class="creature">
             <div class="creature-body">
@@ -84,6 +85,7 @@
             </div>
         </div>
     </c:forEach>
+    </div>
     <br/>
 </div>
 </body>

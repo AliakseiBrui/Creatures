@@ -18,5 +18,6 @@
 <div>
     <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
 </div>
+<%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

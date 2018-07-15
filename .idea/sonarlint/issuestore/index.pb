@@ -297,3 +297,5 @@ f
 6src/com/epam/creatures/validator/CommentValidator.java,4\2\427c57bdf0ae0e25ec17a97ed621c653b1326395
 c
 3src/com/epam/creatures/action/StatusCalculator.java,4\6\4680728198995ebb90ae7cecded235046b851f29
+f
+6src/com/epam/creatures/validator/PictureValidator.java,5\2\52c940d053ccbac3d0925078919366e28ee56a99

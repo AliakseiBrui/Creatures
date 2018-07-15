@@ -28,9 +28,8 @@
         <input type="submit" value="Create new admin" class="nice-button"/>
     </form>
 </div>
-<br/>
-<c:import url="/creatures?commandType=SHOW_USERS_COMMAND"/>
 <br/><br/>
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
+<%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

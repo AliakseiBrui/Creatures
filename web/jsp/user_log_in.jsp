@@ -30,5 +30,6 @@
         <input type="submit" name="log_in_button" value="Log in" class="nice-button"/>
     </form>
 </div>
+<%@ include file="parts/footer.jsp"%>
 </body>
 </html>
