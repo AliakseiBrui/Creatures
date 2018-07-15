@@ -8,5 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <br/><br/>
 <div class="footer">
+    <div class="footer-logo">
+        <img class="footer-logo-img" alt="NO LOGO" src="../../logo/logo.png">
+    </div>
     <p>Copyright © 2018 Bruy Aleksey</p>
 </div>

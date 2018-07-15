@@ -17,7 +17,7 @@ public class CreatureValidator {
 
     public boolean validateCreature(Creature creature){
 
-        if(creature.getDescription()!=null && creature.getDescription().length() <= DESCRIPTION_MAX_LENGTH
+        if(creature.getDescription()!=null && creature.getDescription().length() >= DESCRIPTION_MAX_LENGTH
                 && creature.getDescription().matches(RIGHT_DESCRIPTION_DATA)){
             return false;
         }

@@ -40,7 +40,7 @@
                             <input type="hidden" name="commandType" value="CHANGE_USER_BANNED_COMMAND"/>
                             <input type="hidden" name="userId" value="${user.getId()}"/>
 
-                            <input type="submit" value="Ban\Unban" class="nice-table-button"/>
+                            <input type="submit" value="Ban\Unban" class="nice-button"/>
                         </form>
                     </div>
                 </div>
