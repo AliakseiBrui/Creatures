@@ -301,3 +301,7 @@ f
 6src/com/epam/creatures/validator/PictureValidator.java,5\2\52c940d053ccbac3d0925078919366e28ee56a99
 H
 web/jsp/parts/footer.jsp,3\6\36032852055262762382d76b2883d8f475117882
+v
+Fsrc/com/epam/creatures/service/admin/ToUsersManagementPageService.java,e\6\e6fcdff8902bc414f575dbb5aa46447580a1145b
+T
+$web/jsp/admin/admin_manage_users.jsp,2\e\2ecb446d412548e0b313167bf784dc147ca82e2e

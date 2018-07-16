@@ -85,11 +85,11 @@ tr:hover {background-color: #f5f5f5;}
     float: left;
 }
 .footer-logo{
-    padding: 5px;
+    padding: 3px;
 }
 .footer-logo-img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 .footer {
     position: fixed;
@@ -281,7 +281,7 @@ tr:hover {background-color: #f5f5f5;}
     display: inline-block;
     width: 100%;
     max-width: 150px;
-    margin: 20px;
+    margin:5px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: left;
@@ -299,30 +299,30 @@ tr:hover {background-color: #f5f5f5;}
     max-height: 100%;
 }
 .user-body{
-    padding: 20px;
+    padding: 3px 0 0;
 }
 .user-name{
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bolder;
     line-height: 1.2;
     margin: 0;
-    padding: 2px;
+    padding: 0 10px 0;
     text-transform: uppercase;
 }
 .user-role{
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
     margin-top: 5px;
-    padding: 2px;
+    padding: 0 5px 2px;
 }
 
 .user-footer{
-    padding: 20px;
+    padding: 7px;
     border-top: 1px solid;
 }
 .user-status{
-    color: black;
+    color: #000000;
     text-align: right;
 }
 .user-button{

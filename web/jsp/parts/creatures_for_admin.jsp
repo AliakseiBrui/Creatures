@@ -26,19 +26,19 @@
                     <c:out value="${creature.getCreatureName()}"/>
                 </div>
                 <div class="creature-creator">
-                    Creator: <c:out value="${creature.getCreatorName()}"/>
+                    Created by <c:out value="${creature.getCreatorName()}"/>
                 </div>
                 <div class="creature-limbs">
-                    Limbs: <c:out value="${creature.getLimbQuantity()}"/>
+                    <c:out value="${creature.getLimbQuantity()}"/> Limb(s).
                 </div>
                 <div class="creature-heads">
-                    Heads: <c:out value="${creature.getHeadQuantity()}"/>
+                    <c:out value="${creature.getHeadQuantity()}"/> Head(s).
                 </div>
                 <div class="creature-eyes">
-                    Eyes: <c:out value="${creature.getEyeQuantity()}"/>
+                    <c:out value="${creature.getEyeQuantity()}"/> Eye(s).
                 </div>
                 <div class="creature-gender">
-                    Gender: <c:out value="${creature.getCreatureGender()}"/>
+                    Gender: <c:out value="${creature.getCreatureGender()}"/>.
                 </div>
                 <div class="creature-desc">
                     <c:out value="${creature.getDescription()}"/>
