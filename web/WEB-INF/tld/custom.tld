@@ -3,14 +3,8 @@
     <short-name>ctg</short-name>
     <uri>customtags</uri>
     <tag>
-        <name>image</name>
-        <tag-class>com.epam.creatures.tag.PictureTag</tag-class>
+        <name>client-info</name>
+        <tag-class>com.epam.creatures.tag.ClientInfoTag</tag-class>
         <body-content>empty</body-content>
-        <attribute>
-            <name>picture</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-            <type>java.lang.String</type>
-        </attribute>
     </tag>
 </taglib>

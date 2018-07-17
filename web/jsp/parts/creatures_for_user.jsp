@@ -64,7 +64,7 @@
                                         <option value="5">5</option>
                                     </select>
                                     <br/><br/>
-                                    <input type="submit" value="like" class="nice-button"/>
+                                    <input type="submit" value="Like" class="nice-button"/>
                                 </form>
                             </div>
                         </c:otherwise>
