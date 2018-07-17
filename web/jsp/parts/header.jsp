@@ -38,16 +38,16 @@
                         <c:when test="${clientRole=='USER'}">
                             <div align="right" class="user-button">
                                 <form action="/creatures" method="get">
-                                    <input type="hidden" name="commandType" value="TO_USER_CHANGE_AVATAR_PAGE_COMMAND"/>
-                                    <input type="submit" value="Change avatar" class="nice-button"/>
+                                    <input type="hidden" name="commandType" value="TO_USER_PROFILE_PAGE_COMMAND"/>
+                                    <input type="submit" value="Profile" class="nice-button"/>
                                 </form>
                             </div>
                         </c:when>
                         <c:when test="${clientRole=='ADMIN'}">
                             <div align="right" class="user-button">
                                 <form action="/creatures" method="get">
-                                    <input type="hidden" name="commandType" value="TO_ADMIN_CHANGE_AVATAR_PAGE_COMMAND"/>
-                                    <input type="submit" value="Change avatar" class="nice-button"/>
+                                    <input type="hidden" name="commandType" value="TO_ADMIN_PROFILE_PAGE_COMMAND"/>
+                                    <input type="submit" value="Profile" class="nice-button"/>
                                 </form>
                             </div>
                         </c:when>

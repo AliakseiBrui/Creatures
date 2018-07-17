@@ -74,6 +74,7 @@ public enum ConnectionPool {
 
 
     private SafeConnection createConnection(Properties dbProperties){
+        LOGGER.debug("Creating connection.");
 
         try {
             return new SafeConnection(DriverManager.getConnection((String) dbProperties.get(DB_URL_PROPERTY),dbProperties));

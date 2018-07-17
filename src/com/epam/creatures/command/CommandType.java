@@ -2,11 +2,7 @@ package com.epam.creatures.command;
 
 
 import com.epam.creatures.command.admin.*;
-import com.epam.creatures.command.user.CommentCreatureCommand;
-import com.epam.creatures.command.user.LikeCreatureCommand;
-import com.epam.creatures.command.user.ToCommentCreaturePageCommand;
-import com.epam.creatures.command.user.UserAuthorizationCommand;
-import com.epam.creatures.command.user.UserRegistrationCommand;
+import com.epam.creatures.command.user.*;
 import com.epam.creatures.service.*;
 import com.epam.creatures.service.admin.*;
 import com.epam.creatures.service.user.*;
@@ -62,13 +58,15 @@ public enum CommandType {
 
     TO_COMMENT_CREATURE_PAGE_COMMAND(new ToCommentCreaturePageCommand(new ToCommentCreaturePageService())),
 
-    TO_USER_CHANGE_AVATAR_PAGE_COMMAND(new ToAnyPageCommand(new ToUserChangeAvatarPageService())),
+    TO_USER_PROFILE_PAGE_COMMAND(new ToAnyPageCommand(new ToUserProfilePageService())),
 
-    TO_ADMIN_CHANGE_AVATAR_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminChangeAvatarPageService())),
+    TO_ADMIN_PROFILE_PAGE_COMMAND(new ToAnyPageCommand(new ToAdminProfilePageService())),
 
     TO_CHANGE_CREATURE_IMAGE_PAGE_COMMAND(new ToChangeCreatureImagePageCommand(new ToChangeCreatureImagePageService())),
 
     TO_USERS_MANAGEMENT_PAGE_COMMAND(new ToAnyPageCommand(new ToUsersManagementPageService())),
+
+    SELF_DELETE_COMMAND(new SelfDeleteCommand(new SelfDeleteService())),
 
 
     ;

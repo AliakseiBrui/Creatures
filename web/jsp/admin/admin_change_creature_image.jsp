@@ -27,7 +27,7 @@
         <input type="hidden" name="creatureId" value="${creatureId}"/>
         <input type="file" name="picture" accept="image/x-png, image/gif, image/jpeg" formenctype="multipart/form-data" maxlength="3072" required class="nice-button"/>
         <br/><br/>
-        <input type="submit" value="Update" class="nice-button"/>
+        <input type="submit" value="Update image" class="nice-button"/>
     </form>
 </div>
 <%@ include file="../parts/footer.jsp"%>

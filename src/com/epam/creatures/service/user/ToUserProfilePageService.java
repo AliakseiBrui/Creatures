@@ -8,11 +8,11 @@ import com.epam.creatures.service.CommandService;
 
 import java.util.Map;
 
-public class ToUserChangeAvatarPageService implements CommandService {
+public class ToUserProfilePageService implements CommandService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
-                .createRouter(Router.RouteType.REDIRECT,PagePath.USER_CHANGE_AVATAR_PAGE));
+                .createRouter(Router.RouteType.REDIRECT,PagePath.USER_PROFILE_PAGE));
     }
 }
