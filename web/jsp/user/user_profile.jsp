@@ -21,7 +21,7 @@
 </div>
 <br/>
 <div align="right">
-    <form action="/creatures" method="get" class="user-button">
+    <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="SELF_DELETE_COMMAND"/>
         <input type="submit" value="Delete account" class="nice-button"/>
     </form>

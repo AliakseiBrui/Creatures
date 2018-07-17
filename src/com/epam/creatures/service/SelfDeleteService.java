@@ -28,29 +28,22 @@ public class SelfDeleteService implements CommandService {
 
         try {
 
-            if(role!=null) {
-
-                switch (role) {
-                    case USER:
-                        UserDAO userDAO = new UserDAO();
-                        if (userDAO.delete(id)) {
-                            routeType = Router.RouteType.REDIRECT;
-                            route = LOG_OUT_PATH;
-                        } else {
-                            errorMessage.append("Could not delete user.");
-                        }
-                        break;
-                    case ADMIN:
-                        AdminDAO adminDAO = new AdminDAO();
-                        if (adminDAO.delete(id)) {
-                            routeType = Router.RouteType.REDIRECT;
-                            route = LOG_OUT_PATH;
-                        } else {
-                            errorMessage.append("Could not delete admin.");
-                        }
+            if (role == ClientRole.USER) {
+                UserDAO userDAO = new UserDAO();
+                if (userDAO.delete(id)) {
+                    routeType = Router.RouteType.REDIRECT;
+                    route = LOG_OUT_PATH;
+                } else {
+                    errorMessage.append("Could not delete user.");
                 }
-            }else {
-                errorMessage.append("Client is not logged in.");
+            } else if (role == ClientRole.ADMIN) {
+                AdminDAO adminDAO = new AdminDAO();
+                if (adminDAO.delete(id)) {
+                    routeType = Router.RouteType.REDIRECT;
+                    route = LOG_OUT_PATH;
+                } else {
+                    errorMessage.append("Could not delete admin.");
+                }
             }
         } catch (DAOException e) {
             LOGGER.debug(e);

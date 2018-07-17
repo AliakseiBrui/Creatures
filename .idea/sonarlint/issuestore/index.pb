@@ -265,16 +265,8 @@ J
 web/WEB-INF/tld/custom.tld,c\8\c8ad4389faa70532c3b17d99610d2cc9798283ed
 h
 8src/com/epam/creatures/servlet/FileUploadingServlet.java,1\f\1f9252210e501fb87799fd2a8bab2c9fb13f1198
-v
-Fsrc/com/epam/creatures/service/user/ToUserChangeAvatarPageService.java,3\8\38a7eebf7c5c5214840f448dc0dcf845d9e41eeb
-x
-Hsrc/com/epam/creatures/service/admin/ToAdminChangeAvatarPageService.java,7\5\75ef1560ae9fd15e0f8baa049e96d3e82f04a2f5
-U
-%web/jsp/admin/admin_change_avatar.jsp,2\c\2cd2e58a90593851de7bdb147c582b7435504c38
 M
 web/jsp/parts/avatar_part.jsp,5\4\548feea7e041fbac5d03199740cfe4cc78535c81
-S
-#web/jsp/user/user_change_avatar.jsp,c\f\cf380eb89f79120b396cb9704de4b8ea811171a6
 z
 Jsrc/com/epam/creatures/command/admin/ToChangeCreatureImagePageCommand.java,3\1\3144c9d401abc36b945f560b7207e75766c6ccad
 z
@@ -305,3 +297,15 @@ v
 Fsrc/com/epam/creatures/service/admin/ToUsersManagementPageService.java,e\6\e6fcdff8902bc414f575dbb5aa46447580a1145b
 T
 $web/jsp/admin/admin_manage_users.jsp,2\e\2ecb446d412548e0b313167bf784dc147ca82e2e
+s
+Csrc/com/epam/creatures/service/admin/ToAdminProfilePageService.java,4\e\4ed28016c084ef9a9249d03e0a36e216e013fe8a
+q
+Asrc/com/epam/creatures/service/user/ToUserProfilePageService.java,8\a\8a2bad4305b4631b8ad9c15dd500112a5ba320c8
+O
+web/jsp/admin/admin_profile.jsp,b\b\bbb3d4cb7932000c462b9ae24197a9ac77a6cf29
+M
+web/jsp/user/user_profile.jsp,4\a\4a8ade240ff40bd8cbfd9c2db95bb7382d47eb17
+e
+5src/com/epam/creatures/command/SelfDeleteCommand.java,b\8\b80ed97c8f74569f1c65d8e87bcdb841fcf10cd8
+e
+5src/com/epam/creatures/service/SelfDeleteService.java,a\a\aab2cba704f3fc6ef8b4e229c628d07de0b9492d
