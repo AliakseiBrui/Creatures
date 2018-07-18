@@ -46,8 +46,7 @@ public class SelfDeleteService implements CommandService {
                 }
             }
         } catch (DaoException e) {
-            LOGGER.debug(e);
-            errorMessage.append(e).append(".");
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory

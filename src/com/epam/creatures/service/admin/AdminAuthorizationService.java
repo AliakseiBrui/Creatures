@@ -55,7 +55,7 @@ public class AdminAuthorizationService implements CommandService {
 
             }
         } catch (DaoException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE, errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory

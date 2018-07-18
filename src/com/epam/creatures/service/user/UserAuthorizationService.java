@@ -58,7 +58,7 @@ public class UserAuthorizationService implements CommandService {
                 errorMessage.append("Wrong data in login field.");
             }
         } catch (DaoException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         } catch (UserBannedException e) {
             errorMessage.append("Your account is banned.");
         }

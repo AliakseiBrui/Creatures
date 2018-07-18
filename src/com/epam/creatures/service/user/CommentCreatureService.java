@@ -12,13 +12,10 @@ import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.service.CommandService;
 import com.epam.creatures.validator.CommentValidator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
 public class CommentCreatureService implements CommandService {
-    private static final Logger LOGGER = LogManager.getLogger(CommentCreatureService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         UserFactory userFactory = new UserFactory();
@@ -47,7 +44,7 @@ public class CommentCreatureService implements CommandService {
                 errorMessage.append("Wrong data.");
             }
         } catch (DaoException e) {
-            LOGGER.error("Exception while commenting creature.",e);
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory

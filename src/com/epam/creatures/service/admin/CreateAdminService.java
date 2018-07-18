@@ -45,7 +45,7 @@ public class CreateAdminService implements CommandService {
                 errorMessage.append("Wrong data in login field.");
             }
         } catch (DaoException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(routeType,route));

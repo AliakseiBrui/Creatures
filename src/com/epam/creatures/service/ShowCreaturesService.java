@@ -42,6 +42,7 @@ public class ShowCreaturesService implements CommandService {
                     route = PagePath.CREATURES_FOR_USER_PAGE;
                     List<Mark> markList = markDAO.findMarks(userId);
                     creatureList.forEach(creature -> {
+
                         for(Mark mark : markList){
 
                             if(creature.getCreatureId().equals(mark.getCreatureId())){

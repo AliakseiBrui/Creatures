@@ -3,21 +3,18 @@ package com.epam.creatures.service.admin;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.impl.CreaturesDao;
 import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.CreaturesDao;
 import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
 import com.epam.creatures.validator.CreatureValidator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
 public class UpdateCreatureService implements CommandService {
-    private static final Logger LOGGER = LogManager.getLogger(UpdateCreatureService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         CreatureFactory creatureFactory = new CreatureFactory();
@@ -47,8 +44,7 @@ public class UpdateCreatureService implements CommandService {
                 }
 
             } catch (DaoException e) {
-                LOGGER.error(e);
-                errorMessage.append(e.getSQLState()).append(";").append(e);
+                errorMessage.append(e.getLocalizedMessage()).append(".");
             }
         }else{
             errorMessage.append("Wrong data.");

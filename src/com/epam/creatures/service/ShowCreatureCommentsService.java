@@ -33,7 +33,6 @@ public class ShowCreatureCommentsService implements CommandService {
                 }
             });
             attributeMap.put(AttributeConstant.COMMENT_LIST_ATTRIBUTE,commentList);
-
             ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
             String route=null;
 

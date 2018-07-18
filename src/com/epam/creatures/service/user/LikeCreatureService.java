@@ -14,14 +14,11 @@ import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.MarkFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 import java.util.Objects;
 
 public class LikeCreatureService implements CommandService {
-    private static final Logger LOGGER = LogManager.getLogger(LikeCreatureService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
@@ -40,8 +37,7 @@ public class LikeCreatureService implements CommandService {
             markDAO.create(markFactory.createMark(value,creatureId,userId, userStatusCalculator.calculateStatus(value,creature.getCreatureRating())));
             user = userDAO.findEntityById(userId);
         } catch (DaoException e) {
-            LOGGER.error(e);
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.STATUS_ATTRIBUTE,Objects.requireNonNull(user).getStatus());
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);

@@ -44,7 +44,7 @@ public class UserRegistrationService implements CommandService {
                 errorMessage.append("Wrong data in login field.");
             }
         } catch (DaoException e) {
-            errorMessage.append(e.getSQLState()).append(";").append(e);
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
 
         attributeMap.put(AttributeConstant.MESSAGE_ATTRIBUTE,message);
