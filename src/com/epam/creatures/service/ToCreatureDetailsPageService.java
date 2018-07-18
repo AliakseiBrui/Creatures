@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Base64;
 import java.util.Map;
 
-public class ToCreatureDetailsPageService implements CommandService {
+public class ToCreatureDetailsPageService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ToCreatureDetailsPageService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

@@ -7,7 +7,7 @@ import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.service.ShowCreaturesService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +16,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
-public class ShowUsersService implements CommandService {
+public class ShowUsersService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreaturesService.class);
 
     @Override

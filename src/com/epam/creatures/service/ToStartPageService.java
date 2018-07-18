@@ -7,7 +7,7 @@ import com.epam.creatures.factory.RouterFactory;
 
 import java.util.Map;
 
-public class ToStartPageService implements CommandService {
+public class ToStartPageService implements ProjectService {
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

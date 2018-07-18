@@ -10,12 +10,12 @@ import com.epam.creatures.entity.Admin;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.ClientDataValidator;
 
 import java.util.Map;
 
-public class CreateAdminService implements CommandService {
+public class CreateAdminService implements ProjectService {
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

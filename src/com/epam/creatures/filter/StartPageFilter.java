@@ -10,10 +10,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 @WebFilter(urlPatterns = {
-        "/index.jsp",
-        "/jsp/admin_log_in.jsp",
-        "/jsp/user_log_in.jsp",
-        "/jsp/user_sign_in.jsp"
+        "/index.jsp"
 }
 , filterName = "StartPageFilter")
 public class StartPageFilter implements Filter {

@@ -7,11 +7,11 @@ import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 
 import java.util.Map;
 
-public class ToUpdateCreaturePageService implements CommandService {
+public class ToUpdateCreaturePageService implements ProjectService {
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

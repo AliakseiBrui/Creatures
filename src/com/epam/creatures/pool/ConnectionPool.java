@@ -38,7 +38,7 @@ public enum ConnectionPool {
     }
 
     public void init(){
-        SQLDriverManager sqlDriverManager = new SQLDriverManager();
+        SqlDriverManager sqlDriverManager = new SqlDriverManager();
 
         if(canInitialize) {
             LOGGER.debug("Initializing connection pool.");
@@ -58,7 +58,7 @@ public enum ConnectionPool {
     }
 
     public void closeAll(){
-        SQLDriverManager sqlDriverManager = new SQLDriverManager();
+        SqlDriverManager sqlDriverManager = new SqlDriverManager();
 
         for(int i=0; i<DEFAULT_POOL_SIZE; i++){
 

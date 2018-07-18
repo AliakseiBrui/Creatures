@@ -3,11 +3,11 @@ package com.epam.creatures.validator;
 import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.User;
-import com.epam.creatures.exception.UserBannedException;
+import com.epam.creatures.exception.UserException;
 
 public class UserValidator {
 
-    public boolean validateUser(User user) throws DaoException, UserBannedException {
+    public boolean validateUser(User user) throws DaoException, UserException {
         UserDao userDAO = new UserDao();
 
         if(user!=null) {
@@ -16,7 +16,7 @@ public class UserValidator {
             if(currentUser!=null) {
 
                 if (currentUser.getBanned()) {
-                    throw new UserBannedException("Banned user is trying to get access into account.");
+                    throw new UserException("Banned user is trying to get access into account.");
                 }
 
                 if (currentUser.getPassword().equals(user.getPassword())) {

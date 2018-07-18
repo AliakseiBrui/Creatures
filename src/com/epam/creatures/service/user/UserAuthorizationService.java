@@ -8,17 +8,17 @@ import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
-import com.epam.creatures.exception.UserBannedException;
+import com.epam.creatures.exception.UserException;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.ClientDataValidator;
 import com.epam.creatures.validator.UserValidator;
 
 import java.util.Base64;
 import java.util.Map;
 
-public class UserAuthorizationService implements CommandService {
+public class UserAuthorizationService implements ProjectService {
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
@@ -59,7 +59,7 @@ public class UserAuthorizationService implements CommandService {
             }
         } catch (DaoException e) {
             errorMessage.append(e.getLocalizedMessage()).append(".");
-        } catch (UserBannedException e) {
+        } catch (UserException e) {
             errorMessage.append("Your account is banned.");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);

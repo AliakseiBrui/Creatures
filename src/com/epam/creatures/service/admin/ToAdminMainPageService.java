@@ -4,11 +4,11 @@ import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 
 import java.util.Map;
 
-public class ToAdminMainPageService implements CommandService {
+public class ToAdminMainPageService implements ProjectService {
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

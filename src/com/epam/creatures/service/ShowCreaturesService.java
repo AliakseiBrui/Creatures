@@ -18,7 +18,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
-public class ShowCreaturesService implements CommandService {
+public class ShowCreaturesService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreaturesService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

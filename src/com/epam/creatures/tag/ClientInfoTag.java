@@ -38,7 +38,8 @@ public class ClientInfoTag extends TagSupport {
                     "                    </div>\n";
 
             if(clientRole==ClientRole.USER){
-                info+=  "                            <div class=\"user-footer\">\n"+
+                info+=
+                        "                            <div class=\"user-footer\">\n"+
                         "                               <div class=\"user-status\">\n" +
                         "                                   "+status+"\n" +
                         "                               </div>\n"+
@@ -58,7 +59,8 @@ public class ClientInfoTag extends TagSupport {
                         "                </div>\n" +
                         "                <br/>\n";
             }else if(clientRole==ClientRole.ADMIN){
-                info+=  "                            <div class=\"user-footer\">\n"+
+                info+=
+                        "                            <div class=\"user-footer\">\n"+
                         "                            </div>\n"+
                         "                            <div align=\"right\" class=\"user-button\">\n" +
                         "                                <form action=\"/creatures\" method=\"get\">\n" +

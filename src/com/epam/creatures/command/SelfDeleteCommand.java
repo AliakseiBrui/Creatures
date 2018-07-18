@@ -3,13 +3,13 @@ package com.epam.creatures.command;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Router;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 public class SelfDeleteCommand extends AbstractCommand {
-    public SelfDeleteCommand(CommandService service) {
+    public SelfDeleteCommand(ProjectService service) {
         super(service);
     }
 

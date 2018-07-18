@@ -10,12 +10,12 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.ClientDataValidator;
 
 import java.util.Map;
 
-public class UserRegistrationService implements CommandService {
+public class UserRegistrationService implements ProjectService {
 
 
     @Override

@@ -8,13 +8,13 @@ import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class ChangeUserBannedService implements CommandService {
+public class ChangeUserBannedService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ChangeUserBannedService.class);
 
     @Override

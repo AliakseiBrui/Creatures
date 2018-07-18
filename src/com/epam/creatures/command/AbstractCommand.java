@@ -1,26 +1,26 @@
 package com.epam.creatures.command;
 
 import com.epam.creatures.entity.Router;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class AbstractCommand {
-    private CommandService service;
+    private ProjectService service;
 
 
-    public AbstractCommand(CommandService service) {
+    public AbstractCommand(ProjectService service) {
         this.service = service;
     }
 
     public AbstractCommand() {
     }
 
-    public CommandService getService() {
+    public ProjectService getService() {
         return service;
     }
 
-    public void setService(CommandService service) {
+    public void setService(ProjectService service) {
         this.service = service;
     }
 

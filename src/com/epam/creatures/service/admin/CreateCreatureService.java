@@ -9,12 +9,12 @@ import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.CreatureValidator;
 
 import java.util.Map;
 
-public class CreateCreatureService implements CommandService {
+public class CreateCreatureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         CreatureFactory creatureFactory = new CreatureFactory();

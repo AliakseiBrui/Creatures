@@ -6,7 +6,7 @@ import com.epam.creatures.entity.Admin;
 
 public class AdminValidator {
 
-    public boolean validateAdminLogin(Admin admin) throws DaoException {
+    public boolean validateAdmin(Admin admin) throws DaoException {
         AdminDao adminDAO = new AdminDao();
         if(admin!=null) {
             Admin currentAdmin = adminDAO.findAdminByLogin(admin.getLogin());

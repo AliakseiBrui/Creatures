@@ -4,13 +4,13 @@ import com.epam.creatures.command.AbstractCommand;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Router;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 public class UserRegistrationCommand extends AbstractCommand {
-    public UserRegistrationCommand(CommandService service) {
+    public UserRegistrationCommand(ProjectService service) {
         super(service);
     }
 

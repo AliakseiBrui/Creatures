@@ -10,12 +10,12 @@ import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CommentFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.CommentValidator;
 
 import java.util.Map;
 
-public class CommentCreatureService implements CommandService {
+public class CommentCreatureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         UserFactory userFactory = new UserFactory();

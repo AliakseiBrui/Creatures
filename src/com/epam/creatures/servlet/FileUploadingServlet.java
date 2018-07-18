@@ -42,7 +42,7 @@ public class FileUploadingServlet extends HttpServlet {
 
         try{
             picture = request.getPart(PICTURE);
-        }catch (Exception e){
+        }catch (Exception e){//////
             LOGGER.error(e);
             errorMessage.append(e).append(".");
         }
@@ -58,7 +58,7 @@ public class FileUploadingServlet extends HttpServlet {
                     case CREATURE_IMAGE:
 
                         if(pictureValidator.validateCreatureImageSize(picture.getInputStream().readAllBytes())) {
-                            CreaturesDao creaturesDAO = new CreaturesDao();
+                            CreaturesDao creaturesDAO = new CreaturesDao();//service todo
                             id = Integer.parseInt(request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
                             creaturesDAO.updateCreatureImage(id, picture.getInputStream());
                             response.sendRedirect(PagePath.ADMIN_MAIN_PAGE);

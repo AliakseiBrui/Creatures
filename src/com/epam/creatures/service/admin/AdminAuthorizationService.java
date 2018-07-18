@@ -10,14 +10,14 @@ import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
-import com.epam.creatures.service.CommandService;
+import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.AdminValidator;
 import com.epam.creatures.validator.ClientDataValidator;
 
 import java.util.Base64;
 import java.util.Map;
 
-public class AdminAuthorizationService implements CommandService {
+public class AdminAuthorizationService implements ProjectService {
 
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
@@ -37,7 +37,7 @@ public class AdminAuthorizationService implements CommandService {
 
             if(clientDataValidator.validateLogin(login)) {
 
-                if (adminValidator.validateAdminLogin(admin)) {
+                if (adminValidator.validateAdmin(admin)) {
                     attributeMap.put(AttributeConstant.LOGIN_ATTRIBUTE, admin.getLogin());
                     attributeMap.put(AttributeConstant.ID_ATTRIBUTE, admin.getId());
                     attributeMap.put(AttributeConstant.ROLE_ATTRIBUTE, ClientRole.ADMIN);
