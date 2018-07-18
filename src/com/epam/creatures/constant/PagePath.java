@@ -22,6 +22,7 @@ public class PagePath {
     public static final String ADMIN_PROFILE_PAGE = "jsp/admin/admin_profile.jsp";
     public static final String ADMIN_CHANGE_CREATURE_IMAGE_PAGE = "jsp/admin/admin_change_creature_image.jsp";
     public static final String ADMIN_USERS_MANAGEMENT_PAGE = "jsp/admin/admin_manage_users.jsp";
+    public static final String ERROR_PAGE = "jsp/errors/error.jsp";
 
     private PagePath(){ }
 }
