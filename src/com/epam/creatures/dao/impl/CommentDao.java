@@ -2,9 +2,9 @@ package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.CommentColumn;
 import com.epam.creatures.constant.UserColumn;
-import com.epam.creatures.dao.AbstractDAO;
-import com.epam.creatures.dao.CommentTableDAO;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.AbstractDao;
+import com.epam.creatures.dao.CommentTableDao;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.entity.Comment;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.CommentFactory;
@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CommentDAO extends AbstractDAO<Integer, Comment> implements CommentTableDAO {
-    private static final Logger LOGGER = LogManager.getLogger(CommentDAO.class);
+public class CommentDao extends AbstractDao<Integer, Comment> implements CommentTableDao {
+    private static final Logger LOGGER = LogManager.getLogger(CommentDao.class);
     private static final String SELECT_COMMENT_BY_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id, u.login, u.avatar " +
             "FROM creatures_db.comments " +
             "INNER JOIN creatures_db.users u ON comments.user_id = u.id " +
@@ -51,7 +51,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
     private CommentFactory commentFactory = new CommentFactory();
     private UserFactory userFactory = new UserFactory();
     @Override
-    public List<Comment> findAll() throws DAOException {
+    public List<Comment> findAll() throws DaoException {
         List<Comment> commentList = new ArrayList<>();
         LOGGER.debug("Selecting all comments.");
 
@@ -65,13 +65,13 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                         .createComment(resultSet.getInt(CommentColumn.ID),resultSet.getString(CommentColumn.COMMENT_CONTENT),resultSet.getInt(CommentColumn.CREATURE_ID),user));
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting all comments.",e);
+            throw new DaoException("Exception while selecting all comments.",e);
         }
         return commentList;
     }
 
     @Override
-    public Comment findEntityById(Integer id) throws DAOException {
+    public Comment findEntityById(Integer id) throws DaoException {
         LOGGER.debug("Selecting comment by id. Id: "+id);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -88,13 +88,13 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting comment by id.",e);
+            throw new DaoException("Exception while selecting comment by id.",e);
         }
         return null;
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Integer id) throws DaoException {
         LOGGER.debug("Deleting comment by id. Id:"+id);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -105,14 +105,14 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while deleting comment by id.",e);
+            throw new DaoException("Exception while deleting comment by id.",e);
         }
 
         return false;
     }
 
     @Override
-    public boolean create(Comment entity) throws DAOException {
+    public boolean create(Comment entity) throws DaoException {
         LOGGER.debug("Inserting comment. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -125,13 +125,13 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while inserting comment.",e);
+            throw new DaoException("Exception while inserting comment.",e);
         }
         return false;
     }
 
     @Override
-    public boolean update(Comment entity) throws DAOException {
+    public boolean update(Comment entity) throws DaoException {
         LOGGER.debug("Updating comment. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -145,13 +145,13 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating comment.",e);
+            throw new DaoException("Exception while updating comment.",e);
         }
         return false;
     }
 
     @Override
-    public List<Comment> findCommentsByCreatureId(Integer creatureId) throws DAOException {
+    public List<Comment> findCommentsByCreatureId(Integer creatureId) throws DaoException {
         List<Comment> commentList = new ArrayList<>();
         LOGGER.debug("Selecting comment by creatureId. CreatureId: "+creatureId);
 
@@ -169,7 +169,7 @@ public class CommentDAO extends AbstractDAO<Integer, Comment> implements Comment
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting comment by creatureId.",e);
+            throw new DaoException("Exception while selecting comment by creatureId.",e);
         }
         return commentList;
     }

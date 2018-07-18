@@ -3,9 +3,9 @@ package com.epam.creatures.service;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.AdminDAO;
-import com.epam.creatures.dao.impl.UserDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.AdminDao;
+import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.RouterFactory;
@@ -29,7 +29,7 @@ public class SelfDeleteService implements CommandService {
         try {
 
             if (role == ClientRole.USER) {
-                UserDAO userDAO = new UserDAO();
+                UserDao userDAO = new UserDao();
                 if (userDAO.delete(id)) {
                     routeType = Router.RouteType.REDIRECT;
                     route = LOG_OUT_PATH;
@@ -37,7 +37,7 @@ public class SelfDeleteService implements CommandService {
                     errorMessage.append("Could not delete user.");
                 }
             } else if (role == ClientRole.ADMIN) {
-                AdminDAO adminDAO = new AdminDAO();
+                AdminDao adminDAO = new AdminDao();
                 if (adminDAO.delete(id)) {
                     routeType = Router.RouteType.REDIRECT;
                     route = LOG_OUT_PATH;
@@ -45,7 +45,7 @@ public class SelfDeleteService implements CommandService {
                     errorMessage.append("Could not delete admin.");
                 }
             }
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             LOGGER.debug(e);
             errorMessage.append(e).append(".");
         }

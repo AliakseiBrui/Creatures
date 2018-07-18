@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
+
 @SuppressWarnings("serial")
 public class ClientInfoTag extends TagSupport {
     private static final Logger LOGGER = LogManager.getLogger(ClientInfoTag.class);
@@ -56,7 +57,7 @@ public class ClientInfoTag extends TagSupport {
                         "                    </div>\n" +
                         "                </div>\n" +
                         "                <br/>\n";
-            }else if(clientRole== ClientRole.ADMIN){
+            }else if(clientRole==ClientRole.ADMIN){
                 info+=  "                            <div class=\"user-footer\">\n"+
                         "                            </div>\n"+
                         "                            <div align=\"right\" class=\"user-button\">\n" +

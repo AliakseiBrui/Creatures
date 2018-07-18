@@ -4,10 +4,10 @@ import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.constant.PictureType;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.AdminDAO;
-import com.epam.creatures.dao.impl.CreaturesDAO;
-import com.epam.creatures.dao.impl.UserDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.AdminDao;
+import com.epam.creatures.dao.impl.CreaturesDao;
+import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.validator.PictureValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -58,7 +58,7 @@ public class FileUploadingServlet extends HttpServlet {
                     case CREATURE_IMAGE:
 
                         if(pictureValidator.validateCreatureImageSize(picture.getInputStream().readAllBytes())) {
-                            CreaturesDAO creaturesDAO = new CreaturesDAO();
+                            CreaturesDao creaturesDAO = new CreaturesDao();
                             id = Integer.parseInt(request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
                             creaturesDAO.updateCreatureImage(id, picture.getInputStream());
                             response.sendRedirect(PagePath.ADMIN_MAIN_PAGE);
@@ -71,7 +71,7 @@ public class FileUploadingServlet extends HttpServlet {
                     case USER_AVATAR:
 
                         if(pictureValidator.validateAvatarSize(picture.getInputStream().readAllBytes())) {
-                            UserDAO userDAO = new UserDAO();
+                            UserDao userDAO = new UserDao();
                             id = Integer.parseInt(request.getParameter(ParameterConstant.USER_ID_PARAMETER));
                             userDAO.updateUserAvatar(id, picture.getInputStream());
                             request.getSession().setAttribute(AttributeConstant.AVATAR_ATTRIBUTE, Base64.getEncoder().encodeToString(picture.getInputStream().readAllBytes()));
@@ -84,7 +84,7 @@ public class FileUploadingServlet extends HttpServlet {
                     case ADMIN_AVATAR:
 
                         if(pictureValidator.validateAvatarSize(picture.getInputStream().readAllBytes())) {
-                            AdminDAO adminDAO = new AdminDAO();
+                            AdminDao adminDAO = new AdminDao();
                             id = Integer.parseInt(request.getParameter(ParameterConstant.ADMIN_ID_PARAMETER));
                             adminDAO.updateAdminAvatar(id, picture.getInputStream());
                             request.getSession().setAttribute(AttributeConstant.AVATAR_ATTRIBUTE, Base64.getEncoder().encodeToString(picture.getInputStream().readAllBytes()));
@@ -95,7 +95,7 @@ public class FileUploadingServlet extends HttpServlet {
                         }
                         break;
                 }
-            }catch (DAOException e){
+            }catch (DaoException e){
                 LOGGER.error(e);
                 errorMessage.append(e).append(".");
             }

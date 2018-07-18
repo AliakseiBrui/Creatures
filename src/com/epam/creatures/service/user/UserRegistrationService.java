@@ -3,8 +3,8 @@ package com.epam.creatures.service.user;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.UserDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
@@ -23,7 +23,7 @@ public class UserRegistrationService implements CommandService {
         UserFactory userFactory = new UserFactory();
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         RouterFactory routerFactory = new RouterFactory();
-        UserDAO userDAO = new UserDAO();
+        UserDao userDAO = new UserDao();
         ClientDataValidator clientDataValidator = new ClientDataValidator();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
@@ -43,7 +43,7 @@ public class UserRegistrationService implements CommandService {
             }else{
                 errorMessage.append("Wrong data in login field.");
             }
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }
 

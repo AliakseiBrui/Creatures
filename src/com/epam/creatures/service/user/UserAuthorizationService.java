@@ -3,7 +3,7 @@ package com.epam.creatures.service.user;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Router;
@@ -57,7 +57,7 @@ public class UserAuthorizationService implements CommandService {
             }else{
                 errorMessage.append("Wrong data in login field.");
             }
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         } catch (UserBannedException e) {
             errorMessage.append("Your account is banned.");

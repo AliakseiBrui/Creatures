@@ -6,11 +6,11 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.util.Properties;
 
-public enum  DataBaseConfigurator {
+public enum DatabaseConfigurator {
     INSTANCE;
 
     private Properties dbProperties = null;
-    private static final Logger LOGGER = LogManager.getLogger(DataBaseConfigurator.class);
+    private static final Logger LOGGER = LogManager.getLogger(DatabaseConfigurator.class);
 
     public void configureDBProperties(String filePath){
 

@@ -1,13 +1,13 @@
 package com.epam.creatures.service.user;
 
-import com.epam.creatures.action.StatusCalculator;
+import com.epam.creatures.action.UserStatusCalculator;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.CreaturesDAO;
-import com.epam.creatures.dao.impl.MarkDAO;
-import com.epam.creatures.dao.impl.UserDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.CreaturesDao;
+import com.epam.creatures.dao.impl.MarkDao;
+import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.entity.User;
@@ -25,21 +25,21 @@ public class LikeCreatureService implements CommandService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
-        MarkDAO markDAO = new MarkDAO();
-        CreaturesDAO creaturesDAO = new CreaturesDAO();
-        UserDAO userDAO = new UserDAO();
+        MarkDao markDAO = new MarkDao();
+        CreaturesDao creaturesDAO = new CreaturesDao();
+        UserDao userDAO = new UserDao();
         MarkFactory markFactory = new MarkFactory();
         Double value = Double.parseDouble(parameterMap.get(ParameterConstant.MARK_PARAMETER));
         Integer creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
         Integer userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
         StringBuilder errorMessage = new StringBuilder();
-        StatusCalculator statusCalculator = new StatusCalculator();
+        UserStatusCalculator userStatusCalculator = new UserStatusCalculator();
         User user=null;
         try {
             Creature creature = creaturesDAO.findEntityById(creatureId);
-            markDAO.create(markFactory.createMark(value,creatureId,userId,statusCalculator.calculateStatus(value,creature.getCreatureRating())));
+            markDAO.create(markFactory.createMark(value,creatureId,userId, userStatusCalculator.calculateStatus(value,creature.getCreatureRating())));
             user = userDAO.findEntityById(userId);
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             LOGGER.error(e);
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }

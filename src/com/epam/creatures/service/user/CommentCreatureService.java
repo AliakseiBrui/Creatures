@@ -3,8 +3,8 @@ package com.epam.creatures.service.user;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.CommentDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.CommentDao;
 import com.epam.creatures.entity.Comment;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CommentFactory;
@@ -22,7 +22,7 @@ public class CommentCreatureService implements CommandService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         UserFactory userFactory = new UserFactory();
-        CommentDAO commentDAO = new CommentDAO();
+        CommentDao commentDAO = new CommentDao();
         RouterFactory routerFactory = new RouterFactory();
         CommentFactory commentFactory = new CommentFactory();
         String commentData = parameterMap.get(ParameterConstant.COMMENT_PARAMETER);
@@ -46,7 +46,7 @@ public class CommentCreatureService implements CommandService {
             }else{
                 errorMessage.append("Wrong data.");
             }
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             LOGGER.error("Exception while commenting creature.",e);
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);

@@ -1,9 +1,9 @@
 package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.AdminColumn;
-import com.epam.creatures.dao.AbstractDAO;
-import com.epam.creatures.dao.AdminTableDAO;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.AbstractDao;
+import com.epam.creatures.dao.AdminTableDao;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.entity.Admin;
 import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.pool.ConnectionPool;
@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableDAO {
-    private static final Logger LOGGER = LogManager.getLogger(AdminDAO.class);
+public class AdminDao extends AbstractDao<Integer, Admin> implements AdminTableDao {
+    private static final Logger LOGGER = LogManager.getLogger(AdminDao.class);
     private static final String SELECT_ADMIN_BY_ID = "SELECT creatures_db.admins.id,creatures_db.admins.login,creatures_db.admins.password, creatures_db.admins.avatar " +
             "FROM creatures_db.admins " +
             "WHERE creatures_db.admins.id = ?";
@@ -50,7 +50,7 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
     private AdminFactory adminFactory = new AdminFactory();
 
     @Override
-    public List<Admin> findAll() throws DAOException {
+    public List<Admin> findAll() throws DaoException {
         List<Admin> adminList = new ArrayList<>();
         LOGGER.debug("Selecting all admins.");
 
@@ -67,13 +67,13 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting all admins.",e);
+            throw new DaoException("Exception while selecting all admins.",e);
         }
         return adminList;
     }
 
     @Override
-    public Admin findEntityById(Integer id) throws DAOException {
+    public Admin findEntityById(Integer id) throws DaoException {
         LOGGER.debug("Selecting admin by id. Id: "+id);
 
         try (SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -90,13 +90,13 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting admin by id.",e);
+            throw new DaoException("Exception while selecting admin by id.",e);
         }
         return null;
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Integer id) throws DaoException {
         LOGGER.debug("Deleting admin by id. Id: "+id);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -107,13 +107,13 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 return preparedStatement.executeUpdate()>0;
             }
         }catch (SQLException e){
-            throw new DAOException("Exception while deleting admin by id.",e);
+            throw new DaoException("Exception while deleting admin by id.",e);
         }
         return false;
     }
 
     @Override
-    public boolean create(Admin entity) throws DAOException {
+    public boolean create(Admin entity) throws DaoException {
         LOGGER.debug("Inserting admin." +entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -125,13 +125,13 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 return preparedStatement.executeUpdate()>0;
             }
         }catch (SQLException e){
-            throw new DAOException("Exception while inserting admin.",e);
+            throw new DaoException("Exception while inserting admin.",e);
         }
         return false;
     }
 
     @Override
-    public boolean update(Admin entity) throws DAOException {
+    public boolean update(Admin entity) throws DaoException {
         LOGGER.debug("Updating admin. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -144,13 +144,13 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating admin.",e);
+            throw new DaoException("Exception while updating admin.",e);
         }
         return false;
     }
 
     @Override
-    public Admin findAdminByLogin(String login) throws DAOException {
+    public Admin findAdminByLogin(String login) throws DaoException {
         LOGGER.debug("Selecting admin by login. Login: "+login);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -167,13 +167,13 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting admin by login.",e);
+            throw new DaoException("Exception while selecting admin by login.",e);
         }
         return null;
     }
 
     @Override
-    public boolean updateAdminAvatar(Integer id, InputStream avatar) throws DAOException {
+    public boolean updateAdminAvatar(Integer id, InputStream avatar) throws DaoException {
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_ADMIN_AVATAR)){
@@ -184,7 +184,7 @@ public class AdminDAO extends AbstractDAO<Integer, Admin> implements AdminTableD
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating admin's avatar.",e);
+            throw new DaoException("Exception while updating admin's avatar.",e);
         }
         return false;
     }

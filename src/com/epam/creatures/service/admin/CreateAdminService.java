@@ -3,8 +3,8 @@ package com.epam.creatures.service.admin;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.impl.AdminDAO;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.impl.AdminDao;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.Admin;
 import com.epam.creatures.entity.Router;
@@ -21,7 +21,7 @@ public class CreateAdminService implements CommandService {
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         AdminFactory adminFactory = new AdminFactory();
         PasswordEncoder passwordEncoder = new PasswordEncoder();
-        AdminDAO adminDAO = new AdminDAO();
+        AdminDao adminDAO = new AdminDao();
         ClientDataValidator clientDataValidator = new ClientDataValidator();
         RouterFactory routerFactory = new RouterFactory();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
@@ -44,7 +44,7 @@ public class CreateAdminService implements CommandService {
             }else{
                 errorMessage.append("Wrong data in login field.");
             }
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);

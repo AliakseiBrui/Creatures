@@ -3,8 +3,8 @@ package com.epam.creatures.service.admin;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.impl.CreaturesDAO;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.impl.CreaturesDao;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.entity.Creature;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.CreatureFactory;
@@ -22,7 +22,7 @@ public class CreateCreatureService implements CommandService {
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         CreatureFactory creatureFactory = new CreatureFactory();
         RouterFactory routerFactory = new RouterFactory();
-        CreaturesDAO creaturesDAO = new CreaturesDAO();
+        CreaturesDao creaturesDAO = new CreaturesDao();
         String name = parameterMap.get(ParameterConstant.CREATURE_NAME_PARAMETER);
         int limbQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_LIMB_Q_PARAMETER));
         int headQuantity = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_HEAD_Q_PARAMETER));
@@ -46,7 +46,7 @@ public class CreateCreatureService implements CommandService {
                 } else {
                     errorMessage.append("Could not create creature.");
                 }
-            } catch (DAOException e) {
+            } catch (DaoException e) {
                 LOGGER.error(e);
                 errorMessage.append(e.getSQLState()).append(";").append(e);
             }

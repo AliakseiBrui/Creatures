@@ -1,6 +1,6 @@
 package com.epam.test.config;
 
-import com.epam.creatures.config.DataBaseConfigurator;
+import com.epam.creatures.config.DatabaseConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -8,14 +8,14 @@ import org.testng.annotations.Test;
 
 import java.util.Properties;
 
-public class DataBaseConfiguratorTest {
-    private static final Logger LOGGER = LogManager.getLogger(DataBaseConfiguratorTest.class);
+public class DatabaseConfiguratorTest {
+    private static final Logger LOGGER = LogManager.getLogger(DatabaseConfiguratorTest.class);
     @Test
     public void testConfig(){
 
-        DataBaseConfigurator.INSTANCE.configureDBProperties("web/config/db_config.properties");
+        DatabaseConfigurator.INSTANCE.configureDBProperties("web/config/db_config.properties");
 
-        Properties properties = DataBaseConfigurator.INSTANCE.getDbProperties();
+        Properties properties = DatabaseConfigurator.INSTANCE.getDbProperties();
 
         Assert.assertNotNull(properties);
 

@@ -217,8 +217,6 @@ o
 ?src/com/epam/creatures/service/ShowCreatureCommentsService.java,6\f\6f1fdfe83056059dae33aa17879bd8607de58184
 p
 @src/com/epam/creatures/service/ToCreatureDetailsPageService.java,5\f\5fc110401c192f3c248aa1693823e9e08e37bc82
-[
-+src/com/epam/creatures/tag/UserInfoTag.java,a\0\a02b9fa679900678489aa8d2bbd47cc3f978810f
 X
 (web/jsp/admin/admin_creature_details.jsp,4\d\4daf73989a407ed40f2401d82754a4d72545a163
 S
@@ -259,8 +257,6 @@ H
 web/jsp/user_sign_in.jsp,6\6\665fb37379c61786028853a114419c0dc9fa0d13
 `
 0src/com/epam/creatures/constant/PictureType.java,b\f\bfee4a84704f83a0191e99731db013507414b58e
-Z
-*src/com/epam/creatures/tag/PictureTag.java,c\4\c4a4a508b0620d040a5188ae7acdd31ef6b76ba2
 J
 web/WEB-INF/tld/custom.tld,c\8\c8ad4389faa70532c3b17d99610d2cc9798283ed
 h
@@ -309,3 +305,5 @@ e
 5src/com/epam/creatures/command/SelfDeleteCommand.java,b\8\b80ed97c8f74569f1c65d8e87bcdb841fcf10cd8
 e
 5src/com/epam/creatures/service/SelfDeleteService.java,a\a\aab2cba704f3fc6ef8b4e229c628d07de0b9492d
+]
+-src/com/epam/creatures/tag/ClientInfoTag.java,0\0\001cb38a3d5300f7c2d0cbbd8555e8c3501233c6

@@ -1,6 +1,6 @@
 package com.epam.test.pool;
 
-import com.epam.creatures.config.DataBaseConfigurator;
+import com.epam.creatures.config.DatabaseConfigurator;
 import com.epam.creatures.pool.ConnectionPool;
 import com.epam.creatures.pool.SafeConnection;
 import org.apache.logging.log4j.LogManager;
@@ -12,9 +12,8 @@ public class ConnectionPoolTest {
 
     @Test
     public void testConnectionPool() {
-        DataBaseConfigurator.INSTANCE.configureDBProperties("web/config/db_config.properties");
+        DatabaseConfigurator.INSTANCE.configureDBProperties("web/config/db_config.properties");
         ConnectionPool.INSTANCE.init();
-
         SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
         LOGGER.info(connection);
         ConnectionPool.INSTANCE.returnConnection(connection);

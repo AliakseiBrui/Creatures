@@ -3,8 +3,8 @@ package com.epam.creatures.service.admin;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.impl.CreaturesDAO;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.impl.CreaturesDao;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.CommandService;
@@ -19,13 +19,13 @@ public class DeleteCreatureService implements CommandService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
-        CreaturesDAO creaturesDAO = new CreaturesDAO();
+        CreaturesDao creaturesDAO = new CreaturesDao();
         int creatureId = Integer.parseInt(parameterMap.get(ParameterConstant.CREATURE_ID_PARAMETER));
 
         try{
 
             creaturesDAO.delete(creatureId);
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             LOGGER.error(e);
         }
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory

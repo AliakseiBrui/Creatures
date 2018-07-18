@@ -3,7 +3,7 @@ package com.epam.creatures.service.admin;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.encoder.PasswordEncoder;
 import com.epam.creatures.entity.Admin;
 import com.epam.creatures.entity.ClientRole;
@@ -54,7 +54,7 @@ public class AdminAuthorizationService implements CommandService {
                 errorMessage.append("Wrong data in login field.");
 
             }
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             errorMessage.append(e.getSQLState()).append(";").append(e);
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE, errorMessage);

@@ -1,14 +1,14 @@
 package com.epam.creatures.validator;
 
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.UserDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.exception.UserBannedException;
 
 public class UserValidator {
 
-    public boolean validateUser(User user) throws DAOException, UserBannedException {
-        UserDAO userDAO = new UserDAO();
+    public boolean validateUser(User user) throws DaoException, UserBannedException {
+        UserDao userDAO = new UserDao();
 
         if(user!=null) {
             User currentUser = userDAO.findUserByLogin(user.getLogin());

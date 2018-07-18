@@ -2,9 +2,9 @@ package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.AdminColumn;
 import com.epam.creatures.constant.CreatureColumn;
-import com.epam.creatures.dao.AbstractDAO;
-import com.epam.creatures.dao.CreatureTableDAO;
-import com.epam.creatures.dao.DAOException;
+import com.epam.creatures.dao.AbstractDao;
+import com.epam.creatures.dao.CreatureTableDao;
+import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.entity.Creature;
 import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.pool.ConnectionPool;
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements CreatureTableDAO {
-    private static final Logger LOGGER = LogManager.getLogger(CreaturesDAO.class);
+public class CreaturesDao extends AbstractDao<Integer, Creature> implements CreatureTableDao {
+    private static final Logger LOGGER = LogManager.getLogger(CreaturesDao.class);
     private static final String SELECT_ALL_CREATURES = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +
             "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " +
             "creatures_db.creatures.rating, creatures_db.creatures.creator_id, a.login, creatures_db.creatures.image " +
@@ -64,7 +64,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
     private CreatureFactory creatureFactory = new CreatureFactory();
 
     @Override
-    public List<Creature> findAll() throws DAOException {
+    public List<Creature> findAll() throws DaoException {
         List<Creature> creatureList = new ArrayList<>();
         LOGGER.debug("Selecting all creatures.");
 
@@ -81,13 +81,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
             }
 
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting all creatures.",e);
+            throw new DaoException("Exception while selecting all creatures.",e);
         }
         return creatureList;
     }
 
     @Override
-    public Creature findEntityById(Integer id) throws DAOException {
+    public Creature findEntityById(Integer id) throws DaoException {
         LOGGER.debug("Selecting creature by id. Id: "+id);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -106,13 +106,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting creature by id.",e);
+            throw new DaoException("Exception while selecting creature by id.",e);
         }
         return null;
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Integer id) throws DaoException {
         LOGGER.debug("Deleting creature by id. Id: "+id);
         
         try (SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -123,13 +123,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while deleting creature by id.",e);
+            throw new DaoException("Exception while deleting creature by id.",e);
         }
         return false;
     }
 
     @Override
-    public boolean create(Creature entity) throws DAOException {
+    public boolean create(Creature entity) throws DaoException {
         LOGGER.debug("Inserting creature.");
 
         try (SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -146,13 +146,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while inserting creature.",e);
+            throw new DaoException("Exception while inserting creature.",e);
         }
         return false;
     }
 
     @Override
-    public boolean update(Creature entity) throws DAOException {
+    public boolean update(Creature entity) throws DaoException {
         LOGGER.debug("Updating creature.");
 
         try (SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -169,13 +169,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating creature.",e);
+            throw new DaoException("Exception while updating creature.",e);
         }
         return false;
     }
 
     @Override
-    public Creature findCreatureByName(String name) throws DAOException {
+    public Creature findCreatureByName(String name) throws DaoException {
         LOGGER.debug("Selecting creature by name. Name: "+name);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -194,13 +194,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting creature by name.",e);
+            throw new DaoException("Exception while selecting creature by name.",e);
         }
         return null;
     }
 
     @Override
-    public List<Creature> findCreaturesByCreatorId(Integer creatorId) throws DAOException {
+    public List<Creature> findCreaturesByCreatorId(Integer creatorId) throws DaoException {
         List<Creature> creatureList = new ArrayList<>();
         LOGGER.debug("Selecting creatures by creatorId. CreatorId: "+creatorId);
 
@@ -220,13 +220,13 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting creatures by creatorId.",e);
+            throw new DaoException("Exception while selecting creatures by creatorId.",e);
         }
         return creatureList;
     }
 
     @Override
-    public boolean updateCreatureImage(Integer id, InputStream image) throws DAOException {
+    public boolean updateCreatureImage(Integer id, InputStream image) throws DaoException {
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_CREATURE_IMAGE)){
 
@@ -236,7 +236,7 @@ public class CreaturesDAO extends AbstractDAO<Integer, Creature> implements Crea
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating creature's image.",e);
+            throw new DaoException("Exception while updating creature's image.",e);
         }
         return false;
     }

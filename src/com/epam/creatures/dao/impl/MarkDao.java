@@ -1,9 +1,9 @@
 package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.MarkColumn;
-import com.epam.creatures.dao.AbstractDAO;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.MarkTableDAO;
+import com.epam.creatures.dao.AbstractDao;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.MarkTableDao;
 import com.epam.creatures.entity.Mark;
 import com.epam.creatures.factory.MarkFactory;
 import com.epam.creatures.pool.ConnectionPool;
@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
-    private static final Logger LOGGER = LogManager.getLogger(MarkDAO.class);
+public class MarkDao extends AbstractDao<Integer,Mark> implements MarkTableDao {
+    private static final Logger LOGGER = LogManager.getLogger(MarkDao.class);
     private static final String SELECT_ALL_MARKS = "SELECT creatures_db.marks.mark_value, creatures_db.marks.creature_id, creatures_db.marks.user_id " +
             "FROM creatures_db.marks";
 
@@ -44,7 +44,7 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
     private MarkFactory markFactory = new MarkFactory();
 
     @Override
-    public List<Mark> findAll() throws DAOException {
+    public List<Mark> findAll() throws DaoException {
         LOGGER.debug("Selecting all marks.");
         List<Mark> markList = new ArrayList<>();
 
@@ -60,23 +60,23 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting all marks.",e);
+            throw new DaoException("Exception while selecting all marks.",e);
         }
         return markList;
     }
 
     @Override
-    public Mark findEntityById(Integer id) throws DAOException {
+    public Mark findEntityById(Integer id) throws DaoException {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException {
+    public boolean delete(Integer id) throws DaoException {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean create(Mark entity) throws DAOException {
+    public boolean create(Mark entity) throws DaoException {
         LOGGER.debug("Inserting new mark. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -90,13 +90,13 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while inserting mark.",e);
+            throw new DaoException("Exception while inserting mark.",e);
         }
         return false;
     }
 
     @Override
-    public boolean update(Mark entity) throws DAOException {
+    public boolean update(Mark entity) throws DaoException {
         LOGGER.debug("Updating mark. "+entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -109,13 +109,13 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating mark.",e);
+            throw new DaoException("Exception while updating mark.",e);
         }
         return false;
     }
 
     @Override
-    public Mark findMark(Integer creatureId, Integer userId) throws DAOException {
+    public Mark findMark(Integer creatureId, Integer userId) throws DaoException {
         LOGGER.debug("Selecting mark by creatureId and userId.");
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -131,13 +131,13 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting mark.",e);
+            throw new DaoException("Exception while selecting mark.",e);
         }
         return null;
     }
 
     @Override
-    public List<Mark> findMarks(Integer userId) throws DAOException {
+    public List<Mark> findMarks(Integer userId) throws DaoException {
         LOGGER.debug("Selecting mark by creatureId and userId.");
         List<Mark> markList = new ArrayList<>();
 
@@ -153,7 +153,7 @@ public class MarkDAO extends AbstractDAO<Integer,Mark> implements MarkTableDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting mark.",e);
+            throw new DaoException("Exception while selecting mark.",e);
         }
         return markList;
     }

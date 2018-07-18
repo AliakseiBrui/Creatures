@@ -1,6 +1,6 @@
 package com.epam.creatures.pool;
 
-import com.epam.creatures.config.DataBaseConfigurator;
+import com.epam.creatures.config.DatabaseConfigurator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,7 +47,7 @@ public enum ConnectionPool {
             try {
 
                 for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
-                    connectionQueue.put(createConnection(DataBaseConfigurator.INSTANCE.getDbProperties()));
+                    connectionQueue.put(createConnection(DatabaseConfigurator.INSTANCE.getDbProperties()));
                 }
             } catch (InterruptedException e) {
                 LOGGER.error("Interrupted while creating connections for connection pool.", e);

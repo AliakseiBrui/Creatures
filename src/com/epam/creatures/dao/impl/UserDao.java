@@ -1,9 +1,9 @@
 package com.epam.creatures.dao.impl;
 
 import com.epam.creatures.constant.UserColumn;
-import com.epam.creatures.dao.AbstractDAO;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.UserTableDAO;
+import com.epam.creatures.dao.AbstractDao;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.UserTableDao;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.pool.ConnectionPool;
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
-    private static final Logger LOGGER = LogManager.getLogger(UserDAO.class);
+public class UserDao extends AbstractDao<Integer,User> implements UserTableDao {
+    private static final Logger LOGGER = LogManager.getLogger(UserDao.class);
     private static final String SELECT_USER_BY_ID = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned, creatures_db.users.avatar " +
             "FROM creatures_db.users " +
             "WHERE creatures_db.users.id = ?";
@@ -56,7 +56,7 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
     private UserFactory userFactory = new UserFactory();
 
     @Override
-    public List<User> findAll() throws DAOException {
+    public List<User> findAll() throws DaoException {
         LOGGER.debug("Selecting all users.");
         List<User> userList = new ArrayList<>();
 
@@ -75,13 +75,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 }
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting all users.",e);
+            throw new DaoException("Exception while selecting all users.",e);
         }
         return userList;
     }
 
     @Override
-    public User findEntityById(Integer id) throws DAOException{
+    public User findEntityById(Integer id) throws DaoException {
         LOGGER.debug("Selecting user by id. Id: "+id);
         ResultSet resultSet = null;
 
@@ -100,13 +100,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                                 resultSet.getBoolean(UserColumn.IS_BANNED),resultSet.getBytes(UserColumn.AVATAR));
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting user by id",e);
+            throw new DaoException("Exception while selecting user by id",e);
         }
         return null;
     }
 
     @Override
-    public boolean delete(Integer id) throws DAOException{
+    public boolean delete(Integer id) throws DaoException {
         LOGGER.debug("Deleting user by id. Id: "+id);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -118,13 +118,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while deleting user by id.",e);
+            throw new DaoException("Exception while deleting user by id.",e);
         }
         return false;
     }
 
     @Override
-    public boolean create(User entity) throws DAOException{
+    public boolean create(User entity) throws DaoException {
         LOGGER.debug("Inserting new user. " + entity);
 
         try (SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -137,13 +137,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while inserting user.",e);
+            throw new DaoException("Exception while inserting user.",e);
         }
         return false;
     }
 
     @Override
-    public boolean update(User entity) throws DAOException{
+    public boolean update(User entity) throws DaoException {
         LOGGER.debug("Updating user." + entity);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -159,13 +159,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating user",e);
+            throw new DaoException("Exception while updating user",e);
         }
         return false;
     }
 
     @Override
-    public User findUserByLogin(String login) throws DAOException{
+    public User findUserByLogin(String login) throws DaoException {
         LOGGER.debug("Selecting user by login. Login: "+login);
         ResultSet resultSet = null;
 
@@ -184,13 +184,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                                 resultSet.getBoolean(UserColumn.IS_BANNED),resultSet.getBytes(UserColumn.AVATAR));
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while selecting user by login",e);
+            throw new DaoException("Exception while selecting user by login",e);
         }
         return null;
     }
 
     @Override
-    public boolean updateUserBan(User user) throws DAOException {
+    public boolean updateUserBan(User user) throws DaoException {
         LOGGER.debug("Updating user's ban." + user);
 
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
@@ -203,13 +203,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating user",e);
+            throw new DaoException("Exception while updating user",e);
         }
         return false;
     }
 
     @Override
-    public boolean updateUserStatus(Integer id, Double status) throws DAOException {
+    public boolean updateUserStatus(Integer id, Double status) throws DaoException {
         LOGGER.debug("Updating user's status. Status:" + status);
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_STATUS)){
@@ -220,13 +220,13 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating user's status.",e);
+            throw new DaoException("Exception while updating user's status.",e);
         }
         return false;
     }
 
     @Override
-    public boolean updateUserAvatar(Integer id, InputStream avatar) throws DAOException {
+    public boolean updateUserAvatar(Integer id, InputStream avatar) throws DaoException {
         LOGGER.debug("Updating user's avatar.");
         try(SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
             PreparedStatement preparedStatement = Objects.requireNonNull(connection).prepareStatement(UPDATE_USER_AVATAR)){
@@ -237,7 +237,7 @@ public class UserDAO extends AbstractDAO<Integer,User> implements UserTableDAO {
                 return preparedStatement.executeUpdate()>0;
             }
         } catch (SQLException e) {
-            throw new DAOException("Exception while updating user's avatar.",e);
+            throw new DaoException("Exception while updating user's avatar.",e);
         }
         return false;
     }

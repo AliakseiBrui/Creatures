@@ -3,8 +3,8 @@ package com.epam.creatures.service;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.DAOException;
-import com.epam.creatures.dao.impl.CommentDAO;
+import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.CommentDao;
 import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Comment;
 import com.epam.creatures.entity.Router;
@@ -20,7 +20,7 @@ public class ShowCreatureCommentsService implements CommandService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreatureCommentsService.class);
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
-        CommentDAO commentDAO = new CommentDAO();
+        CommentDao commentDAO = new CommentDao();
         RouterFactory routerFactory = new RouterFactory();
 
         try {
@@ -47,7 +47,7 @@ public class ShowCreatureCommentsService implements CommandService {
             }
             attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
                     .createRouter(Router.RouteType.FORWARD,route));
-        } catch (DAOException e) {
+        } catch (DaoException e) {
             LOGGER.error("Can not show all comments.",e);
         }
     }
