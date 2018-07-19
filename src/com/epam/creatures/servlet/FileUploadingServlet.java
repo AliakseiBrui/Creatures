@@ -46,7 +46,7 @@ public class FileUploadingServlet extends HttpServlet {
 
         parameterMap.put(ParameterConstant.PICTURE_TYPE_PARAMETER,request.getParameter(ParameterConstant.PICTURE_TYPE_PARAMETER));
         attributeMap.put(AttributeConstant.PICTURE_ATTRIBUTE,picture);
-        parameterMap.put(ParameterConstant.CREATOR_ID_PARAMETER,request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
+        parameterMap.put(ParameterConstant.CREATURE_ID_PARAMETER,request.getParameter(ParameterConstant.CREATURE_ID_PARAMETER));
         parameterMap.put(ParameterConstant.USER_ID_PARAMETER, request.getParameter(ParameterConstant.USER_ID_PARAMETER));
         parameterMap.put(ParameterConstant.ADMIN_ID_PARAMETER, request.getParameter(ParameterConstant.ADMIN_ID_PARAMETER));
 
@@ -57,6 +57,5 @@ public class FileUploadingServlet extends HttpServlet {
         Router router = (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
         RouteNavigator routeNavigator = new RouteNavigator();
         routeNavigator.send(router,request,response);
-
     }
 }

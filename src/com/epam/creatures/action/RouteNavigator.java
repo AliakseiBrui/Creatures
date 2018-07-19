@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class RouteNavigator {
     public void send(Router router, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         if (router.getRouteType() == Router.RouteType.FORWARD) {
             request.getRequestDispatcher(router.getRoute()).forward(request, response);
 
