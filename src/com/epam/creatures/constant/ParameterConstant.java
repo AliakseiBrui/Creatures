@@ -23,6 +23,7 @@ public class ParameterConstant {
     public static final String PAGE_PARAMETER = "page";
     public static final String MESSAGE_PARAMETER = "message";
     public static final String ERROR_MESSAGE_PARAMETER = "errorMessage";
+    public static final String PICTURE_PARAMETER = "picture";
     public static final String PICTURE_TYPE_PARAMETER = "pictureType";
 
 

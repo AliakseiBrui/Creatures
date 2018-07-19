@@ -17,7 +17,6 @@ public class ConnectionPoolTest {
         SafeConnection connection = ConnectionPool.INSTANCE.takeConnection();
         LOGGER.info(connection);
         ConnectionPool.INSTANCE.returnConnection(connection);
-
         ConnectionPool.INSTANCE.closeAll();
     }
 }

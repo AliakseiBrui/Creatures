@@ -1,5 +1,6 @@
 package com.epam.creatures.servlet;
 
+import com.epam.creatures.action.RouteNavigator;
 import com.epam.creatures.command.CommandType;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Router;
@@ -28,14 +29,7 @@ public class CreaturesServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Router router = CommandType.valueOf(request.getParameter(ParameterConstant.COMMAND_TYPE_PARAMETER))
                 .getCommand().execute(request);
-        switch (router.getRouteType()){
-            case FORWARD:
-                request.getRequestDispatcher(router.getRoute()).forward(request,response);
-                break;
-            case REDIRECT:
-                response.sendRedirect(router.getRoute());
-                break;
-            default:
-        }
+        RouteNavigator routeNavigator = new RouteNavigator();
+        routeNavigator.send(router,request,response);
     }
 }

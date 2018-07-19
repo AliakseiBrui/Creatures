@@ -5,6 +5,7 @@ import com.epam.creatures.entity.ClientRole;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class ClientInfoTag extends TagSupport {
     private static final Logger LOGGER = LogManager.getLogger(ClientInfoTag.class);
 
     @Override
-    public int doStartTag(){
+    public int doStartTag() throws JspException{
         String login = (String) pageContext.getSession().getAttribute(AttributeConstant.LOGIN_ATTRIBUTE);
         ClientRole clientRole = (ClientRole) pageContext.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
         Double status = (Double) pageContext.getSession().getAttribute(AttributeConstant.STATUS_ATTRIBUTE);
@@ -82,7 +83,7 @@ public class ClientInfoTag extends TagSupport {
             JspWriter writer = pageContext.getOut();
             writer.write(info);
         } catch (IOException e) {
-            LOGGER.error("Exception in tag ClientInfoTag.");
+            throw new JspException(e);
         }
         return SKIP_BODY;
     }

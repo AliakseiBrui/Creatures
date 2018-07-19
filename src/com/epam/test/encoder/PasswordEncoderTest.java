@@ -1,7 +1,6 @@
 package com.epam.test.encoder;
 
 import com.epam.creatures.encoder.PasswordEncoder;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -37,4 +36,5 @@ public class PasswordEncoderTest {
 
         Assert.assertEquals(passwordEncoder.encryptPassword(PASSWORD),passwordEncoder.encryptPassword(PASSWORD));
     }
+
 }
