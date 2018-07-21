@@ -2,8 +2,6 @@ package com.epam.creatures.tag;
 
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.entity.ClientRole;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -12,7 +10,6 @@ import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class ClientInfoTag extends TagSupport {
-    private static final Logger LOGGER = LogManager.getLogger(ClientInfoTag.class);
 
     @Override
     public int doStartTag() throws JspException{

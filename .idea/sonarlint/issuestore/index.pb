@@ -339,3 +339,7 @@ g
 7src/com/epam/creatures/config/DatabaseConfigurator.java,2\3\23c46b4d932050237022f90c859170344efa24ad
 H
 web/jsp/errors/error.jsp,f\2\f2c1183d4db74d133f8ef95a7c8962224b6e3b75
+h
+8src/com/epam/creatures/service/UploadPictureService.java,f\8\f8fc6c753b0447b0b2b3c83300d0eb4cecb79ca3
+a
+1src/com/epam/creatures/action/RouteNavigator.java,b\d\bd2f6f24ff82dd0fdb508fe8d892b34183caba11

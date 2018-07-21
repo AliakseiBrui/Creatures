@@ -12,12 +12,12 @@ class SqlDriverManager {
     SqlDriverManager(){}
 
     void registerDriver(){
-        LOGGER.debug("Registering drivers.");
+        LOGGER.debug("Registering sql drivers.");
 
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         } catch (SQLException e) {
-            LOGGER.fatal("Exception in driver registration.",e);
+            LOGGER.fatal("Exception in sql driver registration.",e);
             throw new RuntimeException(e);
         }
     }
@@ -27,12 +27,12 @@ class SqlDriverManager {
     }
 
     private void deregisterDriver(java.sql.Driver driver){
-        LOGGER.debug("Deregistering driver.");
+        LOGGER.debug("Deregistering sql driver.");
 
         try {
             DriverManager.deregisterDriver(driver);
         } catch (SQLException e) {
-            LOGGER.fatal("Exception in driver deregistration",e);
+            LOGGER.fatal("Exception in sql driver deregistration.",e);
             throw new RuntimeException(e);
         }
     }

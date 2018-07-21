@@ -4,9 +4,9 @@ import com.epam.creatures.entity.Creature;
 
 public class CreatureValidator {
     private static final Integer NAME_MAX_LENGTH = 15;
-    private static final String RIGHT_NAME_DATA = ".+";
+    private static final String RIGHT_NAME_DATA = "\\w[\\p{Alpha}\\s]+";
     private static final Integer DESCRIPTION_MAX_LENGTH = 200;
-    private static final String RIGHT_DESCRIPTION_DATA = ".+";
+    private static final String RIGHT_DESCRIPTION_DATA = "[\\w\\s]+";
     private static final Integer MIN_LIMBS = 0;
     private static final Integer MAX_LIMBS = 100;
     private static final Integer MIN_HEADS = 0;
