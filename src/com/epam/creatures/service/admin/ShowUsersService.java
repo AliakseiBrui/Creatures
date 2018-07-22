@@ -24,7 +24,7 @@ public class ShowUsersService implements ProjectService {
         UserDao userDAO = new UserDao();
         RouterFactory routerFactory = new RouterFactory();
         UserListSorter userListSorter = new UserListSorter();
-        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, UserColumn.LOGIN);
+        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, UserListSorter.UserSortType.BY_LOGIN.toString());
         UserListSorter.UserSortType sortType = UserListSorter.UserSortType.valueOf(parameterMap.get(ParameterConstant.SORT_PARAMETER));
 
         try {

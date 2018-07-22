@@ -11,14 +11,18 @@
     <title>Error page</title>
 </head>
 <body>
+<%@ include file="../parts/header.jsp"%>
+<div>
     Request from ${pageContext.errorData.requestURI} is failed
-    <br/>
+    <br/><br/>
     Servlet name: ${pageContext.errorData.servletName}
-    <br/>
+    <br/><br/>
     Status code: ${pageContext.exception}
-    <br/>
+    <br/><br/>
     Exception: ${pageContext.exception}
-    <br/>
+    <br/><br/>
     Message from exception: ${pageContext.exception.message}
+</div>
+<%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

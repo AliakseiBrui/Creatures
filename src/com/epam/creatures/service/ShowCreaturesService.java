@@ -2,11 +2,10 @@ package com.epam.creatures.service;
 
 import com.epam.creatures.action.CreatureListSorter;
 import com.epam.creatures.constant.AttributeConstant;
-import com.epam.creatures.constant.CreatureColumn;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
-import com.epam.creatures.dao.impl.CreaturesDao;
 import com.epam.creatures.dao.DaoException;
+import com.epam.creatures.dao.impl.CreaturesDao;
 import com.epam.creatures.dao.impl.MarkDao;
 import com.epam.creatures.entity.ClientRole;
 import com.epam.creatures.entity.Creature;
@@ -29,7 +28,7 @@ public class ShowCreaturesService implements ProjectService {
         MarkDao markDAO = new MarkDao();
         Integer userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
         CreatureListSorter creatureListSorter = new CreatureListSorter();
-        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, CreatureColumn.NAME);
+        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, CreatureListSorter.CreatureSortType.BY_NAME.toString());
         CreatureListSorter.CreatureSortType sortType = CreatureListSorter.CreatureSortType.valueOf(parameterMap.get(ParameterConstant.SORT_PARAMETER));
 
         try {
@@ -42,23 +41,22 @@ public class ShowCreaturesService implements ProjectService {
             ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
             String route=null;
 
-            switch (clientRole){
-                case USER:
-                    route = PagePath.CREATURES_FOR_USER_PAGE;
-                    List<Mark> markList = markDAO.findMarks(userId);
-                    creatureList.forEach(creature -> {
+            if (clientRole == ClientRole.USER) {
+                route = PagePath.CREATURES_FOR_USER_PAGE;
+                List<Mark> markList = markDAO.findMarks(userId);
+                creatureList.forEach(creature -> {
 
-                        for(Mark mark : markList){
+                    for (Mark mark : markList) {
 
-                            if(creature.getCreatureId().equals(mark.getCreatureId())){
-                                creature.setMarked(true);
-                            }
+                        if (creature.getCreatureId().equals(mark.getCreatureId())) {
+                            creature.setMarked(true);
                         }
-                    });
-                    break;
-                case ADMIN:
-                    route = PagePath.CREATURES_FOR_ADMIN_PAGE;
-                    break;
+                    }
+                });
+
+            } else if (clientRole == ClientRole.ADMIN) {
+                route = PagePath.CREATURES_FOR_ADMIN_PAGE;
+
             }
             creatureListSorter.sortCreatureList(creatureList,sortType);
             attributeMap.put(AttributeConstant.CREATURE_LIST_ATTRIBUTE,creatureList);
