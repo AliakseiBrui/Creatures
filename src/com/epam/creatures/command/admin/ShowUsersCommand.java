@@ -18,9 +18,10 @@ public class ShowUsersCommand extends AbstractCommand {
 
     @Override
     public Router execute(HttpServletRequest request) {
+        HashMap<String,String> parameterMap = new HashMap<>();
         HashMap<String,Object> attributeMap = new HashMap<>();
 
-        getService().process(null,attributeMap);
+        getService().process(parameterMap,attributeMap);
 
         request.setAttribute(AttributeConstant.USER_LIST_ATTRIBUTE,attributeMap.get(AttributeConstant.USER_LIST_ATTRIBUTE));
 

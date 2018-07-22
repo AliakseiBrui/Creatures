@@ -1,7 +1,7 @@
 package com.epam.creatures.service.admin;
 
-import com.epam.creatures.constant.AttributeConstant;
-import com.epam.creatures.constant.PagePath;
+import com.epam.creatures.action.UserListSorter;
+import com.epam.creatures.constant.*;
 import com.epam.creatures.dao.DaoException;
 import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.Router;
@@ -23,6 +23,9 @@ public class ShowUsersService implements ProjectService {
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         UserDao userDAO = new UserDao();
         RouterFactory routerFactory = new RouterFactory();
+        UserListSorter userListSorter = new UserListSorter();
+        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, UserColumn.LOGIN);
+        UserListSorter.UserSortType sortType = UserListSorter.UserSortType.valueOf(parameterMap.get(ParameterConstant.SORT_PARAMETER));
 
         try {
             List<User> userList = userDAO.findAll();
@@ -32,8 +35,8 @@ public class ShowUsersService implements ProjectService {
                     user.setEncodedAvatar(Base64.getEncoder().encodeToString(user.getAvatar()));
                 }
             });
+            userListSorter.sortUserList(userList,sortType);
             attributeMap.put(AttributeConstant.USER_LIST_ATTRIBUTE,userList);
-
             attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
                     .createRouter(Router.RouteType.FORWARD,PagePath.USERS_FOR_ADMIN_PAGE));
         } catch (DaoException e) {

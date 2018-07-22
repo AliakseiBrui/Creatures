@@ -1,6 +1,8 @@
 package com.epam.creatures.service;
 
+import com.epam.creatures.action.CreatureListSorter;
 import com.epam.creatures.constant.AttributeConstant;
+import com.epam.creatures.constant.CreatureColumn;
 import com.epam.creatures.constant.PagePath;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.dao.impl.CreaturesDao;
@@ -26,6 +28,9 @@ public class ShowCreaturesService implements ProjectService {
         RouterFactory routerFactory = new RouterFactory();
         MarkDao markDAO = new MarkDao();
         Integer userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
+        CreatureListSorter creatureListSorter = new CreatureListSorter();
+        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, CreatureColumn.NAME);
+        CreatureListSorter.CreatureSortType sortType = CreatureListSorter.CreatureSortType.valueOf(parameterMap.get(ParameterConstant.SORT_PARAMETER));
 
         try {
             List<Creature> creatureList = creaturesDAO.findAll();
@@ -55,6 +60,7 @@ public class ShowCreaturesService implements ProjectService {
                     route = PagePath.CREATURES_FOR_ADMIN_PAGE;
                     break;
             }
+            creatureListSorter.sortCreatureList(creatureList,sortType);
             attributeMap.put(AttributeConstant.CREATURE_LIST_ATTRIBUTE,creatureList);
             attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
                     .createRouter(Router.RouteType.FORWARD,route));

@@ -24,6 +24,7 @@ public class ShowCreaturesCommand extends AbstractCommand {
 
         parameterMap.put(ParameterConstant.ROLE_PARAMETER,request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE).toString());
         parameterMap.put(ParameterConstant.USER_ID_PARAMETER, String.valueOf(request.getSession().getAttribute(AttributeConstant.ID_ATTRIBUTE)));
+        parameterMap.put(ParameterConstant.SORT_PARAMETER,request.getParameter(ParameterConstant.SORT_PARAMETER));
 
         getService().process(parameterMap,attributeMap);
 

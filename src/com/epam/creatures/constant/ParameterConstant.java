@@ -25,6 +25,7 @@ public class ParameterConstant {
     public static final String ERROR_MESSAGE_PARAMETER = "errorMessage";
     public static final String PICTURE_PARAMETER = "picture";
     public static final String PICTURE_TYPE_PARAMETER = "pictureType";
+    public static final String SORT_PARAMETER = "sort";
 
 
     private ParameterConstant(){}
