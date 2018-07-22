@@ -3,6 +3,7 @@ package com.epam.creatures.servlet;
 import com.epam.creatures.action.RouteNavigator;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.ParameterConstant;
+import com.epam.creatures.constant.PictureType;
 import com.epam.creatures.entity.Router;
 import com.epam.creatures.service.UploadPictureService;
 import org.apache.logging.log4j.LogManager;
@@ -52,7 +53,11 @@ public class FileUploadingServlet extends HttpServlet {
 
         service.process(parameterMap,attributeMap);
 
-        request.getSession().setAttribute(AttributeConstant.AVATAR_ATTRIBUTE,attributeMap.get(AttributeConstant.AVATAR_ATTRIBUTE));
+        PictureType pictureType = PictureType.valueOf(parameterMap.get((ParameterConstant.PICTURE_TYPE_PARAMETER)));
+
+        if(pictureType==PictureType.USER_AVATAR || pictureType == PictureType.ADMIN_AVATAR) {
+            request.getSession().setAttribute(AttributeConstant.AVATAR_ATTRIBUTE, attributeMap.get(AttributeConstant.AVATAR_ATTRIBUTE));
+        }
         request.setAttribute(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,attributeMap.get(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE));
         Router router = (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
         RouteNavigator routeNavigator = new RouteNavigator();
