@@ -26,9 +26,9 @@
 
     <label for="creatureGender">Gender</label><br/>
     <select id="creatureGender" name="creatureGender" class="index-text">
-        <option>NONE</option>
-        <option>MALE</option>
-        <option>FEMALE</option>
+        <option value="NONE">NONE</option>
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
     </select>
     <br/><br/>
 

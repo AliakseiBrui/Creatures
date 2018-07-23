@@ -33,8 +33,6 @@ public class PasswordEncoderTest {
 
     @Test
     public void encryptPassword3(){
-
         Assert.assertEquals(passwordEncoder.encryptPassword(PASSWORD),passwordEncoder.encryptPassword(PASSWORD));
     }
-
 }

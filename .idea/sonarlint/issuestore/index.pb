@@ -343,3 +343,11 @@ h
 8src/com/epam/creatures/service/UploadPictureService.java,f\8\f8fc6c753b0447b0b2b3c83300d0eb4cecb79ca3
 a
 1src/com/epam/creatures/action/RouteNavigator.java,b\d\bd2f6f24ff82dd0fdb508fe8d892b34183caba11
+h
+8src/com/epam/test/validator/ClientDataValidatorTest.java,7\3\7362278cc7ab9fa6321e42f34bf32dfb9976ae5c
+e
+5src/com/epam/test/validator/CommentValidatorTest.java,c\8\c828e405f8697c44b211418dd2fe8a6a7c5ebbb8
+a
+1src/com/epam/creatures/action/UserListSorter.java,e\b\ebf0b0e3090c4788bb7d83a649aa1f86f09ce747
+e
+5src/com/epam/creatures/action/CreatureListSorter.java,4\d\4d7f59b7d8877d2045eacd0f341c767e84380fc8
