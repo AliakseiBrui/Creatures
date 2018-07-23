@@ -25,20 +25,17 @@ public class StartPageFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-
         ClientRole role = (ClientRole) request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
 
-        if(role!=null){
+        if (role == ClientRole.USER) {
             LOGGER.debug("StartPageFilter has worked.");
+            request.getRequestDispatcher(USER_PAGE_RELATIVE_PATH).forward(servletRequest, servletResponse);
+            return;
 
-            switch (role){
-                case USER:
-                    request.getRequestDispatcher(USER_PAGE_RELATIVE_PATH).forward(servletRequest,servletResponse);
-                    return;
-                case ADMIN:
-                    request.getRequestDispatcher(ADMIN_PAGE_RELATIVE_PATH).forward(servletRequest,servletResponse);
-                    return;
-            }
+        } else if (role == ClientRole.ADMIN) {
+            LOGGER.debug("StartPageFilter has worked.");
+            request.getRequestDispatcher(ADMIN_PAGE_RELATIVE_PATH).forward(servletRequest, servletResponse);
+            return;
         }
         filterChain.doFilter(servletRequest,servletResponse);
     }

@@ -35,11 +35,11 @@ public class AdminUrlFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         ClientRole role = (ClientRole) request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
 
-
         if(role==null){
             request.getRequestDispatcher(START_PAGE_RELATIVE_PATH).forward(request,response);
             LOGGER.debug("AdminUrlFilter has worked.");
             return;
+
         }else if(role == ClientRole.USER){
             request.getRequestDispatcher(USER_MAIN_PAGE_RELATIVE_PATH).forward(request,response);
             LOGGER.debug("AdminUrlFilter has worked.");
