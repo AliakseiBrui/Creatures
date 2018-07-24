@@ -8,11 +8,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
+    <fmt:message key="button.profile" var="profileButton"/>
+    <fmt:message key="button.log_out" var="logOutButton"/>
     <div class="header">
         <div class="header-left">
         </div>
         <div  class="header-right">
-            <ctg:client-info/>
+            <ctg:client-info buttonProfile="${profileButton}" buttonLogOut="${logOutButton}"/>
         </div>
     </div>
     <br/>
@@ -25,4 +29,4 @@
         </strong>
     </div>
     <br/>
-
+</fmt:bundle>

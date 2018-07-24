@@ -10,6 +10,24 @@ import java.io.IOException;
 
 @SuppressWarnings("serial")
 public class ClientInfoTag extends TagSupport {
+    private String buttonProfile;
+    private String buttonLogOut;
+
+    public String getButtonProfile() {
+        return buttonProfile;
+    }
+
+    public void setButtonProfile(String buttonProfile) {
+        this.buttonProfile = buttonProfile;
+    }
+
+    public String getButtonLogOut() {
+        return buttonLogOut;
+    }
+
+    public void setButtonLogOut(String buttonLogOut) {
+        this.buttonLogOut = buttonLogOut;
+    }
 
     @Override
     public int doStartTag() throws JspException{
@@ -45,13 +63,13 @@ public class ClientInfoTag extends TagSupport {
                         "                            <div align=\"right\" class=\"user-button\">\n" +
                         "                                <form action=\"/creatures\" method=\"get\">\n" +
                         "                                    <input type=\"hidden\" name=\"commandType\" value=\"TO_USER_PROFILE_PAGE_COMMAND\"/>\n" +
-                        "                                    <input type=\"submit\" value=\"Profile\" class=\"nice-button\"/>\n" +
+                        "                                    <input type=\"submit\" value="+buttonProfile+" class=\"nice-button\"/>\n" +
                         "                                </form>\n" +
                         "                            </div>\n" +
                         "                    <div align=\"right\">\n" +
                         "                        <form action=\"/creatures\" method=\"get\" class=\"user-button\">\n" +
                         "                            <input type=\"hidden\" name=\"commandType\" value=\"LOG_OUT_COMMAND\"/>\n" +
-                        "                            <input type=\"submit\" value=\"Log out\" class=\"nice-button\"/>\n" +
+                        "                            <input type=\"submit\" value="+buttonLogOut+" class=\"nice-button\"/>\n" +
                         "                        </form>\n" +
                         "                    </div>\n" +
                         "                </div>\n" +
@@ -63,13 +81,13 @@ public class ClientInfoTag extends TagSupport {
                         "                            <div align=\"right\" class=\"user-button\">\n" +
                         "                                <form action=\"/creatures\" method=\"get\">\n" +
                         "                                    <input type=\"hidden\" name=\"commandType\" value=\"TO_ADMIN_PROFILE_PAGE_COMMAND\"/>\n" +
-                        "                                    <input type=\"submit\" value=\"Profile\" class=\"nice-button\"/>\n" +
+                        "                                    <input type=\"submit\" value="+buttonProfile+" class=\"nice-button\"/>\n" +
                         "                                </form>\n" +
                         "                            </div>\n" +
                         "                    <div align=\"right\">\n" +
                         "                        <form action=\"/creatures\" method=\"get\" class=\"user-button\">\n" +
                         "                            <input type=\"hidden\" name=\"commandType\" value=\"LOG_OUT_COMMAND\"/>\n" +
-                        "                            <input type=\"submit\" value=\"Log out\" class=\"nice-button\"/>\n" +
+                        "                            <input type=\"submit\" value="+buttonLogOut+" class=\"nice-button\"/>\n" +
                         "                        </form>\n" +
                         "                    </div>\n" +
                         "                </div>\n" +
