@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,7 +7,9 @@
   Time: 21:14
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
 <html>
 <head>
     <title>Application</title>
@@ -27,8 +30,7 @@
                 </div>
                 <div class="client-banned">
                     <p>
-                        Banned:
-                        <c:out value="${user.getBanned()}"/>
+                        <fmt:message key="user.banned"/> <c:out value="${user.getBanned()}"/>
                     </p>
                 </div>
                 <div class="client-footer">
@@ -40,7 +42,7 @@
                             <input type="hidden" name="commandType" value="CHANGE_USER_BANNED_COMMAND"/>
                             <input type="hidden" name="userId" value="${user.getId()}"/>
 
-                            <input type="submit" value="Ban\Unban" class="nice-button"/>
+                            <input type="submit" value="<fmt:message key="button.ban_unban"/>" class="nice-button"/>
                         </form>
                     </div>
                 </div>
@@ -51,3 +53,4 @@
 </div>
 </body>
 </html>
+</fmt:bundle>

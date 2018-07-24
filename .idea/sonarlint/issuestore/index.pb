@@ -237,10 +237,6 @@ a
 ,src/com/epam/creatures/dao/impl/UserDAO.java,6\7\6788f29294db2259b2ec3a59ed9cfcd91107f2c6
 ]
 -src/com/epam/creatures/entity/ClientRole.java,1\4\140ada663a65581ff12718ed0bdbfdb6b03ed124
-a
-1src/com/epam/creatures/filter/AdminUrlFilter.java,f\d\fd63250f55600ce9c0dd7ee51050d5a46ff26600
-`
-0src/com/epam/creatures/filter/UserUrlFilter.java,e\f\eff97d7dddc3fddb16324de96346c38d33d9212e
 u
 Esrc/com/epam/creatures/service/user/ToCommentCreaturePageService.java,b\6\b62cd8e50ccff0d027a855b1a82e62801d3372c5
 T
@@ -269,8 +265,6 @@ L
 web/jsp/parts/image_part.jsp,0\d\0d7d63f0cdbcf46803a44005901013f37caebd7e
 g
 7src/com/epam/creatures/validator/CreatureValidator.java,c\b\cbe04e9143691c3254344469e0beae3be5f792a0
-a
-1src/com/epam/creatures/filter/GuestUrlFilter.java,6\d\6d07672c4bed34c1907017d34ce90f2e6c4619e7
 b
 2src/com/epam/creatures/filter/StartPageFilter.java,2\3\237306b1275d095a86601b62efa6225ce66d4265
 T
@@ -351,3 +345,13 @@ a
 1src/com/epam/creatures/action/UserListSorter.java,e\b\ebf0b0e3090c4788bb7d83a649aa1f86f09ce747
 e
 5src/com/epam/creatures/action/CreatureListSorter.java,4\d\4d7f59b7d8877d2045eacd0f341c767e84380fc8
+b
+2web/WEB-INF/classes/resource/text_en_US.properties,2\9\29c16cc21d534d604c0b14ea47de92490d2dab82
+b
+2web/WEB-INF/classes/resource/text_ru_RU.properties,a\5\a54f429642111b3f1d9e3e6aa0b326ab241ac679
+b
+2src/com/epam/creatures/filter/AdminPageFilter.java,8\1\819ca792e65e45bc9a4a2e2d50a520715fff8140
+b
+2src/com/epam/creatures/filter/GuestPageFilter.java,b\8\b86071b28c8e206f6adb2c15cd1d1ee607e658cf
+a
+1src/com/epam/creatures/filter/UserPageFilter.java,f\0\f055f00f3c50bb8efae7ceb7bf5f985c3e201b6a

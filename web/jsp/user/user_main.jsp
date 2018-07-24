@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,9 +8,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
 <html>
 <head>
-    <title>User Page</title>
+    <title><fmt:message key="title.user_main"/></title>
 
 </head>
 <body>
@@ -21,3 +24,4 @@
 <%@ include file="../parts/footer.jsp"%>
 </body>
 </html>
+</fmt:bundle>

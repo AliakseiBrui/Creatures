@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,9 +7,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
 <html>
 <head>
-    <title>User authorization</title>
+    <title><fmt:message key="title.user_log_in"/></title>
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -17,7 +20,7 @@
     <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_START_PAGE_COMMAND"/>
 
-        <input type="submit" name="to_start_page_button" value="Start Page" class="nice-button"/>
+        <input type="submit" value="<fmt:message key="button.start_page"/>" class="nice-button"/>
     </form>
 </div>
 
@@ -27,9 +30,10 @@
 
         <jsp:include page="parts/enter_user_data_part.jsp"/>
 
-        <input type="submit" name="log_in_button" value="Log in" class="nice-button"/>
+        <input type="submit" value="<fmt:message key="button.log_in"/>" class="nice-button"/>
     </form>
 </div>
 <%@ include file="parts/footer.jsp"%>
 </body>
 </html>
+</fmt:bundle>

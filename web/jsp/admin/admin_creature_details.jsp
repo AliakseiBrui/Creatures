@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -5,10 +6,12 @@
   Time: 10:04
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
 <html>
 <head>
-    <title>Creature details</title>
+    <title><fmt:message key="title.admin_creature_details"/></title>
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -16,7 +19,7 @@
 <div align="left">
     <form action="/creatures" method="get">
         <input type="hidden" name="commandType" value="TO_ADMIN_MAIN_PAGE_COMMAND"/>
-        <input type="submit" name="to_main_page_button" value="Main Page" class="nice-button"/>
+        <input type="submit" value="<fmt:message key="button.main_page"/>" class="nice-button"/>
     </form>
 </div>
 <div align="center">
@@ -32,19 +35,19 @@
                 <c:out value="${creature.getCreatureName()}"/>
             </div>
             <div class="creature-creator">
-                Created by <c:out value="${creature.getCreatorName()}"/>
+                <fmt:message key="creature.created_by"/> <c:out value="${creature.getCreatorName()}"/>.
             </div>
             <div class="creature-limbs">
-                <c:out value="${creature.getLimbQuantity()}"/> Limb(s).
+                <fmt:message key="creature.limbs"/> <c:out value="${creature.getLimbQuantity()}"/>.
             </div>
             <div class="creature-heads">
-                <c:out value="${creature.getHeadQuantity()}"/> Head(s).
+                <fmt:message key="creature.heads"/> <c:out value="${creature.getHeadQuantity()}"/>.
             </div>
             <div class="creature-eyes">
-                <c:out value="${creature.getEyeQuantity()}"/> Eye(s).
+                <fmt:message key="creature.eyes"/> <c:out value="${creature.getEyeQuantity()}"/>.
             </div>
             <div class="creature-gender">
-                Gender: <c:out value="${creature.getCreatureGender()}"/>
+                <fmt:message key="creature.gender"/> <c:out value="${creature.getCreatureGender()}"/>.
             </div>
             <div class="creature-desc">
                 <c:out value="${creature.getDescription()}"/>
@@ -61,3 +64,4 @@
 <%@ include file="../parts/footer.jsp"%>
 </body>
 </html>
+</fmt:bundle>

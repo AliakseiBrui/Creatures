@@ -18,9 +18,9 @@ import java.io.IOException;
         DispatcherType.REQUEST
 }
 ,urlPatterns = "/jsp/admin/*"
-,filterName = "AdminUrlFilter")
-public class AdminUrlFilter implements Filter {
-    private static final Logger LOGGER = LogManager.getLogger(AdminUrlFilter.class);
+,filterName = "AdminPageFilter")
+public class AdminPageFilter implements Filter {
+    private static final Logger LOGGER = LogManager.getLogger(AdminPageFilter.class);
     private static final String START_PAGE_RELATIVE_PATH = "../../index.jsp";
     private static final String USER_MAIN_PAGE_RELATIVE_PATH = "../user/user_main.jsp";
     @Override
@@ -37,12 +37,12 @@ public class AdminUrlFilter implements Filter {
 
         if(role==null){
             request.getRequestDispatcher(START_PAGE_RELATIVE_PATH).forward(request,response);
-            LOGGER.debug("AdminUrlFilter has worked.");
+            LOGGER.debug("AdminPageFilter has worked.");
             return;
 
         }else if(role == ClientRole.USER){
             request.getRequestDispatcher(USER_MAIN_PAGE_RELATIVE_PATH).forward(request,response);
-            LOGGER.debug("AdminUrlFilter has worked.");
+            LOGGER.debug("AdminPageFilter has worked.");
             return;
         }
         filterChain.doFilter(servletRequest,servletResponse);

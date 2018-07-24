@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,6 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
 <html>
 <head>
     <title>Application</title>
@@ -26,19 +29,19 @@
                     <c:out value="${creature.getCreatureName()}"/>
                 </div>
                 <div class="creature-creator">
-                    Created by <c:out value="${creature.getCreatorName()}"/>
+                    <fmt:message key="creature.created_by"/> <c:out value="${creature.getCreatorName()}"/>.
                 </div>
                 <div class="creature-limbs">
-                    <c:out value="${creature.getLimbQuantity()}"/> Limb(s).
+                    <fmt:message key="creature.limbs"/> <c:out value="${creature.getLimbQuantity()}"/>.
                 </div>
                 <div class="creature-heads">
-                    <c:out value="${creature.getHeadQuantity()}"/> Head(s).
+                    <fmt:message key="creature.heads"/> <c:out value="${creature.getHeadQuantity()}"/>.
                 </div>
                 <div class="creature-eyes">
-                    <c:out value="${creature.getEyeQuantity()}"/> Eye(s).
+                    <fmt:message key="creature.eyes"/> <c:out value="${creature.getEyeQuantity()}"/>.
                 </div>
                 <div class="creature-gender">
-                    Gender: <c:out value="${creature.getCreatureGender()}"/>.
+                    <fmt:message key="creature.gender"/> <c:out value="${creature.getCreatureGender()}"/>.
                 </div>
                 <div class="creature-desc">
                     <c:out value="${creature.getDescription()}"/>
@@ -64,7 +67,7 @@
                                         <option value="5">5</option>
                                     </select>
                                     <br/><br/>
-                                    <input type="submit" value="Like" class="nice-button"/>
+                                    <input type="submit" value="<fmt:message key="button.like"/>" class="nice-button"/>
                                 </form>
                             </div>
                         </c:otherwise>
@@ -74,7 +77,7 @@
                     <form id="creatureForm" action="/creatures" method="post">
                         <input type="hidden" name="commandType" value="TO_CREATURE_DETAILS_PAGE_COMMAND"/>
                         <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
-                        <input type="submit" value="Details" class="nice-button"/>
+                        <input type="submit" value="<fmt:message key="button.details"/>" class="nice-button"/>
                     </form>
                 </div>
             </div>
@@ -84,3 +87,4 @@
 </div>
 </body>
 </html>
+</fmt:bundle>
