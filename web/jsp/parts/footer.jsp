@@ -10,9 +10,21 @@
 <fmt:bundle basename="resource.text">
 <br/><br/>
 <div class="footer">
-    <div class="footer-logo">
-        <img class="footer-logo-img" alt="NO LOGO" src="../../logo/logo.png">
+    <div class="footer-left">
+        <div class="footer-logo">
+            <img class="footer-logo-img" alt="NO LOGO" src="../../logo/logo.png">
+        </div>
+        <p><fmt:message key="copyright"/></p>
     </div>
-    <p><fmt:message key="copyright"/></p>
+    <div class="footer-right">
+        <form id="langForm" action="/creatures" method="get">
+            <input type="hidden" name="commandType" value="CHANGE_LANGUAGE_COMMAND"/>
+            <select class="custom-select" name="locale" oninput="document.getElementById('langForm').submit()">
+                <option hidden><fmt:message key="label.lang"/></option>
+                <option value="en_US"><fmt:message key="label.lang.eng"/></option>
+                <option value="ru_RU"><fmt:message key="label.lang.rus"/></option>
+            </select>
+        </form>
+    </div>
 </div>
 </fmt:bundle>

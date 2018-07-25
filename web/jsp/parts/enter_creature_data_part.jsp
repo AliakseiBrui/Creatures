@@ -11,7 +11,7 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:bundle basename="resource.text">
     <label for="creatureName"><fmt:message key="label.creature.name"/></label><br/>
-    <input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="10" pattern="^[^\s]+" required/>
+    <input type="text" name="creatureName" id="creatureName" class="input-text" maxlength="20" pattern="\w[\p{Alpha}\s]+" required/>
     <br/><br/>
 
     <label for="creatureLimbQuantity"><fmt:message key="label.creature.limb_q"/></label><br/>

@@ -10,7 +10,7 @@
 <fmt:setLocale value="${locale}"/>
 <fmt:bundle basename="resource.text">
 <label for="login"><fmt:message key="label.user.login"/></label><br/>
-<input type="text" name="login" id="login" class="input-text" maxlength="10" required/>
+<input type="text" name="login" id="login" class="input-text" maxlength="10" pattern="[\w_]+" required/>
 <br/><br/>
 
 <label for="password"><fmt:message key="label.user.password"/><label><br/>

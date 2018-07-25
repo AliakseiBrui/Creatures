@@ -16,6 +16,7 @@ public class AttributeConstant {
     public static final String COMMENT_LIST_ATTRIBUTE = "commentList";
     public static final String CREATURE_ID_ATTRIBUTE = "creatureId";
     public static final String PICTURE_ATTRIBUTE = "picture";
+    public static final String LOCALE_ATTRIBUTE = "locale";
 
     private AttributeConstant(){}
 }

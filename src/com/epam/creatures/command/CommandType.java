@@ -68,7 +68,7 @@ public enum CommandType {
 
     SELF_DELETE_COMMAND(new SelfDeleteCommand(new SelfDeleteService())),
 
-
+    CHANGE_LANGUAGE_COMMAND(null)
     ;
 
     private AbstractCommand command;

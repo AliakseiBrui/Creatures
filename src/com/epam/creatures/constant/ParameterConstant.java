@@ -26,6 +26,7 @@ public class ParameterConstant {
     public static final String PICTURE_PARAMETER = "picture";
     public static final String PICTURE_TYPE_PARAMETER = "pictureType";
     public static final String SORT_PARAMETER = "sort";
+    public static final String LOCALE_PARAMETER = "locale";
 
 
     private ParameterConstant(){}
