@@ -355,3 +355,5 @@ b
 2src/com/epam/creatures/filter/GuestPageFilter.java,b\8\b86071b28c8e206f6adb2c15cd1d1ee607e658cf
 a
 1src/com/epam/creatures/filter/UserPageFilter.java,f\0\f055f00f3c50bb8efae7ceb7bf5f985c3e201b6a
+_
+/src/com/epam/creatures/filter/LocaleFilter.java,f\2\f200c8f16ce690890f0e1be741f83384d5a68770

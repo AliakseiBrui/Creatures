@@ -12,7 +12,7 @@
 <div class="footer">
     <div class="footer-left">
         <div class="footer-logo">
-            <img class="footer-logo-img" alt="NO LOGO" src="../../logo/logo.png">
+            <img class="footer-logo-img" alt="NO LOGO" src="../../pics/logo.png">
         </div>
         <p><fmt:message key="copyright"/></p>
     </div>

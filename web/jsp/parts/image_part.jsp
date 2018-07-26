@@ -7,5 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div align="right">
-    <img width="200" height="150" alt="NO IMAGE" src="data:image/jpg;base64,${creature.getEncodedImage()}">
+    <c:choose>
+        <c:when test="${not empty creature.getEncodedImage()}">
+            <img width="200" height="150" alt="NO IMAGE" src="data:image/jpg;base64,${creature.getEncodedImage()}"/>
+        </c:when>
+        <c:otherwise>
+            <img width="200" height="150" alt="NO IMAGE" src="../../pics/no_image.png"/>
+        </c:otherwise>
+    </c:choose>
 </div>
