@@ -357,3 +357,7 @@ a
 1src/com/epam/creatures/filter/UserPageFilter.java,f\0\f055f00f3c50bb8efae7ceb7bf5f985c3e201b6a
 _
 /src/com/epam/creatures/filter/LocaleFilter.java,f\2\f200c8f16ce690890f0e1be741f83384d5a68770
+a
+1src/com/epam/test/validator/XssValidatorTest.java,4\e\4e5380371fd27b56fcbfa6eefa36bb3fe68c9465
+b
+2src/com/epam/creatures/validator/XssValidator.java,8\9\89c54a33d123a0e30e74bd34dbc5443ea2c57f80

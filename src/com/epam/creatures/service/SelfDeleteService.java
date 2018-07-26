@@ -30,6 +30,7 @@ public class SelfDeleteService implements ProjectService {
 
             if (role == ClientRole.USER) {
                 UserDao userDAO = new UserDao();
+
                 if (userDAO.delete(id)) {
                     routeType = Router.RouteType.REDIRECT;
                     route = LOG_OUT_PATH;
@@ -38,6 +39,7 @@ public class SelfDeleteService implements ProjectService {
                 }
             } else if (role == ClientRole.ADMIN) {
                 AdminDao adminDAO = new AdminDao();
+
                 if (adminDAO.delete(id)) {
                     routeType = Router.RouteType.REDIRECT;
                     route = LOG_OUT_PATH;

@@ -34,15 +34,14 @@ public class ShowCreatureCommentsService implements ProjectService {
             });
             attributeMap.put(AttributeConstant.COMMENT_LIST_ATTRIBUTE,commentList);
             ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
-            String route=null;
+            String route=PagePath.START_PAGE;
 
-            switch (clientRole){
-                case USER:
-                    route = PagePath.COMMENTS_FOR_USER_PAGE;
-                    break;
-                case ADMIN:
-                    route = PagePath.COMMENTS_FOR_ADMIN_PAGE;
-                    break;
+            if (clientRole == ClientRole.USER) {
+                route = PagePath.COMMENTS_FOR_USER_PAGE;
+
+            } else if (clientRole == ClientRole.ADMIN) {
+                route = PagePath.COMMENTS_FOR_ADMIN_PAGE;
+
             }
             attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
                     .createRouter(Router.RouteType.FORWARD,route));

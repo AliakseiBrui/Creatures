@@ -13,6 +13,6 @@ public class ToAdminAuthorizationPageService implements ProjectService {
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
         RouterFactory routerFactory = new RouterFactory();
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
-                .createRouter(Router.RouteType.REDIRECT,PagePath.ADMIN_AUTHORIZATION_PAGE));
+                .createRouter(Router.RouteType.FORWARD,PagePath.ADMIN_AUTHORIZATION_PAGE));
     }
 }

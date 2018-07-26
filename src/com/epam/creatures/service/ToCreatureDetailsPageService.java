@@ -33,15 +33,14 @@ public class ToCreatureDetailsPageService implements ProjectService {
             LOGGER.error(e);
         }
         ClientRole clientRole = ClientRole.valueOf(parameterMap.get(ParameterConstant.ROLE_PARAMETER));
-        String route=null;
+        String route=PagePath.START_PAGE;
 
-        switch (clientRole){
-            case USER:
-                route=PagePath.USER_CREATURE_DETAILS_PAGE;
-                break;
-            case ADMIN:
-                route=PagePath.ADMIN_CREATURE_DETAILS_PAGE;
-                break;
+        if (clientRole == ClientRole.USER) {
+            route = PagePath.USER_CREATURE_DETAILS_PAGE;
+
+        } else if (clientRole == ClientRole.ADMIN) {
+            route = PagePath.ADMIN_CREATURE_DETAILS_PAGE;
+
         }
         attributeMap.put(AttributeConstant.CREATURE_ATTRIBUTE,creature);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory
