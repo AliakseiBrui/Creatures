@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type To comment creature page command.
+ */
 public class ToCommentCreaturePageCommand extends AbstractCommand {
+    /**
+     * Instantiates a new To comment creature page command.
+     *
+     * @param service the service
+     */
     public ToCommentCreaturePageCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new To comment creature page command.
+     */
     public ToCommentCreaturePageCommand() {
     }
 

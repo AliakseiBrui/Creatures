@@ -7,6 +7,10 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+
+/**
+ * The type Parts url filter.
+ */
 @WebFilter(urlPatterns = "/jsp/parts/*", filterName = "PartsUrlFilter")
 public class PartsUrlFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(PartsUrlFilter.class);

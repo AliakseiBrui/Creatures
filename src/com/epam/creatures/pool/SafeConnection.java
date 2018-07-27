@@ -8,14 +8,25 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
+/**
+ * The type Safe connection.
+ */
 public class SafeConnection implements Connection {
     private Connection connection;
     private static final Logger LOGGER = LogManager.getLogger(SafeConnection.class);
 
+    /**
+     * Instantiates a new Safe connection.
+     *
+     * @param connection the connection
+     */
     SafeConnection(Connection connection){
         this.connection = connection;
     }
 
+    /**
+     * Close connection.
+     */
     void closeConnection(){
         LOGGER.debug("Closing connection " + toString() + ".");
 

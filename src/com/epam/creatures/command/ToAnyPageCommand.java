@@ -7,11 +7,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type To any page command.
+ */
 public class ToAnyPageCommand extends AbstractCommand {
+    /**
+     * Instantiates a new To any page command.
+     *
+     * @param service the service
+     */
     public ToAnyPageCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new To any page command.
+     */
     public ToAnyPageCommand() {
     }
 

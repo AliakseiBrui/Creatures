@@ -15,6 +15,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.Base64;
 import java.util.Map;
 
+/**
+ * The type To creature details page service.
+ */
 public class ToCreatureDetailsPageService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ToCreatureDetailsPageService.class);
     @Override

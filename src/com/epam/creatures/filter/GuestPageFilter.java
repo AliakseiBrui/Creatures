@@ -10,6 +10,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * The type Guest page filter.
+ */
 @WebFilter(urlPatterns = {
         "/jsp/admin_log_in.jsp",
         "/jsp/user_log_in.jsp",

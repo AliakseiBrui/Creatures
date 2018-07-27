@@ -16,6 +16,9 @@ import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
+/**
+ * The type User registration service.
+ */
 public class UserRegistrationService implements ProjectService {
 
 

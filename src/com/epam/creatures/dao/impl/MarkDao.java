@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Mark dao.
+ */
 public class MarkDao extends AbstractDao<Integer,Mark> implements MarkTableDao {
     private static final Logger LOGGER = LogManager.getLogger(MarkDao.class);
     private static final String SELECT_ALL_MARKS = "SELECT creatures_db.marks.mark_value, creatures_db.marks.creature_id, creatures_db.marks.user_id " +

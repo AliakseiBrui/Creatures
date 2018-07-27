@@ -8,6 +8,9 @@ import com.epam.creatures.service.ProjectService;
 
 import java.util.Map;
 
+/**
+ * The type To user main page service.
+ */
 public class ToUserMainPageService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

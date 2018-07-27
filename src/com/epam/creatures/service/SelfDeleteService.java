@@ -14,6 +14,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
+/**
+ * The type Self delete service.
+ */
 public class SelfDeleteService implements ProjectService {
     private static final String LOG_OUT_PATH = "/creatures?commandType=LOG_OUT_COMMAND";
     private static final Logger LOGGER = LogManager.getLogger(SelfDeleteService.class);

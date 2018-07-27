@@ -6,11 +6,20 @@ import org.apache.logging.log4j.Logger;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * The type Sql driver manager.
+ */
 class SqlDriverManager {
     private static final Logger LOGGER = LogManager.getLogger(SqlDriverManager.class);
 
+    /**
+     * Instantiates a new Sql driver manager.
+     */
     SqlDriverManager(){}
 
+    /**
+     * Register driver.
+     */
     void registerDriver(){
         LOGGER.debug("Registering sql drivers.");
 
@@ -22,6 +31,9 @@ class SqlDriverManager {
         }
     }
 
+    /**
+     * Deregister drivers.
+     */
     void deregisterDrivers(){
         DriverManager.drivers().forEach((this::deregisterDriver));
     }

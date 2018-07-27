@@ -7,6 +7,9 @@ import com.epam.creatures.factory.RouterFactory;
 
 import java.util.Map;
 
+/**
+ * The type To start page service.
+ */
 public class ToStartPageService implements ProjectService {
 
     @Override

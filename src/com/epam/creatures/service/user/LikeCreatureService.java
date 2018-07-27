@@ -18,6 +18,9 @@ import com.epam.creatures.service.ProjectService;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * The type Like creature service.
+ */
 public class LikeCreatureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

@@ -16,6 +16,9 @@ import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
+/**
+ * The type Create admin service.
+ */
 public class CreateAdminService implements ProjectService {
 
     @Override

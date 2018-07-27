@@ -11,6 +11,9 @@ import com.epam.creatures.service.ProjectService;
 
 import java.util.Map;
 
+/**
+ * The type To update creature page service.
+ */
 public class ToUpdateCreaturePageService implements ProjectService {
 
     @Override

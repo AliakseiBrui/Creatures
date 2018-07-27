@@ -7,6 +7,9 @@ import com.epam.creatures.factory.RouterFactory;
 
 import java.util.Map;
 
+/**
+ * The type To user authorization page service.
+ */
 public class ToUserAuthorizationPageService implements ProjectService {
 
     @Override

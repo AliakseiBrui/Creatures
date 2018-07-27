@@ -2,6 +2,9 @@ package com.epam.creatures.validator;
 
 import com.epam.creatures.entity.Creature;
 
+/**
+ * The type Creature validator.
+ */
 public class CreatureValidator {
     private static final Integer NAME_MAX_LENGTH = 20;
     private static final String RIGHT_NAME_DATA = "\\p{Alpha}+[\\w\\s]+";
@@ -15,6 +18,12 @@ public class CreatureValidator {
     private static final Integer MAX_EYES = 100;
 
 
+    /**
+     * Validate creature boolean.
+     *
+     * @param creature the creature
+     * @return the boolean
+     */
     public boolean validateCreature(Creature creature){
 
         if(creature.getDescription()!=null && creature.getDescription().length() >= DESCRIPTION_MAX_LENGTH

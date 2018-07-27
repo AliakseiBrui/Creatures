@@ -7,6 +7,9 @@ import com.epam.creatures.factory.RouterFactory;
 
 import java.util.Map;
 
+/**
+ * The type To user registration page service.
+ */
 public class ToUserRegistrationPageService implements ProjectService {
 
     @Override

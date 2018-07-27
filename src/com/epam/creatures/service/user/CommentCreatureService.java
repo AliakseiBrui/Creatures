@@ -16,6 +16,9 @@ import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
+/**
+ * The type Comment creature service.
+ */
 public class CommentCreatureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

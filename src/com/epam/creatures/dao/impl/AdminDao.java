@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Admin dao.
+ */
 public class AdminDao extends AbstractDao<Integer, Admin> implements AdminTableDao {
     private static final Logger LOGGER = LogManager.getLogger(AdminDao.class);
     private static final String SELECT_ADMIN_BY_ID = "SELECT creatures_db.admins.id,creatures_db.admins.login,creatures_db.admins.password, creatures_db.admins.avatar " +

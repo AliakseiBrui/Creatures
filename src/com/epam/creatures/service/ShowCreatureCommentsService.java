@@ -16,6 +16,9 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Show creature comments service.
+ */
 public class ShowCreatureCommentsService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ShowCreatureCommentsService.class);
     @Override

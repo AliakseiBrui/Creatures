@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Comment dao.
+ */
 public class CommentDao extends AbstractDao<Integer, Comment> implements CommentTableDao {
     private static final Logger LOGGER = LogManager.getLogger(CommentDao.class);
     private static final String SELECT_COMMENT_BY_ID = "SELECT creatures_db.comments.id,creatures_db.comments.comment_content,creatures_db.comments.creature_id,creatures_db.comments.user_id, u.login, u.avatar " +

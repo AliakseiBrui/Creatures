@@ -18,6 +18,9 @@ import com.epam.creatures.validator.UserValidator;
 import java.util.Base64;
 import java.util.Map;
 
+/**
+ * The type User authorization service.
+ */
 public class UserAuthorizationService implements ProjectService {
 
     @Override

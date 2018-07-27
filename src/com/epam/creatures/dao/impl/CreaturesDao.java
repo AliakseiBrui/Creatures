@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type Creatures dao.
+ */
 public class CreaturesDao extends AbstractDao<Integer, Creature> implements CreatureTableDao {
     private static final Logger LOGGER = LogManager.getLogger(CreaturesDao.class);
     private static final String SELECT_ALL_CREATURES = "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " +

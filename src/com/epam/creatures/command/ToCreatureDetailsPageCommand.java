@@ -8,11 +8,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type To creature details page command.
+ */
 public class ToCreatureDetailsPageCommand extends AbstractCommand {
+    /**
+     * Instantiates a new To creature details page command.
+     *
+     * @param service the service
+     */
     public ToCreatureDetailsPageCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new To creature details page command.
+     */
     public ToCreatureDetailsPageCommand() {
     }
 

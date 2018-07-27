@@ -7,11 +7,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Log out command.
+ */
 public class LogOutCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Log out command.
+     *
+     * @param service the service
+     */
     public LogOutCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Log out command.
+     */
     public LogOutCommand() {
     }
 

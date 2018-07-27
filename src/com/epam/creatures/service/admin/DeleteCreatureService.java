@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
+/**
+ * The type Delete creature service.
+ */
 public class DeleteCreatureService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(DeleteCreatureService.class);
 

@@ -8,6 +8,9 @@ import com.epam.creatures.service.ProjectService;
 
 import java.util.Map;
 
+/**
+ * The type To admin main page service.
+ */
 public class ToAdminMainPageService implements ProjectService {
 
     @Override

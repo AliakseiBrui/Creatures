@@ -8,8 +8,15 @@ import org.testng.annotations.Test;
 
 import java.util.Properties;
 
+/**
+ * The type Database configurator test.
+ */
 public class DatabaseConfiguratorTest {
     private static final Logger LOGGER = LogManager.getLogger(DatabaseConfiguratorTest.class);
+
+    /**
+     * Test config.
+     */
     @Test
     public void testConfig(){
 

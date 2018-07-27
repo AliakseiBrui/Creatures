@@ -8,11 +8,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Self delete command.
+ */
 public class SelfDeleteCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Self delete command.
+     *
+     * @param service the service
+     */
     public SelfDeleteCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Self delete command.
+     */
     public SelfDeleteCommand() {
     }
 

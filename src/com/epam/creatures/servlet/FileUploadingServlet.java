@@ -19,6 +19,9 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * The type File uploading servlet.
+ */
 @WebServlet(urlPatterns = {"/upload"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024
         , maxFileSize = 1024 * 1024 * 5

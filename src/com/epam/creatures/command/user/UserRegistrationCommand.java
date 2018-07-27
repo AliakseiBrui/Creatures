@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type User registration command.
+ */
 public class UserRegistrationCommand extends AbstractCommand {
+    /**
+     * Instantiates a new User registration command.
+     *
+     * @param service the service
+     */
     public UserRegistrationCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new User registration command.
+     */
     public UserRegistrationCommand() {
     }
 

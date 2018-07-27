@@ -14,6 +14,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
+/**
+ * The type Change user banned service.
+ */
 public class ChangeUserBannedService implements ProjectService {
     private static final Logger LOGGER = LogManager.getLogger(ChangeUserBannedService.class);
 

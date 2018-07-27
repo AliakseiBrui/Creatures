@@ -5,8 +5,19 @@ import com.epam.creatures.dao.impl.UserDao;
 import com.epam.creatures.entity.User;
 import com.epam.creatures.exception.UserException;
 
+/**
+ * The type User validator.
+ */
 public class UserValidator {
 
+    /**
+     * Validate user boolean.
+     *
+     * @param user the user
+     * @return the boolean
+     * @throws DaoException  the dao exception
+     * @throws UserException the user exception
+     */
     public boolean validateUser(User user) throws DaoException, UserException {
         UserDao userDAO = new UserDao();
 

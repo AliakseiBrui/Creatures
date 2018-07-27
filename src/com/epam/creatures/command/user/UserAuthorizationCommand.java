@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type User authorization command.
+ */
 public class UserAuthorizationCommand extends AbstractCommand {
+    /**
+     * Instantiates a new User authorization command.
+     *
+     * @param service the service
+     */
     public UserAuthorizationCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new User authorization command.
+     */
     public UserAuthorizationCommand() {
     }
 

@@ -8,23 +8,46 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
+/**
+ * The type Client info tag.
+ */
 @SuppressWarnings("serial")
 public class ClientInfoTag extends TagSupport {
     private String buttonProfile;
     private String buttonLogOut;
 
+    /**
+     * Gets button profile.
+     *
+     * @return the button profile
+     */
     public String getButtonProfile() {
         return buttonProfile;
     }
 
+    /**
+     * Sets button profile.
+     *
+     * @param buttonProfile the button profile
+     */
     public void setButtonProfile(String buttonProfile) {
         this.buttonProfile = buttonProfile;
     }
 
+    /**
+     * Gets button log out.
+     *
+     * @return the button log out
+     */
     public String getButtonLogOut() {
         return buttonLogOut;
     }
 
+    /**
+     * Sets button log out.
+     *
+     * @param buttonLogOut the button log out
+     */
     public void setButtonLogOut(String buttonLogOut) {
         this.buttonLogOut = buttonLogOut;
     }

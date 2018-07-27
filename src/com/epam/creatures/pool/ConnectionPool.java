@@ -9,7 +9,13 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * The enum Connection pool.
+ */
 public enum ConnectionPool {
+    /**
+     * Instance connection pool.
+     */
     INSTANCE;
 
     private static final String DB_URL_PROPERTY = "url";
@@ -18,6 +24,11 @@ public enum ConnectionPool {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
     private boolean canInitialize = true;
 
+    /**
+     * Take connection safe connection.
+     *
+     * @return the safe connection
+     */
     public SafeConnection takeConnection(){
 
         try{
@@ -28,6 +39,11 @@ public enum ConnectionPool {
         return null;
     }
 
+    /**
+     * Return connection.
+     *
+     * @param connection the connection
+     */
     public void returnConnection(SafeConnection connection){
 
         try {
@@ -37,6 +53,9 @@ public enum ConnectionPool {
         }
     }
 
+    /**
+     * Init.
+     */
     public void init(){
         SqlDriverManager sqlDriverManager = new SqlDriverManager();
 
@@ -57,6 +76,9 @@ public enum ConnectionPool {
         }
     }
 
+    /**
+     * Close all.
+     */
     public void closeAll(){
         SqlDriverManager sqlDriverManager = new SqlDriverManager();
 

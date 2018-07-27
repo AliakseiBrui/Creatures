@@ -6,12 +6,23 @@ import org.apache.logging.log4j.Logger;
 import java.io.*;
 import java.util.Properties;
 
+/**
+ * The enum Database configurator.
+ */
 public enum DatabaseConfigurator {
+    /**
+     * Instance database configurator.
+     */
     INSTANCE;
 
     private Properties dbProperties = null;
     private static final Logger LOGGER = LogManager.getLogger(DatabaseConfigurator.class);
 
+    /**
+     * Configure db properties.
+     *
+     * @param filePath the file path
+     */
     public void configureDBProperties(String filePath){
 
         try(FileInputStream inputStream = new FileInputStream(new File(filePath))){
@@ -26,6 +37,11 @@ public enum DatabaseConfigurator {
         }
     }
 
+    /**
+     * Get db properties properties.
+     *
+     * @return the properties
+     */
     public Properties getDbProperties(){
         return dbProperties;
     }

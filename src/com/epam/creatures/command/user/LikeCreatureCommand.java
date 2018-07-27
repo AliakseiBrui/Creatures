@@ -9,12 +9,23 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Like creature command.
+ */
 public class LikeCreatureCommand extends AbstractCommand {
 
+    /**
+     * Instantiates a new Like creature command.
+     *
+     * @param service the service
+     */
     public LikeCreatureCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Like creature command.
+     */
     public LikeCreatureCommand() {
     }
 

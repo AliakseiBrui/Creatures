@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.Map;
 
+/**
+ * The type Upload picture service.
+ */
 public class UploadPictureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

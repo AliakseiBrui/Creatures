@@ -17,6 +17,9 @@ import com.epam.creatures.validator.ClientDataValidator;
 import java.util.Base64;
 import java.util.Map;
 
+/**
+ * The type Admin authorization service.
+ */
 public class AdminAuthorizationService implements ProjectService {
 
     @Override

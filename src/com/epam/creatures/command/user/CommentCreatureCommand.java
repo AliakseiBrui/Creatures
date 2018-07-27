@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Comment creature command.
+ */
 public class CommentCreatureCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Comment creature command.
+     *
+     * @param service the service
+     */
     public CommentCreatureCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Comment creature command.
+     */
     public CommentCreatureCommand() {
     }
 

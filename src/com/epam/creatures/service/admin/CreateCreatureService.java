@@ -15,6 +15,9 @@ import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
+/**
+ * The type Create creature service.
+ */
 public class CreateCreatureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {

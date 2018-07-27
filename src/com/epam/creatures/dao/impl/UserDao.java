@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The type User dao.
+ */
 public class UserDao extends AbstractDao<Integer,User> implements UserTableDao {
     private static final Logger LOGGER = LogManager.getLogger(UserDao.class);
     private static final String SELECT_USER_BY_ID = "SELECT creatures_db.users.id,creatures_db.users.login,creatures_db.users.password,creatures_db.users.status,creatures_db.users.is_banned, creatures_db.users.avatar " +

@@ -7,6 +7,9 @@ import com.epam.creatures.factory.RouterFactory;
 
 import java.util.Map;
 
+/**
+ * The type Log out service.
+ */
 public class LogOutService implements ProjectService {
 
     @Override

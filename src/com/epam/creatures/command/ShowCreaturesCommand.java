@@ -8,12 +8,23 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Show creatures command.
+ */
 public class ShowCreaturesCommand extends AbstractCommand {
 
+    /**
+     * Instantiates a new Show creatures command.
+     *
+     * @param service the service
+     */
     public ShowCreaturesCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Show creatures command.
+     */
     public ShowCreaturesCommand() {
     }
 
