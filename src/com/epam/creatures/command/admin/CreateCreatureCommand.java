@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Create creature command.
+ */
 public class CreateCreatureCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Create creature command.
+     *
+     * @param service the service
+     */
     public CreateCreatureCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Create creature command.
+     */
     public CreateCreatureCommand() {
     }
 

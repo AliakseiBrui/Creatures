@@ -11,6 +11,7 @@ import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.CreatureValidator;
+import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
@@ -30,24 +31,30 @@ public class CreateCreatureService implements ProjectService {
         Creature creature = creatureFactory.createCreature(name,limbQuantity,headQuantity,eyeQuantity,gender,description,creatorId);
         StringBuilder errorMessage = new StringBuilder();
         CreatureValidator creatureValidator = new CreatureValidator();
+        XssValidator xssValidator = new XssValidator();
         Router.RouteType routeType = Router.RouteType.FORWARD;
         String route = PagePath.CREATE_CREATURE_PAGE;
 
-        if(creatureValidator.validateCreature(creature)) {
+        try {
 
-            try {
+            if(xssValidator.checkForXssAttack(name)&&(description==null||xssValidator.checkForXssAttack(description))) {
 
-                if (creaturesDAO.create(creature)) {
-                    routeType=Router.RouteType.REDIRECT;
-                    route=PagePath.ADMIN_MAIN_PAGE;
+                if (creatureValidator.validateCreature(creature)) {
+
+                    if (creaturesDAO.create(creature)) {
+                        routeType = Router.RouteType.REDIRECT;
+                        route = PagePath.ADMIN_MAIN_PAGE;
+                    } else {
+                        errorMessage.append("Could not create creature.");
+                    }
                 } else {
-                    errorMessage.append("Could not create creature.");
+                    errorMessage.append("Wrong data.");
                 }
-            } catch (DaoException e) {
-                errorMessage.append(e.getLocalizedMessage()).append(".");
+            }else{
+                errorMessage.append("XSS attack attempt.");
             }
-        }else{
-            errorMessage.append("Wrong data.");
+        } catch (DaoException e) {
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(routeType,route));

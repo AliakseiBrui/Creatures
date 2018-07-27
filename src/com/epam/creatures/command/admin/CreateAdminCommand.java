@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Create admin command.
+ */
 public class CreateAdminCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Create admin command.
+     *
+     * @param service the service
+     */
     public CreateAdminCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Create admin command.
+     */
     public CreateAdminCommand() {
 
     }

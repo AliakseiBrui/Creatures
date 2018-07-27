@@ -11,9 +11,13 @@ import com.epam.creatures.factory.CreatureFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.CreatureValidator;
+import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
+/**
+ * The type Update creature service.
+ */
 public class UpdateCreatureService implements ProjectService {
     @Override
     public void process(Map<String, String> parameterMap, Map<String, Object> attributeMap) {
@@ -30,24 +34,28 @@ public class UpdateCreatureService implements ProjectService {
         Creature creature = creatureFactory.createCreature(id,name,limbQuantity,headQuantity,eyeQuantity,gender,description);
         StringBuilder errorMessage = new StringBuilder();
         CreatureValidator creatureValidator = new CreatureValidator();
+        XssValidator xssValidator = new XssValidator();
         Router.RouteType routeType = Router.RouteType.FORWARD;
         String route = PagePath.ADMIN_MAIN_PAGE;
+        try {
 
-        if(creatureValidator.validateCreature(creature)) {
+            if(xssValidator.checkForXssAttack(name)&&(description==null||xssValidator.checkForXssAttack(description))) {
 
-            try {
+                if(creatureValidator.validateCreature(creature)) {
 
-                if (creaturesDAO.update(creature)) {
-                    routeType=Router.RouteType.REDIRECT;
-                } else {
-                    errorMessage.append("Could not update creature.");
+                    if (creaturesDAO.update(creature)) {
+                        routeType=Router.RouteType.REDIRECT;
+                    } else {
+                        errorMessage.append("Could not update creature.");
+                    }
+                }else{
+                    errorMessage.append("Wrong data.");
                 }
-
-            } catch (DaoException e) {
-                errorMessage.append(e.getLocalizedMessage()).append(".");
+            }else{
+                errorMessage.append("XSS attack attempt");
             }
-        }else{
-            errorMessage.append("Wrong data.");
+        } catch (DaoException e) {
+            errorMessage.append(e.getLocalizedMessage()).append(".");
         }
         attributeMap.put(AttributeConstant.ERROR_MESSAGE_ATTRIBUTE,errorMessage);
         attributeMap.put(AttributeConstant.ROUTER_ATTRIBUTE,routerFactory.createRouter(routeType,route));

@@ -8,11 +8,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Show users command.
+ */
 public class ShowUsersCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Show users command.
+     *
+     * @param service the service
+     */
     public ShowUsersCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Show users command.
+     */
     public ShowUsersCommand() {
     }
 

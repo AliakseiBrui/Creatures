@@ -12,6 +12,7 @@ import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.factory.UserFactory;
 import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.CommentValidator;
+import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
@@ -27,21 +28,27 @@ public class CommentCreatureService implements ProjectService {
         Integer  userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
         StringBuilder errorMessage = new StringBuilder();
         CommentValidator commentValidator = new CommentValidator();
+        XssValidator xssValidator = new XssValidator();
         Router.RouteType routeType = Router.RouteType.FORWARD;
         String route = PagePath.USER_MAIN_PAGE;
 
         try {
-            Comment comment = commentFactory.createComment(commentData,creatureId,userFactory.createUser(userId));
 
-            if(commentValidator.validateComment(comment)) {
+            if(xssValidator.checkForXssAttack(commentData)) {
+                Comment comment = commentFactory.createComment(commentData, creatureId, userFactory.createUser(userId));
 
-                if (commentDAO.create(comment)) {
-                    routeType = Router.RouteType.REDIRECT;
+                if (commentValidator.validateComment(comment)) {
+
+                    if (commentDAO.create(comment)) {
+                        routeType = Router.RouteType.REDIRECT;
+                    } else {
+                        errorMessage.append("Could not create comment.");
+                    }
                 } else {
-                    errorMessage.append("Could not create comment.");
+                    errorMessage.append("Wrong data.");
                 }
             }else{
-                errorMessage.append("Wrong data.");
+                errorMessage.append("XSS attack attempt.");
             }
         } catch (DaoException e) {
             errorMessage.append(e.getLocalizedMessage()).append(".");

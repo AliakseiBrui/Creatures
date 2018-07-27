@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Delete creature command.
+ */
 public class DeleteCreatureCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Delete creature command.
+     *
+     * @param service the service
+     */
     public DeleteCreatureCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Delete creature command.
+     */
     public DeleteCreatureCommand() {
     }
 

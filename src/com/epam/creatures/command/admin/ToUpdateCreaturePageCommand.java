@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type To update creature page command.
+ */
 public class ToUpdateCreaturePageCommand extends AbstractCommand {
+    /**
+     * Instantiates a new To update creature page command.
+     *
+     * @param service the service
+     */
     public ToUpdateCreaturePageCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new To update creature page command.
+     */
     public ToUpdateCreaturePageCommand() {
     }
 

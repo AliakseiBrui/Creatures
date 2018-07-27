@@ -361,3 +361,5 @@ a
 1src/com/epam/test/validator/XssValidatorTest.java,4\e\4e5380371fd27b56fcbfa6eefa36bb3fe68c9465
 b
 2src/com/epam/creatures/validator/XssValidator.java,8\9\89c54a33d123a0e30e74bd34dbc5443ea2c57f80
+f
+6src/com/epam/test/validator/CreatureValidatorTest.java,b\a\ba75e12180d7159f069f9e946566c9a7489da379

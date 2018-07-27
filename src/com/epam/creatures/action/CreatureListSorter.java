@@ -5,16 +5,43 @@ import com.epam.creatures.entity.Creature;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * The type Creature list sorter.
+ */
 public class CreatureListSorter {
 
+    /**
+     * The enum Creature sort type.
+     */
     public enum CreatureSortType{
+        /**
+         * By name creature sort type.
+         */
         BY_NAME,
+        /**
+         * By rating creature sort type.
+         */
         BY_RATING,
+        /**
+         * By limbs creature sort type.
+         */
         BY_LIMBS,
+        /**
+         * By heads creature sort type.
+         */
         BY_HEADS,
+        /**
+         * By eyes creature sort type.
+         */
         BY_EYES
     }
 
+    /**
+     * Sort creature list.
+     *
+     * @param creatureList the creature list
+     * @param sortType     the sort type
+     */
     public void sortCreatureList(List<Creature> creatureList, CreatureSortType sortType){
 
         switch (sortType){

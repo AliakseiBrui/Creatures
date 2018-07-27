@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Change user banned command.
+ */
 public class ChangeUserBannedCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Change user banned command.
+     *
+     * @param service the service
+     */
     public ChangeUserBannedCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Change user banned command.
+     */
     public ChangeUserBannedCommand() {
     }
 

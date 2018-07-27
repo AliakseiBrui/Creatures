@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type Admin authorization command.
+ */
 public class AdminAuthorizationCommand extends AbstractCommand {
+    /**
+     * Instantiates a new Admin authorization command.
+     *
+     * @param service the service
+     */
     public AdminAuthorizationCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new Admin authorization command.
+     */
     public AdminAuthorizationCommand() {
     }
 

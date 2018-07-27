@@ -9,11 +9,22 @@ import com.epam.creatures.service.ProjectService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+/**
+ * The type To change creature image page command.
+ */
 public class ToChangeCreatureImagePageCommand extends AbstractCommand {
+    /**
+     * Instantiates a new To change creature image page command.
+     *
+     * @param service the service
+     */
     public ToChangeCreatureImagePageCommand(ProjectService service) {
         super(service);
     }
 
+    /**
+     * Instantiates a new To change creature image page command.
+     */
     public ToChangeCreatureImagePageCommand() {
     }
 

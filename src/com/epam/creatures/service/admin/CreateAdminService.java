@@ -12,6 +12,7 @@ import com.epam.creatures.factory.AdminFactory;
 import com.epam.creatures.factory.RouterFactory;
 import com.epam.creatures.service.ProjectService;
 import com.epam.creatures.validator.ClientDataValidator;
+import com.epam.creatures.validator.XssValidator;
 
 import java.util.Map;
 
@@ -23,6 +24,7 @@ public class CreateAdminService implements ProjectService {
         PasswordEncoder passwordEncoder = new PasswordEncoder();
         AdminDao adminDAO = new AdminDao();
         ClientDataValidator clientDataValidator = new ClientDataValidator();
+        XssValidator xssValidator = new XssValidator();
         RouterFactory routerFactory = new RouterFactory();
         String login = parameterMap.get(ParameterConstant.LOGIN_PARAMETER);
         String encryptedPassword = passwordEncoder.encryptPassword(parameterMap.get(ParameterConstant.PASSWORD_PARAMETER));
@@ -33,16 +35,21 @@ public class CreateAdminService implements ProjectService {
 
         try {
 
-            if(clientDataValidator.validateLogin(login)) {
+            if(xssValidator.checkForXssAttack(login)) {
 
-                if (adminDAO.create(admin)) {
-                    routeType=Router.RouteType.REDIRECT;
-                    route=PagePath.ADMIN_MAIN_PAGE;
+                if (clientDataValidator.validateLogin(login)) {
+
+                    if (adminDAO.create(admin)) {
+                        routeType = Router.RouteType.REDIRECT;
+                        route = PagePath.ADMIN_MAIN_PAGE;
+                    } else {
+                        errorMessage.append("Could not create admin.");
+                    }
                 } else {
-                    errorMessage.append("Could not create admin.");
+                    errorMessage.append("Wrong data in login field.");
                 }
             }else{
-                errorMessage.append("Wrong data in login field.");
+                errorMessage.append("XSS attack attempt.");
             }
         } catch (DaoException e) {
             errorMessage.append(e.getLocalizedMessage()).append(".");
