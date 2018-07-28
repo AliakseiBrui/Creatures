@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,6 +8,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<fmt:setLocale value="${locale}"/>
+<fmt:bundle basename="resource.text">
 <html>
 <head>
     <title>Application</title>
@@ -31,9 +34,17 @@
                 </div>
             </div>
             <div class="comment-footer">
+                <div class="comment-button">
+                    <form action="/creatures" method="post">
+                        <input type="hidden" name="commandType" value="DELETE_COMMENT_COMMAND"/>
+                        <input type="hidden" name="commentId" value="${comment.getId()}"/>
+                        <input type="submit" value="<fmt:message key="button.delete"/>" class="nice-button"/>
+                    </form>
+                </div>
             </div>
         </div>
     </c:forEach>
 </div>
 </body>
 </html>
+</fmt:bundle>

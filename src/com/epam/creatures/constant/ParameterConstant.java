@@ -113,6 +113,10 @@ public class ParameterConstant {
      */
     public static final String LOCALE_PARAMETER = "locale";
 
+    /**
+     * The constant COMMENT_ID_PARAMETER.
+     */
+    public static final String COMMENT_ID_PARAMETER = "commentId";
 
     private ParameterConstant(){}
 }

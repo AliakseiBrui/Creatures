@@ -176,6 +176,10 @@ public enum CommandType {
      */
     CHANGE_USER_SORT_TYPE_COMMAND(new ChangeUserSortTypeCommand(new RedirectToUsersManagementPageService())),
 
+    /**
+     * The Delete comment command.
+     */
+    DELETE_COMMENT_COMMAND(new DeleteCommentCommand(new DeleteCommentService()))
     ;
 
     private AbstractCommand command;
