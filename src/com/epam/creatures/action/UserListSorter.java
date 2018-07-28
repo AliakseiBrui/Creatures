@@ -48,6 +48,6 @@ public class UserListSorter {
 
     private void sortByStatus(List<User> userList){
 
-        userList.sort(Comparator.comparing(User::getStatus).thenComparing(User::getLogin));
+        userList.sort(Comparator.comparing(User::getStatus).reversed().thenComparing(User::getLogin));
     }
 }

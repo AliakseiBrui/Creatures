@@ -74,21 +74,21 @@ public class CreatureListSorter {
 
     private void sortByRating(List<Creature> creatureList){
 
-        creatureList.sort(Comparator.comparing(Creature::getCreatureRating).thenComparing(Creature::getCreatureName));
+        creatureList.sort(Comparator.comparing(Creature::getCreatureRating).reversed().thenComparing(Creature::getCreatureName));
     }
 
     private void sortByLimbs(List<Creature> creatureList){
 
-        creatureList.sort(Comparator.comparing(Creature::getLimbQuantity).thenComparing(Creature::getCreatureName));
+        creatureList.sort(Comparator.comparing(Creature::getLimbQuantity).reversed().thenComparing(Creature::getCreatureName));
     }
 
     private void sortByHeads(List<Creature> creatureList){
 
-        creatureList.sort(Comparator.comparing(Creature::getHeadQuantity).thenComparing(Creature::getCreatureName));
+        creatureList.sort(Comparator.comparing(Creature::getHeadQuantity).reversed().thenComparing(Creature::getCreatureName));
     }
 
     private void sortByEyes(List<Creature> creatureList){
 
-        creatureList.sort(Comparator.comparing(Creature::getEyeQuantity).thenComparing(Creature::getCreatureName));
+        creatureList.sort(Comparator.comparing(Creature::getEyeQuantity).reversed().thenComparing(Creature::getCreatureName));
     }
 }
