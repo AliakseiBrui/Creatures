@@ -37,8 +37,24 @@
         <input type="submit" value="<fmt:message key="button.manage_users"/>" class="nice-button"/>
     </form>
 </div>
-<br/><br/>
+<br/>
+<div align="left">
+    <form id="sortForm" action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="CHANGE_CREATURE_SORT_TYPE_COMMAND"/>
+        <select class="custom-select" name="sortCreature" oninput="document.getElementById('sortForm').submit()">
+            <option hidden><fmt:message key="label.sort"/></option>
+            <option value="BY_NAME"><fmt:message key="label.sort.creature.by_name"/></option>
+            <option value="BY_RATING"><fmt:message key="label.sort.creature.by_rating"/></option>
+            <option value="BY_LIMBS"><fmt:message key="label.sort.creature.by_limbs"/></option>
+            <option value="BY_HEADS"><fmt:message key="label.sort.creature.by_heads"/></option>
+            <option value="BY_EYES"><fmt:message key="label.sort.creature.by_eyes"/></option>
+        </select>
+    </form>
+</div>
+<br/>
+<div>
 <c:import url="/creatures?commandType=SHOW_CREATURES_COMMAND"/>
+</div>
 <%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

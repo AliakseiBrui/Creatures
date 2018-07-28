@@ -25,8 +25,21 @@
         <input type="submit" value="<fmt:message key="button.main_page"/>" class="nice-button"/>
     </form>
 </div>
-<br/><br/>
+<br/>
+<div align="left">
+    <form id="sortForm" action="/creatures" method="get">
+        <input type="hidden" name="commandType" value="CHANGE_USER_SORT_TYPE_COMMAND"/>
+        <select class="custom-select" name="sortUser" oninput="document.getElementById('sortForm').submit()">
+            <option hidden><fmt:message key="label.sort"/></option>
+            <option value="BY_LOGIN"><fmt:message key="label.sort.user.by_login"/></option>
+            <option value="BY_STATUS"><fmt:message key="label.sort.user.by_status"/></option>
+        </select>
+    </form>
+</div>
+<br/>
+<div>
 <c:import url="/creatures?commandType=SHOW_USERS_COMMAND"/>
+</div>
 <%@ include file="../parts/footer.jsp"%>
 </body>
 </html>

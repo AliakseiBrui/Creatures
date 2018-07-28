@@ -69,7 +69,7 @@ public enum CommandType {
     /**
      * The Log out command.
      */
-    LOG_OUT_COMMAND(new LogOutCommand(new LogOutService())),
+    LOG_OUT_COMMAND(new LogOutCommand(new RedirectToStartPageService())),
 
     /**
      * The To create creature page command.
@@ -164,7 +164,18 @@ public enum CommandType {
     /**
      * Change language command command type.
      */
-    CHANGE_LANGUAGE_COMMAND(null)
+    CHANGE_LANGUAGE_COMMAND(null),
+
+    /**
+     * The Change creature sort type command.
+     */
+    CHANGE_CREATURE_SORT_TYPE_COMMAND(new ChangeCreatureSortTypeCommand(new RedirectToStartPageService())),
+
+    /**
+     * The Change user sort type command.
+     */
+    CHANGE_USER_SORT_TYPE_COMMAND(new ChangeUserSortTypeCommand(new RedirectToUsersManagementPageService())),
+
     ;
 
     private AbstractCommand command;

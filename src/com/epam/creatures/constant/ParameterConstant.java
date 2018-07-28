@@ -101,9 +101,13 @@ public class ParameterConstant {
      */
     public static final String PICTURE_TYPE_PARAMETER = "pictureType";
     /**
-     * The constant SORT_PARAMETER.
+     * The constant SORT_CREATURE_PARAMETER.
      */
-    public static final String SORT_PARAMETER = "sort";
+    public static final String SORT_CREATURE_PARAMETER = "sortCreature";
+    /**
+     * The constant SORT_USER_PARAMETER.
+     */
+    public static final String SORT_USER_PARAMETER = "sortUser";
     /**
      * The constant LOCALE_PARAMETER.
      */

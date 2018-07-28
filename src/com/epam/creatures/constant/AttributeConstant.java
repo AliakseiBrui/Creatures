@@ -69,5 +69,15 @@ public class AttributeConstant {
      */
     public static final String LOCALE_ATTRIBUTE = "locale";
 
+    /**
+     * The constant SORT_CREATURE_ATTRIBUTE.
+     */
+    public static final String SORT_CREATURE_ATTRIBUTE = "sortCreature";
+
+    /**
+     * The constant SORT_USER_ATTRIBUTE.
+     */
+    public static final String SORT_USER_ATTRIBUTE = "sortUser";
+
     private AttributeConstant(){}
 }

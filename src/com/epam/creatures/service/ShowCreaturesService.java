@@ -31,8 +31,8 @@ public class ShowCreaturesService implements ProjectService {
         MarkDao markDAO = new MarkDao();
         Integer userId = Integer.parseInt(parameterMap.get(ParameterConstant.USER_ID_PARAMETER));
         CreatureListSorter creatureListSorter = new CreatureListSorter();
-        parameterMap.putIfAbsent(ParameterConstant.SORT_PARAMETER, CreatureListSorter.CreatureSortType.BY_NAME.toString());
-        CreatureListSorter.CreatureSortType sortType = CreatureListSorter.CreatureSortType.valueOf(parameterMap.get(ParameterConstant.SORT_PARAMETER));
+        parameterMap.putIfAbsent(ParameterConstant.SORT_CREATURE_PARAMETER, CreatureListSorter.CreatureSortType.BY_NAME.toString());
+        CreatureListSorter.CreatureSortType sortType = CreatureListSorter.CreatureSortType.valueOf(parameterMap.get(ParameterConstant.SORT_CREATURE_PARAMETER));
 
         try {
             List<Creature> creatureList = creaturesDAO.findAll();

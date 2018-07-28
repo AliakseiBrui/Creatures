@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Error page</title>
+    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@ include file="../parts/header.jsp"%>
