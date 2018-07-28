@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Change user banned command.
  */
-public class ChangeUserBannedCommand extends AbstractCommand {
+public class ChangeUserBannedCommand extends AbstractCommand implements AdminCommand{
     /**
      * Instantiates a new Change user banned command.
      *

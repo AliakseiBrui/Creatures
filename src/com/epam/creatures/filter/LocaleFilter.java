@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * The type Locale filter.
  */
-@WebFilter(filterName = "LocaleFilter",servletNames = "CreaturesServlet")
+@WebFilter(filterName = "AdminFilter",servletNames = "CreaturesServlet")
 public class LocaleFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(LocaleFilter.class);
     @Override

@@ -1,6 +1,5 @@
-package com.epam.creatures.command.admin;
+package com.epam.creatures.command;
 
-import com.epam.creatures.command.AbstractCommand;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Router;
@@ -10,22 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 /**
- * The type Change user sort type command.
+ * The type Change language command.
  */
-public class ChangeUserSortTypeCommand extends AbstractCommand {
+public class ChangeLanguageCommand extends AbstractCommand {
     /**
-     * Instantiates a new Change user sort type command.
+     * Instantiates a new Change language command.
      *
      * @param service the service
      */
-    public ChangeUserSortTypeCommand(ProjectService service) {
+    public ChangeLanguageCommand(ProjectService service) {
         super(service);
     }
 
     /**
-     * Instantiates a new Change user sort type command.
+     * Instantiates a new Change language command.
      */
-    public ChangeUserSortTypeCommand() {
+    public ChangeLanguageCommand() {
     }
 
     @Override
@@ -34,7 +33,7 @@ public class ChangeUserSortTypeCommand extends AbstractCommand {
 
         getService().process(null,attributeMap);
 
-        request.getSession().setAttribute(AttributeConstant.SORT_USER_ATTRIBUTE,request.getParameter(ParameterConstant.SORT_USER_PARAMETER));
+        request.getSession().setAttribute(AttributeConstant.LOCALE_ATTRIBUTE,request.getParameter(ParameterConstant.LOCALE_PARAMETER));
 
         return (Router) attributeMap.get(AttributeConstant.ROUTER_ATTRIBUTE);
     }

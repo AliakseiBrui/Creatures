@@ -164,7 +164,7 @@ public enum CommandType {
     /**
      * Change language command command type.
      */
-    CHANGE_LANGUAGE_COMMAND(null),
+    CHANGE_LANGUAGE_COMMAND(new ChangeLanguageCommand(new RedirectToStartPageService())),
 
     /**
      * The Change creature sort type command.

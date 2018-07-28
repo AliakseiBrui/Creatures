@@ -123,8 +123,6 @@ j
 :.idea/dataSources/075178c2-b938-4a74-aaa8-7d199ed93568.xml,9\9\99281d79f3ae06096d60da700dffc4c0ae04bab9
 a
 1src/com/epam/creatures/command/LogOutCommand.java,9\0\9026bb2d180bc6234df3064de2986fd7a202f893
-a
-1src/com/epam/creatures/service/LogOutService.java,8\1\81ee27d62ec228d35e8a8e78904867e98c7a765c
 W
 'web/jsp/admin/admin_create_creature.jsp,c\c\cc26e55c496fb549e367fc4081880bc41458ecee
 V
@@ -363,3 +361,11 @@ b
 2src/com/epam/creatures/validator/XssValidator.java,8\9\89c54a33d123a0e30e74bd34dbc5443ea2c57f80
 f
 6src/com/epam/test/validator/CreatureValidatorTest.java,b\a\ba75e12180d7159f069f9e946566c9a7489da379
+q
+Asrc/com/epam/creatures/command/ChangeCreatureSortTypeCommand.java,f\3\f378308bfd521b5b6521c0fb50b18776810fd52c
+~
+Nsrc/com/epam/creatures/service/admin/RedirectToUsersManagementPageService.java,d\9\d9d52759e730acb68d19eae35afdddb871a3b074
+n
+>src/com/epam/creatures/service/RedirectToStartPageService.java,6\4\6475c52a5c51e276a104d6e2a52f281093e49f43
+s
+Csrc/com/epam/creatures/command/admin/ChangeUserSortTypeCommand.java,0\a\0a870ce86c8936cf81a8b1e04163a85bfadfaa7a

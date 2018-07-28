@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Admin authorization command.
  */
-public class AdminAuthorizationCommand extends AbstractCommand {
+public class AdminAuthorizationCommand extends AbstractCommand implements AdminCommand {
     /**
      * Instantiates a new Admin authorization command.
      *
