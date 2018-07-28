@@ -20,6 +20,6 @@ public class UserStatusCalculator {
         if (markValue == null || creatureRating == null || creatureRating.equals(NO_RATING)) {
             return DEFAULT_STATUS;
         }
-        return (MAX_RATING-Math.abs(creatureRating-markValue))*2;
+        return (MAX_RATING - Math.abs(creatureRating - markValue)) * 2;
     }
 }
