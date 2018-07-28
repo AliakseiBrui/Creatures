@@ -37,7 +37,6 @@ public class UserListSorter {
 
         } else if (sortType == UserSortType.BY_STATUS) {
             sortByStatus(userList);
-
         }
     }
 

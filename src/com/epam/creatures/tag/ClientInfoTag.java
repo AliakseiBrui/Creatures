@@ -59,6 +59,7 @@ public class ClientInfoTag extends TagSupport {
         Double status = (Double) pageContext.getSession().getAttribute(AttributeConstant.STATUS_ATTRIBUTE);
         String avatar = (String) pageContext.getSession().getAttribute(AttributeConstant.AVATAR_ATTRIBUTE);
         String info = "";
+
         if(login!=null) {
             info =
                     "            <div class=\"user\">\n" +
@@ -97,6 +98,7 @@ public class ClientInfoTag extends TagSupport {
                         "                    </div>\n" +
                         "                </div>\n" +
                         "                <br/>\n";
+
             }else if(clientRole==ClientRole.ADMIN){
                 info+=
                         "                            <div class=\"user-footer\">\n"+
@@ -117,6 +119,7 @@ public class ClientInfoTag extends TagSupport {
                         "                <br/>\n";
             }
         }
+
         try{
             JspWriter writer = pageContext.getOut();
             writer.write(info);

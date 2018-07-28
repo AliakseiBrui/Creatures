@@ -39,13 +39,13 @@ public class UserPageFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         ClientRole role = (ClientRole) request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
 
-        if(role==null){
-            request.getRequestDispatcher(START_PAGE_RELATIVE_PATH).forward(request,response);
+        if (role == null) {
+            request.getRequestDispatcher(START_PAGE_RELATIVE_PATH).forward(request, response);
             LOGGER.debug("UserPageFilter has worked.");
             return;
 
-        }else if(role == ClientRole.ADMIN){
-            request.getRequestDispatcher(ADMIN_MAIN_PAGE_RELATIVE_PATH).forward(request,response);
+        } else if (role == ClientRole.ADMIN) {
+            request.getRequestDispatcher(ADMIN_MAIN_PAGE_RELATIVE_PATH).forward(request, response);
             LOGGER.debug("UserPageFilter has worked.");
             return;
         }

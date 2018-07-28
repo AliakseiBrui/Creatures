@@ -32,7 +32,7 @@ public class UserCommandFilter implements Filter {
         CommandType commandType = CommandType.valueOf(request.getParameter(ParameterConstant.COMMAND_TYPE_PARAMETER));
         ClientRole role = (ClientRole) request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
 
-        if(commandType.getCommand() instanceof UserCommand && role!=ClientRole.USER) {
+        if (commandType.getCommand() instanceof UserCommand && role != ClientRole.USER) {
             LOGGER.debug("UserCommandFilter has worked.");
             response.sendRedirect(PagePath.START_PAGE);
             return;

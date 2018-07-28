@@ -31,7 +31,6 @@ public class UserValidator {
                 }
 
                 if (currentUser.getPassword().equals(user.getPassword())) {
-
                     user.setBanned(currentUser.getBanned());
                     user.setId(currentUser.getId());
                     user.setStatus(currentUser.getStatus());

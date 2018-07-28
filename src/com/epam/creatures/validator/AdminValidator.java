@@ -18,6 +18,7 @@ public class AdminValidator {
      */
     public boolean validateAdmin(Admin admin) throws DaoException {
         AdminDao adminDAO = new AdminDao();
+
         if(admin!=null) {
             Admin currentAdmin = adminDAO.findAdminByLogin(admin.getLogin());
 

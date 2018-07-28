@@ -17,7 +17,7 @@ public class UserStatusCalculator {
      */
     public Double calculateStatus(Double markValue, Double creatureRating) {
 
-        if(markValue==null || creatureRating == null || creatureRating.equals(NO_RATING)){
+        if (markValue == null || creatureRating == null || creatureRating.equals(NO_RATING)) {
             return DEFAULT_STATUS;
         }
         return (MAX_RATING-Math.abs(creatureRating-markValue))*2;
