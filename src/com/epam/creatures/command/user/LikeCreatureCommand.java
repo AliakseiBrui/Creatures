@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Like creature command.
  */
-public class LikeCreatureCommand extends AbstractCommand {
+public class LikeCreatureCommand extends AbstractCommand implements UserCommand {
 
     /**
      * Instantiates a new Like creature command.

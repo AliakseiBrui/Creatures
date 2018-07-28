@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type To change creature image page command.
  */
-public class ToChangeCreatureImagePageCommand extends AbstractCommand {
+public class ToChangeCreatureImagePageCommand extends AbstractCommand implements AdminCommand {
     /**
      * Instantiates a new To change creature image page command.
      *

@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Comment creature command.
  */
-public class CommentCreatureCommand extends AbstractCommand {
+public class CommentCreatureCommand extends AbstractCommand implements UserCommand {
     /**
      * Instantiates a new Comment creature command.
      *

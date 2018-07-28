@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Delete creature command.
  */
-public class DeleteCreatureCommand extends AbstractCommand {
+public class DeleteCreatureCommand extends AbstractCommand implements AdminCommand {
     /**
      * Instantiates a new Delete creature command.
      *

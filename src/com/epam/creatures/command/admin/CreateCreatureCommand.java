@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Create creature command.
  */
-public class CreateCreatureCommand extends AbstractCommand {
+public class CreateCreatureCommand extends AbstractCommand implements AdminCommand {
     /**
      * Instantiates a new Create creature command.
      *

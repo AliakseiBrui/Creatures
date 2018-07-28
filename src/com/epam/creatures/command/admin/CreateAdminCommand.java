@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Create admin command.
  */
-public class CreateAdminCommand extends AbstractCommand {
+public class CreateAdminCommand extends AbstractCommand implements AdminCommand {
     /**
      * Instantiates a new Create admin command.
      *

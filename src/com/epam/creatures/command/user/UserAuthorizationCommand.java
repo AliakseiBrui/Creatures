@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type User authorization command.
  */
-public class UserAuthorizationCommand extends AbstractCommand {
+public class UserAuthorizationCommand extends AbstractCommand implements UserCommand {
     /**
      * Instantiates a new User authorization command.
      *

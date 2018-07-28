@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * The type Show users command.
  */
-public class ShowUsersCommand extends AbstractCommand {
+public class ShowUsersCommand extends AbstractCommand implements AdminCommand {
     /**
      * Instantiates a new Show users command.
      *
