@@ -73,16 +73,16 @@
                 </div>
                 <div class="creature-button">
                     <form action="/creatures" method="post">
-                        <input type="hidden" name="commandType" value="DELETE_CREATURE_COMMAND"/>
+                        <input type="hidden" name="commandType" value="TO_CHANGE_CREATURE_IMAGE_PAGE_COMMAND"/>
                         <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
-                        <input type="submit" value="<fmt:message key="button.delete"/>" class="nice-button"/>
+                        <input type="submit" value="<fmt:message key="button.change_image"/>" class="nice-button"/>
                     </form>
                 </div>
                 <div class="creature-button">
                     <form action="/creatures" method="post">
-                        <input type="hidden" name="commandType" value="TO_CHANGE_CREATURE_IMAGE_PAGE_COMMAND"/>
+                        <input type="hidden" name="commandType" value="DELETE_CREATURE_COMMAND"/>
                         <input type="hidden" name="creatureId" value="${creature.getCreatureId()}"/>
-                        <input type="submit" value="<fmt:message key="button.change_image"/>" class="nice-button"/>
+                        <input type="submit" value="<fmt:message key="button.delete"/>" class="nice-button"/>
                     </form>
                 </div>
             </div>
