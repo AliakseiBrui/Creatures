@@ -1,6 +1,5 @@
-package com.epam.creatures.command.user;
+package com.epam.creatures.command;
 
-import com.epam.creatures.command.AbstractCommand;
 import com.epam.creatures.constant.AttributeConstant;
 import com.epam.creatures.constant.ParameterConstant;
 import com.epam.creatures.entity.Router;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 /**
  * The type User authorization command.
  */
-public class UserAuthorizationCommand extends AbstractCommand implements UserCommand {
+public class UserAuthorizationCommand extends AbstractCommand {
     /**
      * Instantiates a new User authorization command.
      *

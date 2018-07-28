@@ -35,7 +35,7 @@ public class AdminCommandFilter implements Filter {
         CommandType commandType = CommandType.valueOf(request.getParameter(ParameterConstant.COMMAND_TYPE_PARAMETER));
         ClientRole role = (ClientRole) request.getSession().getAttribute(AttributeConstant.ROLE_ATTRIBUTE);
 
-        if(!(commandType.getCommand() instanceof AdminCommand) && role!=ClientRole.ADMIN) {
+        if(commandType.getCommand() instanceof AdminCommand && role!=ClientRole.ADMIN) {
             LOGGER.debug("AdminCommandFilter has worked.");
             response.sendRedirect(PagePath.START_PAGE);
             return;
