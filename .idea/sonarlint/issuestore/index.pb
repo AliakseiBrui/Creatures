@@ -377,3 +377,7 @@ d
 4src/com/epam/creatures/command/user/UserCommand.java,7\b\7b3d6c200ab529e1f40351d760fe24bd1f9d403e
 f
 6src/com/epam/creatures/command/admin/AdminCommand.java,b\9\b92b80f7678a40202a6e17b85954126e17904edd
+n
+>src/com/epam/creatures/command/admin/DeleteCommentCommand.java,f\6\f6574bb1af7d673bcf7ebb565bda82b7cfc1ceeb
+n
+>src/com/epam/creatures/service/admin/DeleteCommentService.java,d\c\dc3b6351de2b7772e9fc40a9e68881d45bcf7399
