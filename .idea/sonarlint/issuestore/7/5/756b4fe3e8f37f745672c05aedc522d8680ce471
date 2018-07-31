@@ -1,0 +1,9 @@
+
+^squid:S2095e"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹
+_squid:S2095½"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹
+Ãsquid:S1192"¦Define a constant instead of duplicating this literal "SELECT creatures_db.creatures.id, creatures_db.creatures.name, creatures_db.creatures.limb_quantity, " 4 times.(äÇ÷‚şÿÿÿÿ
+ìsquid:S1192"ÏDefine a constant instead of duplicating this literal "creatures_db.creatures.head_quantity, creatures_db.creatures.eye_quantity, creatures_db.creatures.gender, creatures_db.creatures.description, " 4 times.( ü¸ùÿÿÿÿ
+_squid:S2095×"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹
+tsquid:S1192"]Define a constant instead of duplicating this literal "FROM creatures_db.creatures " 4 times.(ñÈÏŸ
+€squid:S1192%"dDefine a constant instead of duplicating this literal "WHERE creatures_db.creatures.id = ?" 4 times.(‘Ä©›üÿÿÿÿ
+™squid:S1192$"Define a constant instead of duplicating this literal "INNER JOIN creatures_db.admins a ON creatures.creator_id = a.id " 3 times.(Ø£€

@@ -1,0 +1,5 @@
+
+„squid:S1192"aDefine a constant instead of duplicating this literal "WHERE creatures_db.admins.id = ?" 4 times.(¿ğ†üÿÿÿÿ8‚ñÇšÉ,
+Ñsquid:S1192"²Define a constant instead of duplicating this literal "SELECT creatures_db.admins.id,creatures_db.admins.login,creatures_db.admins.password, creatures_db.admins.avatar " 3 times.(çäõ¡8‚ñÇšÉ,
+esquid:S2095T"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹8‚ñÇšÉ,
+fsquid:S2095¡"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹8‚ñÇšÉ,

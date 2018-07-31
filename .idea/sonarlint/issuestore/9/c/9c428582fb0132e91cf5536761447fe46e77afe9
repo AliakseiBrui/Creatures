@@ -1,0 +1,5 @@
+
+_squid:S2095¦"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹
+zsquid:S1192!"cDefine a constant instead of duplicating this literal "WHERE creatures_db.comments.id = ?" 3 times.(å·ü÷
+^squid:S2095U"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(ò¡¥¹
+ssquid:S1192"\Define a constant instead of duplicating this literal "FROM creatures_db.comments " 3 times.(ùÒÈÐ
